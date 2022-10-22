@@ -1,0 +1,98 @@
+<!-- <div class="mat-elevation-z8" style="height: 98vh; margin-top: 0px;"> -->
+<!-- <app-admin-header></app-admin-header> -->
+
+<div style="
+    height: 87%;
+    overflow-y: auto;
+    width: 22%;
+    margin-top: 46px;
+    border-right: 1px solid #dfdfdf;
+    float: left;">
+    <!-- <div class="side-nav active"> -->
+    <mat-list>
+        <mat-list-item routerLink="/dashboard" [ngClass]="this.router.url == '/dashboard' ? 'link-active' : ''">
+            <mat-icon>tab</mat-icon>
+            &nbsp; &nbsp; Dashboard</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item routerLink="/staff" [ngClass]="this.router.url == '/staff' ? 'link-active' : ''">
+            <mat-icon>filter_vintage</mat-icon>
+            &nbsp; &nbsp; Staff</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item routerLink="/supplier" [ngClass]="this.router.url == '/supplier' ? 'link-active' : ''">
+            <mat-icon>group</mat-icon>
+            &nbsp; &nbsp; Supplier</mat-list-item>
+        <mat-divider></mat-divider>
+
+        <mat-list-item routerLink="/user-management" [ngClass]="this.router.url == '/user-management' ? 'link-active' : ''">
+            <mat-icon>group</mat-icon>
+            &nbsp; &nbsp; Users</mat-list-item>
+        <mat-divider></mat-divider>
+
+        <mat-divider></mat-divider>
+        <mat-list-item routerLink="/categories" [ngClass]="this.router.url == '/categories' ? 'link-active' : ''">
+            <mat-icon>store</mat-icon> &nbsp; &nbsp; Categories</mat-list-item>
+        <mat-divider></mat-divider>
+
+        <mat-divider></mat-divider>
+        <mat-list-item routerLink="/expenses" [ngClass]="this.router.url == '/expenses' ? 'link-active' : ''">
+            <mat-icon>bug_report</mat-icon>
+            &nbsp; &nbsp; Expenses</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-divider></mat-divider>
+
+        <mat-list-item routerLink="/purchases" [ngClass]="this.router.url == '/purchases' ? 'link-active' : ''">
+            <mat-icon> format_list_bulleted</mat-icon>
+            &nbsp; &nbsp; Purchases</mat-list-item>
+        <mat-divider></mat-divider>
+
+        <mat-list-item routerLink="/purchase-return" [ngClass]="this.router.url == '/purchase-return' ? 'link-active' : ''">
+            <mat-icon> shopping_cart</mat-icon>
+            &nbsp; &nbsp; Purchase Return</mat-list-item>
+        <mat-divider></mat-divider>
+
+
+        <mat-list-item routerLink="/products-list" [ngClass]="this.router.url == '/products-list' ? 'link-active' : ''">
+            <mat-icon>shopping_cart</mat-icon>
+            &nbsp; &nbsp; Products List</mat-list-item>
+        <mat-divider></mat-divider>
+
+        <mat-divider></mat-divider>
+        <mat-list-item routerLink="/notifications" [ngClass]="this.router.url == '/notifications' ? 'link-active' : ''">
+            <mat-icon>notification_important</mat-icon>
+            &nbsp; &nbsp; Notifications</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item routerLink="/user-questions" [ngClass]="this.router.url == '/user-questions' ? 'link-active' : ''">
+            <mat-icon>question_answer</mat-icon>
+            &nbsp; &nbsp; Questions</mat-list-item>
+        <mat-divider></mat-divider>
+
+        <mat-list-item routerLink="/agri-map" [ngClass]="this.router.url == '/agri-map' ? 'link-active' : ''">
+            <mat-icon> map</mat-icon>
+            &nbsp; &nbsp; Agri Map</mat-list-item>
+    </mat-list>
+</div>
+<div class="content-area active" style="
+    height: 87%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 78%;
+    margin: 0px;
+    margin-top: 46px;
+    padding: 10px;
+    float: left;
+  ">
+    <router-outlet></router-outlet>
+</div>
+<!-- </div> -->
+<mat-toolbar class="example-toolbar" style="
+    position: fixed;
+    height: 35px;
+    width: 100%;
+    line-height: 35px;
+    border-top: 1px solid #dfdfdf;
+    bottom: 0px;
+    max-height: 35px;
+  ">
+    <p class="example-app-name" style="font-size: 12px">@ Powred by Agri Plus</p>
+</mat-toolbar>
+<!-- </div> -->

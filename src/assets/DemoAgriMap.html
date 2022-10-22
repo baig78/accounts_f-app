@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<base target="_top">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<title>Agri App Map Demo</title>
+	
+	<link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css" integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js" integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
+
+	<style>
+		html, body {
+			height: 100%;
+			width: 100%;
+			margin: 0;
+		}
+		.leaflet-container {
+			height: 700px;
+			width: 1400px;
+			max-width: 100%;
+			max-height: 100%;
+		}
+	</style>
+
+	
+</head>
+<body>
+
+<div id='map'></div>
+
+<script>
+	var AgriPark = L.layerGroup();
+	var html1="<h2>This is Paddy Crop.</h2>";
+	html1+="<ul><li>Soil Depth: 98798977</li>";
+	html1+="<li>Soil Texture: 324</li>";
+	html1+="<li>pH: 34, EC: 12, CEC: 23, OC: 12, OM: 12</li>";
+	html1+="<li>Slope: 232</li></ul>";
+
+	var html2="<h2>This is sugar cane</h2>";
+	html2+="<ul><li>Soil Depth: 98798977</li>";
+	html2+="<li>Soil Texture: 324</li>";
+	html2+="<li>pH: 34, EC: 12, CEC: 23, OC: 12, OM: 12</li>";
+	html2+="<li>Slope: 232</li></ul>";
+
+	var html3="<h2>This is Wheat.</h2>";
+	html3+="<ul><li>Soil Depth: 98798977</li>";
+	html3+="<li>Soil Texture: 324</li>";
+	html3+="<li>pH: 34, EC: 12, CEC: 23, OC: 12, OM: 12</li>";
+	html3+="<li>Slope: 232</li></ul>";
+
+	var html4="<h2>This is Vegetables.</h2>";
+	html4+="<ul><li>Soil Depth: 98798977</li>";
+	html4+="<li>Soil Texture: 324</li>";
+	html4+="<li>pH: 34, EC: 12, CEC: 23, OC: 12, OM: 12</li>";
+	html4+="<li>Slope: 232</li></ul>";
+
+	// var Paddy = L.marker([17.10,78.10]).bindPopup('This is Paddy Crop.').addTo(AgriPark);
+	var Paddy = L.marker([17.10,78.10]).bindPopup(html1).addTo(AgriPark);
+	var sugar = L.marker([17.20,78.20]).bindPopup(html2).addTo(AgriPark);
+	var Wheat = L.marker([17.05,78.40]).bindPopup(html3).addTo(AgriPark);
+	var Vegetables = L.marker([17.02,78.50]).bindPopup(html4).addTo(AgriPark);
+
+	var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>';
+	var mbUrl = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
+ 
+	var streets = L.tileLayer(mbUrl, {id: 'mapbox/streets-v11', tileSize: 512, zoomOffset: -1, attribution: mbAttr});
+
+	var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		maxZoom: 19,
+		attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+	});
+
+	var map = L.map('map', {
+		center: [17.99,78.73],
+		zoom: 8,
+		layers: [osm, AgriPark]
+	});
+
+	var baseLayers = {
+		'OpenStreetMap': osm,
+		'Streets': streets
+	};
+
+	var overlays = {
+		'AgriPark': AgriPark
+	};
+
+	var layerControl = L.control.layers(baseLayers, overlays).addTo(map);
+	var AgriPark = L.marker([17.79,78.73]).bindPopup('This is Agri Park.');
+	var DairyPark = L.marker([17.89,78.73]).bindPopup('This is Dairy Park.');
+
+	var parks = L.layerGroup([AgriPark, DairyPark]);
+
+	var satellite = L.tileLayer(mbUrl, {id: 'mapbox/satellite-v9', tileSize: 512, zoomOffset: -1, attribution: mbAttr});
+	layerControl.addBaseLayer(satellite, 'Satellite');
+	layerControl.addOverlay(parks, 'parks');
+</script>
+
+
+
+</body>
+</html>

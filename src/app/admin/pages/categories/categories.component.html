@@ -1,0 +1,56 @@
+<app-admin-header [title]="'Categories'"></app-admin-header>
+<mat-accordion class="example-headers-align" multi>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            Add Categories
+        </mat-expansion-panel-header>
+        <div class="example-container">
+            <mat-divider></mat-divider>
+            <mat-form-field appearance="outline">
+                <mat-label>Category Name</mat-label>
+                <input matInput placeholder="Category Name">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Category Note</mat-label>
+                <input matInput placeholder="Category Note">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Status</mat-label>
+                <mat-select>
+                    <mat-option *ngFor="let staff of staffs" [value]="staff.value">
+                        {{staff.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+
+
+            <div class="example-button-row">
+                <button mat-button color="primary" (click)="click()">
+                    Save
+                </button> &nbsp; &nbsp;
+                <button mat-button style="background-color:lightgray ;">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </mat-expansion-panel>
+</mat-accordion>
+
+<div>
+    <mat-form-field appearance="outline">
+        <mat-label> Type name or reason</mat-label>
+        <mat-icon matPrefix>search</mat-icon>
+        <input matInput type="text" />
+    </mat-form-field> &nbsp; &nbsp;
+    <button mat-button style="background-color: rgb(182, 182, 182);">
+      <mat-icon >download</mat-icon>
+    Export
+  </button>
+</div>
+<div class="row" style="margin-top: 20px;">
+    <div class="col-md-6">
+        <!-- <h2>Staff List</h2> -->
+        <app-table [columns]="columnsCrops" [buttons]="buttons" [data]="dataCrops" [pagination]="[5, 25, 100]" [pageSize]="5" [tableMinWidth]="1100" (buttonClick)="buttonClick($event)"></app-table>
+    </div>
+</div>

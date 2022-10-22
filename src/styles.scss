@@ -1,0 +1,94 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.mat-elevation-z8 {
+    width: 98%;
+    margin-left: 1%;
+}
+
+.mat-button.mat-primary,
+.mat-icon-button.mat-primary,
+.mat-stroked-button.mat-primary {
+    color: white;
+    background-color: #3f51b5;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-wrapper {
+    margin-right: 5px !important;
+}
+
+::ng-deep .mat-expansion-panel {
+    margin: 10px 0px !important;
+}
+
+:host .mat-expansion-panel {
+    margin: 10px 0px !important;
+}
+
+:host ::ng-deep .mat-divider {
+    margin-bottom: 10px;
+}
+
+.btn-success {
+    background-color: transparent !important;
+    color: #5cb85c !important;
+    border: none !important;
+}
+
+.btn-primary {
+    background-color: transparent !important;
+    color: #286090 !important;
+    border: none !important;
+}
+
+.link-active {
+    background-color: gray !important;
+}
+
+.mat-list-item {
+    cursor: pointer !important;
+}
+
+.mat-sort-header-content {
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.mat-paginator-container {
+    width: 90%;
+}
+
+// td.mat-cell {
+//     // padding: 16px 0;
+//     border: 1px solid #dfdfdf;
+//     text-align: center;
+//     width: auto;
+// }
+th.mat-header-cell,
+td.mat-cell,
+td.mat-footer-cell {
+    border: 1px solid #dfdfdf;
+    text-align: center;
+    width: auto;
+}
+
+.mat-paginator-container {
+    width: 90% !important;
+}
+
+// table {
+//     width: 100%;
+// }
+table.mat-table {
+    width: 95%;
+}

@@ -1,0 +1,20 @@
+::ng-deep .side-nav.active {
+    display: none !important;
+}
+
+::ng-deep .content-area.active {
+    // width: 98% !important; margin-left: 1% !important;
+}
+
+::ng-deep .row {
+    margin: 0px;
+}
+
+// ::ng-deep .mat-sort-header-content {
+//     font-weight: 900;
+//     text-transform: uppercase;
+//     font-size: 14px;
+// }
+// :host::ng-deep .mat-paginator-container {
+//     width: 90%;
+// }

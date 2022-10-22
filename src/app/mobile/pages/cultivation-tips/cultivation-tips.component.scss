@@ -1,0 +1,54 @@
+.container {
+    padding: 20px;
+}
+
+.head {
+    box-shadow: 0px 1px 0px 0px #888888;
+    display: flex;
+}
+
+.fert-bk-icon {
+    font-size: 30px;
+}
+
+a {
+    color: black;
+}
+
+::ng-deep .mat-tab-label {
+    width: 50%;
+}
+
+.img-crop {
+    border: 1px solid gray;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 0px;
+}
+
+.img-crop img {
+    width: 147px;
+    height: 86px;
+}
+
+.crop-dia {
+    background: #a8cfff;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+::ng-deep .mat-tab-body-content {
+    overflow: hidden !important;
+}
+
+.btn-lg {
+    width: 65%;
+    border-radius: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 30px;
+    font-size: 14px;
+    padding: 0;
+    border: 1px solid #003800;
+    color: #003800;
+}

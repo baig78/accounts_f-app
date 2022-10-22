@@ -1,0 +1,337 @@
+<app-admin-header [title]="title"></app-admin-header>
+<mat-tab-group>
+    <mat-tab>
+        <ng-template matTabContent>
+            <ng-template mat-tab-label>
+                <mat-icon style="color:orange ;">markunread_mailbox</mat-icon> Herbicides
+            </ng-template>
+            <mat-accordion class="example-headers-align" multi>
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        Enter Herbicides
+                    </mat-expansion-panel-header>
+                    <div class="example-container">
+                        <mat-divider></mat-divider>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Brand</mat-label>
+                                    <input matInput placeholder="Placeholder">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-3">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Weight</mat-label>
+                                    <input matInput placeholder="Placeholder">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-3">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Price</mat-label>
+                                    <input matInput placeholder="Placeholder">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-3"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <button mat-button class="upload-img" (click)="uploadFile()" style="background-color:#dfdfdf;">
+                                    Upload Image
+                                    <mat-icon>add_photo_alternate</mat-icon>
+                                </button>
+                                <input type="file" id="fileUPload" style="display: none ;"/>
+                            </div>
+                            <div class="col-md-3"></div>
+                            <div class="col-md-3"></div>
+                            <div class="col-md-3"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-3"></div>
+                            <div class="col-md-6">
+                                <button mat-button color="primary" class="btn-submit">
+                                    <mat-icon>add</mat-icon>
+                                    Add
+                                </button>&nbsp;&nbsp;
+                                <button mat-button color="primary" style="background-color: lightgray; color: black;">
+                                    <mat-icon>clear</mat-icon>
+                                    Clear
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </mat-expansion-panel>
+            </mat-accordion>
+            <app-table [columns]="columnsPesticides" [buttons]="buttons" [data]="dataPesticides" [pagination]="[5, 25, 100]" [pageSize]="5"
+            [tableMinWidth]="400" (buttonClick)="buttonClick($event)"></app-table>
+        </ng-template>
+    </mat-tab>
+    <mat-tab>
+        <ng-template matTabContent>
+            <ng-template mat-tab-label>
+                <mat-icon style="color:brown ;">battery_std</mat-icon> {{tabTwo}}
+            </ng-template>
+            <mat-accordion class="example-headers-align" multi>
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        Enter Fertilizers
+                    </mat-expansion-panel-header>
+                    <div class="example-container">
+                        <mat-divider></mat-divider>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Name</mat-label>
+                                    <input matInput placeholder="Placeholder">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-3">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Brand</mat-label>
+                                    <input matInput placeholder="Placeholder">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-3">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>SKU/ML</mat-label>
+                                    <input matInput placeholder="Placeholder">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Price</mat-label>
+                                    <input matInput placeholder="Placeholder">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-3">
+                                <button mat-button class="upload-img"  (click)="uploadFile()"  style="background-color:#dfdfdf;">
+                                    Upload Image
+                                    <mat-icon>add_photo_alternate</mat-icon>
+                                </button>
+                            </div>
+                            <div class="col-md-3"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-6">
+                                <button mat-button color="primary" class="btn-submit">
+                                    <mat-icon>add</mat-icon>
+                                    Add
+                                </button>&nbsp;&nbsp;
+                                <button mat-button color="primary" style="background-color: lightgray; color: black;">
+                                    <mat-icon>clear</mat-icon>
+                                    Clear
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </mat-expansion-panel>
+            </mat-accordion>
+            <app-table [columns]="columns" [buttons]="buttons" [data]="data" [pagination]="[5, 25, 100]" [pageSize]="5"
+            [tableMinWidth]="400" (buttonClick)="buttonClick($event)"></app-table>
+        </ng-template>
+    </mat-tab>
+    <mat-tab>
+        <ng-template matTabContent>
+            <ng-template mat-tab-label>
+                <mat-icon style="color:darkgreen ;">developer_mode</mat-icon> Pesticides
+            </ng-template>
+            <mat-accordion class="example-headers-align" multi>
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        Enter Pesticides
+                    </mat-expansion-panel-header>
+                    <div class="example-container">
+                        <mat-divider></mat-divider>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Name</mat-label>
+                                    <input matInput placeholder="Placeholder">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-3">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Brand</mat-label>
+                                    <input matInput placeholder="Placeholder">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-3">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>SKU</mat-label>
+                                    <input matInput placeholder="Placeholder">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Price</mat-label>
+                                    <input matInput placeholder="Placeholder">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-3">
+                                <button mat-button class="upload-img"  (click)="uploadFile()"  style="background-color:#dfdfdf;">
+                                    Upload Image
+                                    <mat-icon>add_photo_alternate</mat-icon>
+                                </button>
+                            </div>
+                            <div class="col-md-3"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-6">
+                                <button mat-button color="primary" class="btn-submit">
+                                    <mat-icon>add</mat-icon>
+                                    Add
+                                </button>&nbsp;&nbsp;
+                                <button mat-button color="primary" style="background-color: lightgray; color: black;">
+                                    <mat-icon>clear</mat-icon>
+                                    Clear
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </mat-expansion-panel>
+            </mat-accordion>
+            <app-table [columns]="columnsPesticides" [buttons]="buttons" [data]="dataPesticides" [pagination]="[5, 25, 100]" [pageSize]="5"
+            [tableMinWidth]="400" (buttonClick)="buttonClick($event)"></app-table>
+        </ng-template>
+    </mat-tab>
+    <mat-tab>
+        <ng-template matTabContent>
+            <ng-template mat-tab-label>
+                <mat-icon style="color:orangered ;">fiber_manual_record</mat-icon> Seeds
+            </ng-template>
+            <mat-accordion class="example-headers-align" multi>
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        Enter Pesticides
+                    </mat-expansion-panel-header>
+                    <div class="example-container">
+                        <mat-divider></mat-divider>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Name</mat-label>
+                                    <input matInput placeholder="Placeholder">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-3">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Brand</mat-label>
+                                    <input matInput placeholder="Placeholder">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-3">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Weight</mat-label>
+                                    <input matInput placeholder="Placeholder">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Price</mat-label>
+                                    <input matInput placeholder="Placeholder">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-3">
+                                <button mat-button class="upload-img"  (click)="uploadFile()" style="background-color:#dfdfdf;">
+                                    Upload Image
+                                    <mat-icon>add_photo_alternate</mat-icon>
+                                </button>
+                            </div>
+                            <div class="col-md-3"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-6">
+                                <button mat-button color="primary" class="btn-submit">
+                                    <mat-icon>add</mat-icon>
+                                    Add
+                                </button>&nbsp;&nbsp;
+                                <button mat-button color="primary" style="background-color: lightgray; color: black;">
+                                    <mat-icon>clear</mat-icon>
+                                    Clear
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </mat-expansion-panel>
+            </mat-accordion>
+            <app-table [columns]="columnsPesticides" [buttons]="buttons" [data]="dataPesticides" [pagination]="[5, 25, 100]" [pageSize]="5"
+            [tableMinWidth]="400" (buttonClick)="buttonClick($event)"></app-table>
+        </ng-template>
+    </mat-tab>
+    <mat-tab>
+        <ng-template matTabContent>
+            <ng-template mat-tab-label>
+                <mat-icon style="color:blueviolet ;">featured_play_list</mat-icon> Miscelianeous
+            </ng-template>
+            <mat-accordion class="example-headers-align" multi>
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        Enter Miscelianeous
+                    </mat-expansion-panel-header>
+                    <div class="example-container">
+                        <mat-divider></mat-divider>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Name</mat-label>
+                                    <input matInput placeholder="Placeholder">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-3">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Brand</mat-label>
+                                    <input matInput placeholder="Placeholder">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-3">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Weight</mat-label>
+                                    <input matInput placeholder="Placeholder">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Price</mat-label>
+                                    <input matInput placeholder="Placeholder">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-3">
+                                <button mat-button class="upload-img"  (click)="uploadFile()" style="background-color:#dfdfdf;">
+                                    Upload Image
+                                    <mat-icon>add_photo_alternate</mat-icon>
+                                </button>
+                            </div>
+                            <div class="col-md-3"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-6">
+                                <button mat-button color="primary" class="btn-submit">
+                                    <mat-icon>add</mat-icon>
+                                    Add
+                                </button>&nbsp;&nbsp;
+                                <button mat-button color="primary" style="background-color: lightgray; color: black;">
+                                    <mat-icon>clear</mat-icon>
+                                    Clear
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </mat-expansion-panel>
+            </mat-accordion>
+            <app-table [columns]="columnsPesticides" [buttons]="buttons" [data]="dataPesticides" [pagination]="[5, 25, 100]" [pageSize]="5"
+            [tableMinWidth]="400" (buttonClick)="buttonClick($event)"></app-table>
+        </ng-template>
+    </mat-tab>
+</mat-tab-group>

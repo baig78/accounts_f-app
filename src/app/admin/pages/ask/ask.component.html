@@ -1,0 +1,39 @@
+<app-admin-header [title]="'Questioins'"></app-admin-header>
+<mat-accordion class="example-headers-align" multi>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            Add Question
+        </mat-expansion-panel-header>
+        <div class="example-container">
+            <mat-divider></mat-divider>
+            <div class="row">
+                <div class="col-md-3">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Question</mat-label>
+                        <input matInput placeholder="Question">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Answer</mat-label>
+                        <textarea matInput placeholder="Answer..."></textarea>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row" style="margin-top:20px ;">
+                <div class="col-md-3">
+                    <button mat-button color="primary" class="btn-submit">
+                        <mat-icon>add</mat-icon>
+                        Add
+                    </button>&nbsp;&nbsp;
+                    <button mat-button color="primary" style="background-color: lightgray; color: black;">
+                        <mat-icon>clear</mat-icon>
+                        Clear
+                    </button>
+                </div>
+            </div>
+        </div>
+    </mat-expansion-panel>
+</mat-accordion>

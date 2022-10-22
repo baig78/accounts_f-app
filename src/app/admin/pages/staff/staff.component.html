@@ -1,0 +1,70 @@
+<app-admin-header [title]="'Staff'"></app-admin-header>
+<mat-accordion class="example-headers-align" multi>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            Add Staff
+        </mat-expansion-panel-header>
+        <div class="example-container">
+            <mat-divider></mat-divider>
+            <mat-form-field appearance="outline">
+                <mat-label>Employee Name</mat-label>
+                <input matInput placeholder="Crop Name">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Email Address</mat-label>
+                <input matInput placeholder="Crop Name">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Phone Number</mat-label>
+                <input matInput placeholder="Crop Name">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Department</mat-label>
+                <input matInput placeholder="Crop Name">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Designation*</mat-label>
+                <input matInput placeholder="Crop Name">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Address</mat-label>
+                <input matInput placeholder="Crop Name">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Status</mat-label>
+                <mat-select>
+                    <mat-option *ngFor="let staff of staffs" [value]="staff.value">
+                        {{staff.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+
+            <div class="row" style="margin-bottom: 10px;">
+                <div class="col-md-3">
+                    <button mat-button class="upload-img" (click)="uploadFile()" style="background-color:#dfdfdf;">
+                        Upload Profile Picture
+                        <mat-icon>add_photo_alternate</mat-icon>
+                    </button>
+                </div>
+            </div>
+
+            <div class="example-button-row">
+                <button mat-button color="primary" (click)="click()">
+                    Save
+                </button> &nbsp; &nbsp;
+                <button mat-button style="background-color:lightgray ;">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </mat-expansion-panel>
+</mat-accordion>
+
+<div class="row" style="margin-top: 20px;">
+    <div class="col-md-6">
+        <!-- <h2>Staff List</h2> -->
+        <app-table [columns]="columnsCrops" [buttons]="buttons" [data]="dataCrops" [pagination]="[5, 25, 100]" [pageSize]="5" [tableMinWidth]="1100" (buttonClick)="buttonClick($event)"></app-table>
+    </div>
+</div>

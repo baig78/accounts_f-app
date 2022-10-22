@@ -1,0 +1,20 @@
+.mat-accordion .mat-expansion-panel:last-of-type{
+    margin: 10px 0px;
+}
+// .content-area{
+//     margin-top: 85px;
+//      width: 96%; margin-left: 2%;
+// }
+// .content-area.active{
+//     width: 78%;
+//     margin-left: 21%;
+// }
+// .side-nav{
+//    width: 20%; float: left;
+// }
+// .side-nav.active{
+//     width: 20%;
+// }
+::ng-deep body{
+    overflow: hidden;
+}

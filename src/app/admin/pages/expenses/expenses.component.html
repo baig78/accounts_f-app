@@ -1,0 +1,82 @@
+<app-admin-header [title]="'Expenses'"></app-admin-header>
+<mat-accordion class="example-headers-align" multi>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            Add Expenses
+        </mat-expansion-panel-header>
+        <div class="example-container">
+            <mat-divider></mat-divider>
+            <div class="row">
+                <div class="col-md-3">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Expense Catagory</mat-label>
+                        <mat-select>
+                            <mat-option *ngFor="let expense of expense_catagory" [value]="expense.value">
+                                {{expense.viewValue}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-3">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Expense Reason</mat-label>
+                        <input matInput placeholder="Expense Reason">
+                    </mat-form-field>
+                </div>
+                <div class="col-md-3">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Amount</mat-label>
+                        <input matInput placeholder="Amount">
+                    </mat-form-field>
+                </div>
+
+                <div class="col-md-3">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Choose a date</mat-label>
+                        <input matInput [matDatepicker]="picker">
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+
+
+
+                </div>
+
+                <div class="col-md-3">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Expense Note</mat-label>
+                        <input matInput placeholder="Expense Note">
+                    </mat-form-field>
+                </div>
+
+                <div class="col-md-3">
+                    <button mat-button class="upload-img" (click)="uploadFile()" style="background-color:#dfdfdf;">
+                       Expense Attachment
+                      <mat-icon>add_photo_alternate</mat-icon>
+                  </button>
+                </div>
+            </div>
+
+
+
+
+            <div class="row" style="margin-top:20px ;">
+                <div class="col-md-3">
+                    <button mat-button color="primary" class="btn-submit">
+                        <mat-icon>add</mat-icon>
+                        Add
+                    </button>&nbsp;&nbsp;
+                    <button mat-button color="primary" style="background-color: lightgray; color: black;">
+                        <mat-icon>clear</mat-icon>
+                        Clear
+                    </button>
+                </div>
+            </div>
+        </div>
+    </mat-expansion-panel>
+</mat-accordion>
+
+<div class="row" style="margin-top:20px ;">
+    <app-table [columns]="columnsUsers" [buttons]="buttons" [data]="dataUsers" [pagination]="[5, 25, 100]" [pageSize]="5" [tableMinWidth]="1100" (buttonClick)="buttonClick($event)"></app-table>
+</div>

@@ -1,0 +1,52 @@
+<app-admin-header [title]="'Notifications'"></app-admin-header>
+<mat-accordion class="example-headers-align" multi>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            Add Notification
+        </mat-expansion-panel-header>
+        <div class="example-container">
+            <mat-divider></mat-divider>
+            <div class="row">
+                <div class="col-md-3">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Name</mat-label>
+                        <input matInput placeholder="Notification">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Description</mat-label>
+                        <textarea matInput placeholder="Ex. Notification Description..."></textarea>
+                    </mat-form-field>
+                </div>
+            </div>
+           <div class="row">
+            <div class="col-md-3">
+                  <mat-form-field appearance="fill">
+                    <input matInput type="datetime-local" placeholder="start date">
+                  </mat-form-field>
+            </div>
+           </div>
+            <div class="row" style="margin-top:20px ;">
+                <div class="col-md-3">
+                    <button mat-button color="primary" class="btn-submit">
+                        <mat-icon>add</mat-icon>
+                        Add
+                    </button>&nbsp;&nbsp;
+                    <button mat-button color="primary" style="background-color: lightgray; color: black;">
+                        <mat-icon>clear</mat-icon>
+                        Clear
+                    </button>
+                </div>
+            </div>
+        </div>
+    </mat-expansion-panel>
+</mat-accordion>
+<div class="row" style="margin-top:20px ;">
+    <div class="col-md-6">
+        <app-table [columns]="columnsUsers" [buttons]="buttons" [data]="dataUsers" [pagination]="[5, 25, 100]" [pageSize]="5"
+        [tableMinWidth]="900" (buttonClick)="buttonClick($event)"></app-table>
+    </div>
+</div>
