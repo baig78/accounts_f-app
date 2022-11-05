@@ -1,16 +1,16 @@
-<app-admin-header [title]="'Supplier'"></app-admin-header>
+<app-admin-header [title]="'Retailers'"></app-admin-header>
 <mat-accordion class="example-headers-align" multi>
     <mat-expansion-panel>
         <mat-expansion-panel-header>
-            Add Supplier
+            Add Retailer
         </mat-expansion-panel-header>
         <div class="example-container">
-            <form [formGroup]="supplierForm" class="form">
+            <form [formGroup]="retailersForm" class="form">
 
                 <mat-divider></mat-divider>
                 <mat-form-field appearance="outline">
-                    <mat-label>Company Name</mat-label>
-                    <input matInput placeholder="Company Name" formControlName="companyName">
+                    <mat-label>Shop Name</mat-label>
+                    <input matInput placeholder="Shop Name" formControlName="shopName">
                 </mat-form-field>
                 <mat-form-field appearance="outline">
                     <mat-label>Email Address</mat-label>
@@ -48,8 +48,8 @@
                 <mat-form-field appearance="outline">
                     <mat-label>Status</mat-label>
                     <mat-select formControlName="status">
-                        <mat-option *ngFor="let supplier of suppliers" [value]="supplier.value">
-                            {{supplier.viewValue}}
+                        <mat-option *ngFor="let retailer of retailers" [value]="retailer.value">
+                            {{retailer.viewValue}}
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
@@ -79,17 +79,10 @@
 
 <div class="row" style="margin-top: 20px;">
     <div class="col-md-6">
-        <h2>Staff List</h2>
+        <h2>Retailers List</h2>
          <div *ngIf="isTableShow">
-            <app-table [columns]="supplierColumns" [buttons]="buttons" [data]="supplierData" [pagination]="[5, 25, 100]"
+            <app-table [columns]="retailersColumns" [buttons]="buttons" [data]="retailerData" [pagination]="[5, 25, 100]"
                 [pageSize]="5" [tableMinWidth]="1100"></app-table>
         </div>
     </div>
 </div>
-
-<button mat-button color="primary" (click)="dele(33)">
-    delete
-</button>
-<button mat-button color="primary" (click)="getDataById(35)">
-    get data
-</button>

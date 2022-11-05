@@ -1,0 +1,110 @@
+<app-admin-header [title]="'Damage Purchases'"></app-admin-header>
+<mat-accordion class="example-headers-align" multi>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header> Add Damage Purchase</mat-expansion-panel-header>
+        <div class="example-container">
+            <mat-divider></mat-divider>
+
+
+
+            <div class="row">
+
+                <!-- <mat-form-field appearance="outline">
+                <mat-label>Return Reason</mat-label>
+                <mat-select>
+                    <mat-option *ngFor="let supplier of suppliers" [value]="supplier.value">
+                        {{ supplier.viewValue }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field> -->
+
+                <div class="col-md-6">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Return Reason</mat-label>
+                        <input matInput placeholder="Return Reason" />
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Purchases</mat-label>
+                        <mat-select>
+                            <mat-option *ngFor="let purchase of purchases" [value]="purchase.value">
+                                {{ purchase.viewValue }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+
+
+
+            <div class="row">
+                <mat-form-field appearance="outline">
+                    <mat-label>Damage Note</mat-label>
+                    <textarea matInput placeholder="Damage Note"></textarea>
+                </mat-form-field>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+
+                    <mat-form-field appearance="outline">
+                        <input matInput [matDatepicker]="picker1" placeholder="Angular forms" [formControl]="date" />
+                        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                        <mat-datepicker #picker1></mat-datepicker>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Return Reason</mat-label>
+                        <input matInput placeholder="Return Reason" />
+
+                    </mat-form-field>
+                    <!-- <button mat-button> submit </button> -->
+                    <!-- <button mat-button class="chooseBtn"> submit </button> -->
+                    <!--
+                    <div class="col-md-4 form-group"><label for="attchedPic" class="col-form-label">Damage Product Image</label>
+                        <div class="custom-file"><input type="file" id="attached-image" name="attchedPic" class="custom-file-input "> <label for="attchedPic" class="custom-file-label">Choose file</label></div>
+                        <div class="image-preview"><img src="" id="attached-preview-img" class="mt-3"></div>
+                    </div> -->
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Status</mat-label>
+                        <mat-select>
+                            <mat-option *ngFor="let staff of staffs" [value]="staff.value">
+                                {{staff.viewValue}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-md-3">
+                    <button mat-button color="primary" class="btn-submit">
+            <mat-icon>save</mat-icon>
+            Save Purchase</button>
+                    <!-- &nbsp;&nbsp; -->
+                    <!-- <button
+            mat-button
+            color="primary"
+            style="background-color: lightgray; color: black"
+          >
+            <mat-icon>clear</mat-icon>
+            Clear
+          </button> -->
+                </div>
+            </div>
+        </div>
+    </mat-expansion-panel>
+</mat-accordion>
+<div class="row" style="margin-top: 20px">
+    <div class="col-md-6">
+        <app-table [columns]="columnsUsers" [buttons]="buttons" [data]="dataUsers" [pagination]="[5, 25, 100]" [pageSize]="5" [tableMinWidth]="1100" (buttonClick)="buttonClick($event)"></app-table>
+    </div>
+</div>

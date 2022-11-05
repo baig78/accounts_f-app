@@ -36,6 +36,10 @@ import { AgriMapComponent } from './admin/pages/agri-map/agri-map.component';
 import { CategoriesComponent } from './admin/pages/categories/categories.component';
 import { ExpensesComponent } from './admin/pages/expenses/expenses.component';
 import { PurchaseReturnComponent } from './admin/pages/purchases-return/purchase-return.component';
+import { DamagePurchasesComponent } from './admin/pages/damage-purchases/damage-purchases.component';
+import { SalesComponent } from './admin/pages/sales/sales/sales.component';
+import { SalesReturnComponent } from './admin/pages/sales/sales-return/sales-return.component';
+import { RetailersComponent } from './admin/pages/sales/retailers/retailers.component';
 
 
 @NgModule({
@@ -53,6 +57,9 @@ import { PurchaseReturnComponent } from './admin/pages/purchases-return/purchase
     UserManagementComponent,
     PurchasesComponent,
     PurchaseReturnComponent,
+    SalesReturnComponent,
+    SalesComponent,
+    RetailersComponent,
     ProoductListComponent,
     StaffComponent,
     NotificationsComponent,
@@ -63,7 +70,8 @@ import { PurchaseReturnComponent } from './admin/pages/purchases-return/purchase
     AdminHeaderComponent,
     AgriMapComponent,
     CategoriesComponent,
-    ExpensesComponent
+    ExpensesComponent,
+    DamagePurchasesComponent
 
   ],
   imports: [

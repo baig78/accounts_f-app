@@ -5,66 +5,126 @@
             Add Staff
         </mat-expansion-panel-header>
         <div class="example-container">
-            <mat-divider></mat-divider>
-            <mat-form-field appearance="outline">
-                <mat-label>Employee Name</mat-label>
-                <input matInput placeholder="Crop Name">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>Email Address</mat-label>
-                <input matInput placeholder="Crop Name">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>Phone Number</mat-label>
-                <input matInput placeholder="Crop Name">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>Department</mat-label>
-                <input matInput placeholder="Crop Name">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>Designation*</mat-label>
-                <input matInput placeholder="Crop Name">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>Address</mat-label>
-                <input matInput placeholder="Crop Name">
-            </mat-form-field>
+            <form [formGroup]="staffForm" class="form">
 
-            <mat-form-field appearance="outline">
-                <mat-label>Status</mat-label>
-                <mat-select>
-                    <mat-option *ngFor="let staff of staffs" [value]="staff.value">
-                        {{staff.viewValue}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
+                <mat-divider></mat-divider>
+                <mat-form-field appearance="outline">
+                    <mat-label>Employee Name</mat-label>
+                    <input matInput placeholder="Employee Name" formControlName="employeeName">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>User Name</mat-label>
+                    <input matInput placeholder="User Name" formControlName="userName">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Email Address</mat-label>
+                    <input matInput placeholder="Email Address" formControlName="emailAddress">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Phone Number</mat-label>
+                    <input matInput placeholder="Phone Number" formControlName="phoneNumber">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Department</mat-label>
+                    <input matInput placeholder="Department" formControlName="department">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Designation*</mat-label>
+                    <input matInput placeholder="Designation" formControlName="designation">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Address</mat-label>
+                    <input matInput placeholder="Address" formControlName="address">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Status</mat-label>
+                    <mat-select>
+                        <mat-option *ngFor="let staff of staffs" [value]="staff.value">
+                            {{staff.viewValue}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
 
 
-            <div class="row" style="margin-bottom: 10px;">
-                <div class="col-md-3">
-                    <button mat-button class="upload-img" (click)="uploadFile()" style="background-color:#dfdfdf;">
-                        Upload Profile Picture
-                        <mat-icon>add_photo_alternate</mat-icon>
+                <div class="row" style="margin-bottom: 10px;">
+                    <div class="col-md-3">
+                        <button mat-button class="upload-img" (click)="uploadFile()" style="background-color:#dfdfdf;">
+                            Upload Profile Picture
+                            <mat-icon>add_photo_alternate</mat-icon>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="example-button-row">
+                    <button mat-button color="primary" (click)="click()">
+                        Save
+                    </button> &nbsp; &nbsp;
+                    <button mat-button style="background-color:lightgray ;">
+                        Cancel
                     </button>
                 </div>
-            </div>
-
-            <div class="example-button-row">
-                <button mat-button color="primary" (click)="click()">
-                    Save
-                </button> &nbsp; &nbsp;
-                <button mat-button style="background-color:lightgray ;">
-                    Cancel
-                </button>
-            </div>
+            </form>
         </div>
     </mat-expansion-panel>
 </mat-accordion>
 
 <div class="row" style="margin-top: 20px;">
     <div class="col-md-6">
-        <!-- <h2>Staff List</h2> -->
-        <app-table [columns]="columnsCrops" [buttons]="buttons" [data]="dataCrops" [pagination]="[5, 25, 100]" [pageSize]="5" [tableMinWidth]="1100" (buttonClick)="buttonClick($event)"></app-table>
+        <h2>Staff List</h2>
+        <!-- <app-table [columns]="staffData" [buttons]="buttons" [data]="dataCrops" [pagination]="[5, 25, 100]"
+            [pageSize]="5" [tableMinWidth]="1100" (buttonClick)="buttonClick($event)"></app-table> -->
+        <div *ngIf="isTableShow">
+            <app-table [columns]="staffData" [buttons]="buttons" [data]="dataCrops" [pagination]="[5, 25, 100]"
+                [pageSize]="5" [tableMinWidth]="1100"></app-table>
+        </div>
+
+
+
+        <!-- <mat-table [dataSource]="dataCrops" matSort>
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> Id</th>
+                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="user_name">
+                <th mat-header-cell *matHeaderCellDef>User Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.user_name}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="phone">
+                <th mat-header-cell *matHeaderCellDef>Phone Number </th>
+                <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="email">
+                <th mat-header-cell *matHeaderCellDef>Email </th>
+                <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="staffData"></tr>
+            <tr mat-row *matRowDef="let row; columns: staffData;"></tr>
+
+        </mat-table> -->
+
+
+        <!-- <table>
+                <tr *ngFor="let item of dataCrops">
+                    <td>{{item.name}}</td>
+                </tr>
+            </table> -->
+
+
+
+
+
     </div>
 </div>
+
+<button mat-button color="primary" (click)="dele(33)">
+    delete
+</button>

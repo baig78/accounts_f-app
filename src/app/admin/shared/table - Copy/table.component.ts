@@ -12,7 +12,7 @@ export class TableComponent implements AfterViewInit, OnInit {
   // displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   @Input() data: any[] = [];
   // @Input() columns: string[] = [];
-  @Input() columns: any = [];
+  @Input() columns: TableColumn[] | any = [];
   @Input() buttons: TableBtn[] = [];
   @Output() buttonClick = new EventEmitter<string[]>();
 
@@ -23,25 +23,21 @@ export class TableComponent implements AfterViewInit, OnInit {
 
   dataSource = new MatTableDataSource<any>();
 
-  displayedColumns: TableColumn[] = [];
+  displayedColumns: string[] = [];
 
   // dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 
   @ViewChild(MatPaginator) paginator:any= MatPaginator;
   ngOnInit(): void {
-    console.log("-1----",this.data)
-    console.log("-2----",this.columns)
     this.dataSource =  new MatTableDataSource(this.data);
-    // this.displayedColumns = [...this.columns.map((c: { columnDef: any; }) => c.columnDef)];
-    // if (this.buttons.length > 0 ) this.displayedColumns = [...this.displayedColumns, 'actions'];
-    // console.log('----------',this.displayedColumns)
-    this.displayedColumns = this.columns;
+    this.displayedColumns = [...this.columns.map((c: { columnDef: any; }) => c.columnDef)];
+    if (this.buttons.length > 0 ) this.displayedColumns = [...this.displayedColumns, 'actions'];
+    console.log('----------',this.displayedColumns)
+    // this.displayedColumns = this.columns;
   }
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
-  delete(){}
-  edit(){}
 }
 
 // export interface PeriodicElement {

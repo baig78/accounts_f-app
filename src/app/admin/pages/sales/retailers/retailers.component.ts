@@ -1,30 +1,31 @@
 import { Component, OnInit } from '@angular/core';
-import { DashboardService } from '../../services/dashboard.service';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
-interface supplier {
+// import { DashboardService } from '../../services/dashboard.service';
+import { DashboardService } from '../../../services/dashboard.service';
+interface retailer {
   value: string;
   viewValue: string;
 }
 
 @Component({
-  selector: 'app-supplier',
-  templateUrl: './supplier.component.html',
-  styleUrls: ['./supplier.component.scss']
+  selector: 'app-retailers',
+  templateUrl: './retailers.component.html',
+  styleUrls: ['./retailers.component.scss']
 })
-export class SupplierComponent implements OnInit {
+export class RetailersComponent implements OnInit {
   buttons: TableBtn[] | any;
-  supplierForm: any = FormGroup;
+  retailersForm: any = FormGroup;
   isTableShow: boolean = false;
 
 
-  supplierData: MatTableDataSource<UserData> | any;
-  supplierColumns: TableColumn | any;
+  retailerData: MatTableDataSource<UserData> | any;
+  retailersColumns: TableColumn | any;
   totalRides: number = 0;
   footer: string = '';
   totalVolume: number = 0;
   fillerNav: string[] | any;
-  suppliers: supplier[] = [
+  retailers: retailer[] = [
     { value: 'active', viewValue: 'Active' },
     { value: 'Inactive', viewValue: 'Inactive' },
   ];
@@ -33,7 +34,6 @@ export class SupplierComponent implements OnInit {
     public DashboardService: DashboardService,
     private formBuilder: FormBuilder
   ) {
-   
     this.getAllTableData()
   }
 
@@ -45,20 +45,22 @@ export class SupplierComponent implements OnInit {
 
 
   }
-getAllTableData(){
-  this.DashboardService.getData("mfr").subscribe({
-    error: (err: any) => { },
-    next: (data: any) => {
-      console.log('------',data)
+  getAllTableData() {
+    this.DashboardService.getData("rtr").subscribe({
+      error: (err: any) => { },
+      next: (data: any) => {
+        console.log(data)
 
-      this.setTable(data)
-    },
-  });
-}
+        this.setTable(data)
+      },
+    });
+
+  }
+
 
   createForm() {
-    this.supplierForm = this.formBuilder.group({
-      'companyName': [null, Validators.required],
+    this.retailersForm = this.formBuilder.group({
+      'shopName': [null, Validators.required],
       'emailAddress': [null, Validators.required],
       'phoneNumber': [null, Validators.required],
       'altNumber': [''],
@@ -72,13 +74,13 @@ getAllTableData(){
   }
   setTable(tableData: any) {
 
-    // this.supplierData = tableData
+    // this.retailerData = tableData
     this.buttons = [
       { styleClass: 'btn-success', icon: 'delete', payload: (element: UserData) => `${element.id}`, action: 'add' },
       { styleClass: 'btn-primary', icon: 'edit', payload: (element: UserData) => `${element.id}`, action: 'edit' },
     ];
 
-    // this.supplierColumns = [
+    // this.retailersColumns = [
     //   { columnDef: 'id', header: 'id', cell: (element: any) => `${element.id}` },
     //   { columnDef: 'name', header: 'name', cell: (element: any) => `${element.name}` },
     //   { columnDef: 'company_name', header: 'company_name', cell: (element: any) => `${element.company_name}`},
@@ -89,8 +91,8 @@ getAllTableData(){
     //   { columnDef: 'email', header: 'email', cell: (element: any) => `${element.email}`},
 
     // ]
-    this.supplierColumns = ['id', 'name', 'email', 'phone', 'alt_phone', 'company_name', 'city', 'address', 'gst_no', 'edit', 'delete'];
-    this.supplierData = tableData;
+    this.retailersColumns = ['id', 'name', 'email', 'phone', 'alt_phone', 'company_name', 'city', 'address', 'gst_no', 'edit', 'delete'];
+    this.retailerData = tableData;
     this.isTableShow = true;
 
   }
@@ -99,19 +101,19 @@ getAllTableData(){
   uploadFile() { }
 
   add() {
-    this.supplierForm
-    let apiurl = "insert_manufacturers";
+    this.retailersForm
+    let apiurl = "insert_retailers";
     let data = {
       // id: 0,
-      name: this.supplierForm.controls.companyName.value,
-      email: this.supplierForm.controls.emailAddress.value,
-      phone: this.supplierForm.controls.phoneNumber.value,
-      alt_phone: this.supplierForm.controls.altNumber.value,
-      company_name: this.supplierForm.controls.companyName.value,
-      city: this.supplierForm.controls.city.value,
-      address: this.supplierForm.controls.address.value,
-      gst_no: this.supplierForm.controls.gstNo.value,
- 
+      shop_name: this.retailersForm.controls.shopName.value,
+      email: this.retailersForm.controls.emailAddress.value,
+      phone: this.retailersForm.controls.phoneNumber.value,
+      alt_phone: this.retailersForm.controls.altNumber.value,
+      name: this.retailersForm.controls.ownerName.value,
+      city: this.retailersForm.controls.city.value,
+      address: this.retailersForm.controls.address.value,
+      gst_no: this.retailersForm.controls.gstNo.value,
+
     };
     this.DashboardService.insertData(apiurl, data).subscribe({
       error: (err: any) => { },
@@ -119,54 +121,24 @@ getAllTableData(){
         console.log(data.results)
         this.setTable(data.results)
         this.getAllTableData()
-      },
-      
-    });
 
+      },
+    });
   }
 
-  dele(id:any){
-    let apiurl = "delete_user";
-
-    this.DashboardService.deleteData(apiurl,id).subscribe({
-      error: (err: any) => { },
-      next: (data: any) => {
-        console.log(data.results)
-        this.setTable(data.results)
-        this.getAllTableData()
-      },
-      
-    });
-
-  }
-  getDataById(id:any){
-    let apiurl = "get_user";
-
-    this.DashboardService.getDataById(apiurl,id).subscribe({
-      error: (err: any) => { },
-      next: (data: any) => {
-        console.log(data.results)
-        this.setTable(data.results)
-        this.getAllTableData()
-      },
-      
-    });
-
-  }
-  
   insertData() {
     let payload =
     {
-      "id": 23,
-      "name": this.supplierForm.controls['ownerName'].value,
-      "email": this.supplierForm.controls['emailAddress'].value,
-      "phone": this.supplierForm.controls['phoneNumber'].value,
-      "alt_phone": this.supplierForm.controls['altNumber'].value,
-      "company_name": this.supplierForm.controls['companyName'].value,
-      "city": this.supplierForm.controls['city'].value,
-      "address": this.supplierForm.controls['address'].value,
-      "gst_no": this.supplierForm.controls['gstNo'].value,
-      role: this.supplierForm.controls.accountType.value
+      // "id": 23,
+      // "name": this.retailersForm.controls['ownerName'].value,
+      // "email": this.retailersForm.controls['emailAddress'].value,
+      // "phone": this.retailersForm.controls['phoneNumber'].value,
+      // "alt_phone": this.retailersForm.controls['altNumber'].value,
+      // "company_name": this.retailersForm.controls['companyName'].value,
+      // "city": this.retailersForm.controls['city'].value,
+      // "address": this.retailersForm.controls['address'].value,
+      // "gst_no": this.retailersForm.controls['gstNo'].value,
+      // role: this.retailersForm.controls.accountType.value
 
       // "status": 0,
     }
@@ -174,7 +146,7 @@ getAllTableData(){
     //   phone: "1234567890", alt_phone: "1234567890", email: "sdf@fdg.sdf", gst_no: "1212324"
 
     // };
-    this.DashboardService.insertData("insert_manufacturers", payload).subscribe({
+    this.DashboardService.insertData("insert_retailers", payload).subscribe({
       error: (err: any) => { },
       next: (data: any) => {
         console.log(data.results)
@@ -182,11 +154,11 @@ getAllTableData(){
         this.setTable(data.results)
       },
     });
-    console.log('-----------yhnun', payload)
+    console.log(payload)
   }
 
 
-  
+
 
 
 

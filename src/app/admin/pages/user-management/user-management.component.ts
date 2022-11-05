@@ -1,6 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MatTableDataSource } from '@angular/material/table';
+import { DashboardService } from '../../../admin/services/dashboard.service';
+
 interface user {
+  value: string;
+  viewValue: string;
+}
+
+interface account {
   value: string;
   viewValue: string;
 }
@@ -12,74 +20,110 @@ interface user {
 })
 export class UserManagementComponent implements OnInit {
   buttons: TableBtn[] | any;
+  usersForm: any = FormGroup;
+  isTableShow: boolean = false;
 
-  dataCrops: any;
-  columnsCrops: TableColumn | any;
+
+  usersData: MatTableDataSource<UserData> | any;
+  usersColumns: TableColumn | any;
   totalRides: number = 0;
   footer: string = '';
   totalVolume: number = 0;
   fillerNav: string[] | any;
 
-  toppings = new FormControl('');
-  toppingList: string[] = ['7799937299', 'Vegetative Stage', 'Flowering Stage', 'Fruiting Stage', 'Harvesting Stage'];
-  toppingList1: string[] = ['Plant Selection', 'Monitoring', 'Site Selection', 'Harvesting','Post Harvesting'];
-  fertilizers: string[] = ['DAP/MOP/Urea', 'MOP/SSP/Urea', '10-26-26/DAP/Urea'];
+  
   users: user[] = [
-    {value: 'active', viewValue: 'Active'},
-    {value: 'Inactive', viewValue: 'Inactive'},
+    { value: 'active', viewValue: 'Active' },
+    { value: 'Inactive', viewValue: 'Inactive' },
   ];
-  constructor() { }
+  accountType: user[] = [
+    { value: 'generalUser', viewValue: 'General User' },
+    { value: 'admin', viewValue: 'Admin' },
+  ];
+  constructor(
+    public DashboardService: DashboardService,
+
+    private formBuilder: FormBuilder
+
+  ) {
+   this.getAllTableData()
+
+  }
 
   ngOnInit(): void {
+    this.createUserForm();
+
+
+  }
+
+  getAllTableData(){
+    this.DashboardService.getData("users").subscribe({
+      error: (err: any) => { },
+      next: (data: any) => {
+        console.log(data.results)
+
+        this.setTable(data.results)
+      },
+    });
+  }
+
+  createUserForm() {
+    this.usersForm = this.formBuilder.group({
+      'userName': [null, Validators.required],
+      'emailAddress': [null, Validators.required],
+      'password': [null, Validators.required],
+      'confirmPassword': [null, Validators.required],
+      'accountType': [null, Validators.required],
+      'status': [null, Validators.required],
+      'designation': [null, Validators.required],
+
+    });
+  }
+
+  setTable(tableData: any) {
+
     this.buttons = [
       { styleClass: 'btn-success', icon: 'delete', payload: (element: UserData) => `${element.id}`, action: 'add' },
       { styleClass: 'btn-primary', icon: 'edit', payload: (element: UserData) => `${element.id}`, action: 'edit' },
     ];
 
-    this.columnsCrops = [
-      { columnDef: 'profile_picture', header: 'Profile Picture', cell: (element: any) => `${element.profile_picture}` },
-      { columnDef: 'company_name', header: 'Company Name', cell: (element: any) => `${element.company_name}` },
-      { columnDef: 'employee_email', header: 'Employee Email', cell: (element: any) => `${element.employee_email}`},
-      { columnDef: 'phone_number', header: 'Phone Number', cell: (element: any) => `${element.phone_number}`},
-      { columnDef: 'owner_name', header: 'Owner Name', cell: (element: any) => `${element.owner_name}`},
-      { columnDef: 'designation', header: 'Designation', cell: (element: any) => `${element.designation}`},
-      { columnDef: 'status', header: 'Status', cell: (element: any) => `${element.status}`},
-      { columnDef: 'created_on', header: 'Created On', cell: (element: any) => `${element.created_on}`},
+    
+    this.usersColumns = ['id','name','user_name','password','phone','email', 'edit', 'delete'];
+    this.usersData = tableData;
+    this.isTableShow = true;
 
-    ]
-
-    this.dataCrops = [
-      {
-      'profile_picture': 'Naresh',
-      'company_name': 'Naresh',
-      'employee_email':'naresh@gmail.com',
-      'phone_number':'7799937299',
-      'owner_name':'asdf',
-      'designation': 'def',
-      'status' : 'Active',
-      'created_on' : '13/10/2022',
-    },
-
-      {
-      'profile_picture': 'Naimath',
-      'company_name': 'Naimath',
-      'employee_email':'naimath@gmail.com',
-      'phone_number':'7799937299',
-      'owner_name':'asdf',
-      'designation': 'def',
-      'status' : 'Active',
-      'created_on' : '13/10/2022'
-
-    },
-      // { 'crop_name': 'Tamato', 'nutrient_quantities': 'N10,P10,K10', 'prefered_fertilizers':'DAP/MOP/Urea','phone_number':'7799937299', 'owner_name':'Tip1' },
-      // { 'crop_name': 'Potato', 'nutrient_quantities': 'N10,P10,K10', 'prefered_fertilizers':'DAP/MOP/Urea','phone_number':'7799937299', 'owner_name':'Tip1' },
-      // { 'crop_name': 'Mango', 'nutrient_quantities': 'N10,P10,K10', 'prefered_fertilizers':'DAP/MOP/Urea','phone_number':'7799937299', 'owner_name':'Tip1' },
-      // { 'crop_name': 'Grap', 'nutrient_quantities': 'N10,P10,K10', 'prefered_fertilizers':'DAP/MOP/Urea','phone_number':'7799937299', 'owner_name':'Tip1' },
-
-    ];
   }
-  buttonClick(e:any){}
-  uploadFile(){}
+
+
+  buttonClick(e: any) { }
+  uploadFile() { }
+
+  add() {
+    this.usersForm
+    let apiurl = "insert_users";
+    let data = {
+      // id: 0,
+      name: this.usersForm.controls.companyName.value,
+      email: this.usersForm.controls.emailAddress.value,
+      phone: this.usersForm.controls.phoneNumber.value,
+      alt_phone: this.usersForm.controls.altNumber.value,
+      company_name: this.usersForm.controls.companyName.value,
+      city: this.usersForm.controls.city.value,
+      address: this.usersForm.controls.address.value,
+      gst_no: this.usersForm.controls.gstNo.value,
+ 
+    };
+    this.DashboardService.insertData(apiurl, data).subscribe({
+      error: (err: any) => { },
+      next: (data: any) => {
+        console.log(data.results)
+        this.setTable(data.results)
+        this.getAllTableData()
+      },
+      
+    });
+
+  }
 }
 export interface UserData {
   id: string;

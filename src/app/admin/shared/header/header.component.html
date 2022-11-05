@@ -1,16 +1,55 @@
-<mat-toolbar color="primary" class="example-toolbar" style="position:fixed;top:0px;left:0px;height:45px;">
+<mat-toolbar color="primary" class="example-toolbar" style="position: fixed; top: 0px; left: 0px; height: 45px">
     <!-- <button mat-icon-button>
         <mat-icon>menu</mat-icon>
     </button> -->
     <!-- <img src="../assets/images/logo1.png" style="height:40px;" /> -->
     <p>Footwear App</p>
-    <h1 class="example-app-name" style="position: absolute;left: 22%;">{{headTitle}}</h1>
-    <button mat-mini-fab style="position: absolute; right: 70px; color:white">
-        <mat-icon >perm_identity</mat-icon>
-      </button>
-    <mat-icon style="position: absolute; right: 130px; color:white">notifications</mat-icon>
-    <mat-icon style="position: absolute; right: 180px; color:white">sms</mat-icon>
+    <h1 class="example-app-name" style="position: absolute; left: 22%">
+        {{ headTitle }}
+    </h1>
 
-    <mat-icon style="position: absolute; right: 20px; color:white">more_vert</mat-icon>
+    <mat-icon style="position: absolute; right: 130px; color: white">notifications</mat-icon>
+    <mat-icon style="position: absolute; right: 180px; color: white">sms</mat-icon>
 
+    <mat-icon style="position: absolute; right: 20px; color: white">more_vert</mat-icon>
+
+    <!-- <button mat-mini-fab style="position: absolute; right: 70px; color:white" (click)="mySelect.open()">
+      <mat-icon >perm_identity</mat-icon>
+    </button> -->
+    
+
+    <!-- <button style="position: absolute; right: 70px; color:white" (click)="mySelect.open()"> -->
+    <img style="
+      position: absolute;
+      right: 70px;
+      border-radius: 50%;
+      width: 35px;
+      color: white;
+    " (click)="mySelect.open()" src="../../../../assets/images/profile.png" alt="" />
+
+    <!-- </button> -->
+
+    <mat-select style="
+      visibility: hidden;
+      width: 0;
+      font-size: 15px;
+      margin-top: 32px;
+      position: absolute;
+      right: 70px;
+    " #mySelect [formControl]="bordersControl">
+        <mat-option>
+            <mat-icon>perm_identity</mat-icon>
+            Profile
+        </mat-option>
+
+        <mat-option>
+            <mat-icon>settings</mat-icon>
+            Setup
+        </mat-option>
+
+        <mat-option>
+            <mat-icon>power_settings_new</mat-icon>
+            Logout
+        </mat-option>
+    </mat-select>
 </mat-toolbar>

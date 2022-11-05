@@ -5,66 +5,77 @@
             Add User
         </mat-expansion-panel-header>
         <div class="example-container">
-            <mat-divider></mat-divider>
-            <mat-form-field appearance="outline">
-                <mat-label>Company Name</mat-label>
-                <input matInput placeholder="Crop Name">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>Email Address</mat-label>
-                <input matInput placeholder="Crop Name">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>Phone Number</mat-label>
-                <input matInput placeholder="Crop Name">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>Owner Name</mat-label>
-                <input matInput placeholder="Crop Name">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>Designation</mat-label>
-                <input matInput placeholder="Crop Name">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>Address</mat-label>
-                <input matInput placeholder="Crop Name">
-            </mat-form-field>
+            <form [formGroup]="usersForm" class="form">
 
-            <mat-form-field appearance="outline">
-                <mat-label>Status</mat-label>
-                <mat-select>
-                    <mat-option *ngFor="let user of users" [value]="user.value">
-                        {{user.viewValue}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
+                <mat-divider></mat-divider>
+                <mat-form-field appearance="outline">
+                    <mat-label>User Name</mat-label>
+                    <input matInput placeholder="User Name" formControlName="userName">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Email Address</mat-label>
+                    <input matInput placeholder="Email Address" formControlName="emailAddress">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>password</mat-label>
+                    <input matInput placeholder="Password" formControlName="password">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Confirm Password</mat-label>
+                    <input matInput placeholder="Confirm Password" formControlName="confirmPassword">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Designation</mat-label>
+                    <input matInput placeholder="Designation" fornControlName="designation">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Account Type</mat-label>
+                    <mat-select formControlName="accountType">
+                        <mat-option *ngFor="let account of accountType" [value]="account.value">
+                            {{account.viewValue}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Status</mat-label>
+                    <mat-select formControlName="status">
+                        <mat-option *ngFor="let user of users" [value]="user.value">
+                            {{user.viewValue}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
 
 
-            <div class="row" style="margin-bottom: 10px;">
-                <div class="col-md-3">
-                    <button mat-button class="upload-img" (click)="uploadFile()" style="background-color:#dfdfdf;">
-                        Upload Profile Picture
-                        <mat-icon>add_photo_alternate</mat-icon>
+                <div class="row" style="margin-bottom: 10px;">
+                    <div class="col-md-3">
+                        <button mat-button class="upload-img" (click)="uploadFile()" style="background-color:#dfdfdf;">
+                            Upload Profile Picture
+                            <mat-icon>add_photo_alternate</mat-icon>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="example-button-row">
+                    <button mat-button color="primary" (click)="add()">
+                        Save
+                    </button> &nbsp; &nbsp;
+                    <button mat-button style="background-color:lightgray ;">
+                        Cancel
                     </button>
                 </div>
-            </div>
-
-            <div class="example-button-row">
-                <button mat-button color="primary">
-                    Save
-                </button> &nbsp; &nbsp;
-                <button mat-button style="background-color:lightgray ;">
-                    Cancel
-                </button>
-            </div>
+            </form>
         </div>
     </mat-expansion-panel>
 </mat-accordion>
 
 <div class="row" style="margin-top: 20px;">
     <div class="col-md-6">
-        <!-- <h2>user List</h2> -->
-        <app-table [columns]="columnsCrops" [buttons]="buttons" [data]="dataCrops" [pagination]="[5, 25, 100]" [pageSize]="5" [tableMinWidth]="1100" (buttonClick)="buttonClick($event)"></app-table>
+        <h2>Users List</h2>
+        <div *ngIf="isTableShow">
+            <app-table [columns]="usersColumns" [buttons]="buttons" [data]="usersData" [pagination]="[5, 25, 100]"
+                [pageSize]="5" [tableMinWidth]="1100"></app-table>
+        </div>
+
     </div>
 </div>

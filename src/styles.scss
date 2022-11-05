@@ -92,3 +92,11 @@ td.mat-footer-cell {
 table.mat-table {
     width: 95%;
 }
+
+.ng-tns-c94-13.ng-trigger.ng-trigger-transformPanel.mat-select-panel{
+    // margin-top: 29px;
+}
+
+.mat-select-panel:not([class*=mat-elevation-z]){
+    margin-top: 29px;
+}
