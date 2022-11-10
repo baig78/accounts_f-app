@@ -16,6 +16,7 @@ export class SupplierComponent implements OnInit {
   buttons: TableBtn[] | any;
   supplierForm: any = FormGroup;
   isTableShow: boolean = false;
+  isExpand: boolean = false;
 
 
   supplierData: MatTableDataSource<UserData> | any;
@@ -29,6 +30,7 @@ export class SupplierComponent implements OnInit {
     { value: 'Inactive', viewValue: 'Inactive' },
   ];
   isTableVisible = false;
+  editId: any;
   constructor(
     public DashboardService: DashboardService,
     private formBuilder: FormBuilder
@@ -70,26 +72,36 @@ getAllTableData(){
       'gstNo': [null, Validators.required],
     });
   }
+  gotoItem(data:any) {
+    this.isExpand = true;
+
+    console.log(data)
+    this.supplierForm.patchValue({
+      companyName: data.company_name,
+      emailAddress: data.email,
+      phoneNumber: data.phone,
+      altNumber: data.alt_phone,
+      ownerName: data.name,
+      address: data.address,
+      city: data.city,
+      gstNo: data.gst_no,
+    })
+    this.editId=data.id
+    //do something
+}
+  deleteItem(data:any) {
+    this.dele(data.id)
+    console.log(data)
+    //do something
+}
   setTable(tableData: any) {
 
-    // this.supplierData = tableData
     this.buttons = [
       { styleClass: 'btn-success', icon: 'delete', payload: (element: UserData) => `${element.id}`, action: 'add' },
       { styleClass: 'btn-primary', icon: 'edit', payload: (element: UserData) => `${element.id}`, action: 'edit' },
     ];
 
-    // this.supplierColumns = [
-    //   { columnDef: 'id', header: 'id', cell: (element: any) => `${element.id}` },
-    //   { columnDef: 'name', header: 'name', cell: (element: any) => `${element.name}` },
-    //   { columnDef: 'company_name', header: 'company_name', cell: (element: any) => `${element.company_name}`},
-    //   { columnDef: 'address', header: 'address', cell: (element: any) => `${element.address}`},
-    //   { columnDef: 'city', header: 'city', cell: (element: any) => `${element.city}`},
-    //   { columnDef: 'phone', header: 'phone', cell: (element: any) => `${element.phone}`},
-    //   { columnDef: 'alt_phone', header: 'alt_phone', cell: (element: any) => `${element.alt_phone}`},
-    //   { columnDef: 'email', header: 'email', cell: (element: any) => `${element.email}`},
-
-    // ]
-    this.supplierColumns = ['id', 'name', 'email', 'phone', 'alt_phone', 'company_name', 'city', 'address', 'gst_no', 'edit', 'delete'];
+        this.supplierColumns = ['id', 'name', 'email', 'phone', 'alt_phone', 'company_name', 'city', 'address', 'gst_no', 'edit', 'delete'];
     this.supplierData = tableData;
     this.isTableShow = true;
 
@@ -119,6 +131,36 @@ getAllTableData(){
         console.log(data.results)
         this.setTable(data.results)
         this.getAllTableData()
+        this.isExpand = false;
+
+      },
+      
+    });
+
+  }
+
+  edit() {
+    this.supplierForm
+    let apiurl = "edit_mfr";
+    let data = {
+      // id: 0,
+      name: this.supplierForm.controls.companyName.value,
+      email: this.supplierForm.controls.emailAddress.value,
+      phone: this.supplierForm.controls.phoneNumber.value,
+      alt_phone: this.supplierForm.controls.altNumber.value,
+      company_name: this.supplierForm.controls.companyName.value,
+      city: this.supplierForm.controls.city.value,
+      address: this.supplierForm.controls.address.value,
+      gst_no: this.supplierForm.controls.gstNo.value,
+      id: this.editId
+ 
+    };
+    this.DashboardService.editData(apiurl, data).subscribe({
+      error: (err: any) => { },
+      next: (data: any) => {
+        console.log(data.results)
+        this.setTable(data.results)
+        this.getAllTableData()
       },
       
     });
@@ -126,7 +168,7 @@ getAllTableData(){
   }
 
   dele(id:any){
-    let apiurl = "delete_user";
+    let apiurl = "delete_mfr";
 
     this.DashboardService.deleteData(apiurl,id).subscribe({
       error: (err: any) => { },
@@ -139,6 +181,7 @@ getAllTableData(){
     });
 
   }
+  
   getDataById(id:any){
     let apiurl = "get_user";
 
@@ -168,12 +211,8 @@ getAllTableData(){
       "gst_no": this.supplierForm.controls['gstNo'].value,
       role: this.supplierForm.controls.accountType.value
 
-      // "status": 0,
     }
-    // { name: "Karunakar", company_name: "Gelli treaders", address: "206/3rt, saidabad, hyd", city: "hyd",
-    //   phone: "1234567890", alt_phone: "1234567890", email: "sdf@fdg.sdf", gst_no: "1212324"
-
-    // };
+  
     this.DashboardService.insertData("insert_manufacturers", payload).subscribe({
       error: (err: any) => { },
       next: (data: any) => {
@@ -184,12 +223,6 @@ getAllTableData(){
     });
     console.log('-----------yhnun', payload)
   }
-
-
-  
-
-
-
 }
 
 

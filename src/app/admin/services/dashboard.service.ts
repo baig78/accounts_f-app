@@ -47,6 +47,20 @@ export class DashboardService {
 
 
   }
+  public editData(apiName: any, payload: any) {
+
+    const apiBaseUrl = this.BackendApiBaseUrl + apiName
+    // return this.httpClient
+    //   .post<any>(apiBaseUrl, payload)
+    //   .pipe(catchError(this.handleError));
+
+      return this.httpClient.put<any>(apiBaseUrl, payload, httpOptions)
+      .pipe(catchError(this.handleError));
+
+      
+
+
+  }
 
   public deleteData(apiName: any, id: any) {
 

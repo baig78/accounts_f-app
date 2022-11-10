@@ -17,8 +17,8 @@ interface staff {
 export class StaffComponent implements OnInit {
   buttons: TableBtn[] | any;
 
-  dataCrops: MatTableDataSource<UserData> | any;
-  staffData: TableColumn | any;
+  staffData: MatTableDataSource<UserData> | any;
+  staffColumns: TableColumn | any;
   totalRides: number = 0;
   footer: string = '';
   totalVolume: number = 0;
@@ -30,6 +30,8 @@ export class StaffComponent implements OnInit {
     { value: 'active', viewValue: 'Active' },
     { value: 'Inactive', viewValue: 'Inactive' },
   ];
+  isExpand: boolean = false;
+  editId: any;
   constructor(
     public DashboardService: DashboardService,
     private formBuilder: FormBuilder
@@ -71,11 +73,36 @@ export class StaffComponent implements OnInit {
     //   { styleClass: 'btn-primary', icon: 'edit', payload: (element: UserData) => `${element.id}`, action: 'edit' },
     // ];
 
-    this.staffData = ['id', 'name', 'user_name', 'password', 'phone', 'email', 'edit', 'delete'];
+    this.staffColumns = ['id', 'name', 'user_name', 'password', 'phone', 'email', 'edit', 'delete'];
 
     console.log('---------', tableData)
-    this.dataCrops = tableData;
+    // tableData.forEach((item) => {
+    //   item.push
+    //   this.staffData.push(())
+    // });
+    this.staffData = tableData;
     this.isTableShow = true;
+  }
+
+  gotoItem(data: any) {
+    this.isExpand = true;
+    console.log(data)
+    this.staffForm.patchValue({
+      employeeName: data.name,
+      userName: data.user_name,
+      emailAddress: data.email,
+      phoneNumber: data.phone,
+      designation: data.role,
+    })
+    this.editId=data.id
+    //do something
+  }
+  deleteItem(data: any) {
+    this.dele(data.id)
+    console.log(data)
+    this.getAllTableData()
+
+    //do something
   }
 
   buttonClick(e: any) { }
@@ -112,14 +139,13 @@ export class StaffComponent implements OnInit {
     let apiurl = "insert_users";
     let data = {
       // id: 0,
-      name: this.staffForm.controls.companyName.value,
+      name: this.staffForm.controls.employeeName.value,
+      user_name: this.staffForm.controls.userName.value,
       email: this.staffForm.controls.emailAddress.value,
       phone: this.staffForm.controls.phoneNumber.value,
-      alt_phone: this.staffForm.controls.altNumber.value,
-      company_name: this.staffForm.controls.companyName.value,
-      city: this.staffForm.controls.city.value,
-      address: this.staffForm.controls.address.value,
-      gst_no: this.staffForm.controls.gstNo.value,
+      // department: this.staffForm.controls.department.value,
+      role: this.staffForm.controls.designation.value,
+      // address: this.staffForm.controls.address.value,
 
     };
     this.DashboardService.insertData(apiurl, data).subscribe({
@@ -128,6 +154,37 @@ export class StaffComponent implements OnInit {
         console.log(data.results)
         this.setTable(data.results)
         this.getAllTableData()
+        this.isExpand = false;
+
+      },
+
+    });
+
+  }
+  edit() {
+    this.staffForm
+    let apiurl = "edit_user";
+    let data = {
+      // id: 0,
+      name: this.staffForm.controls.employeeName.value,
+      user_name: this.staffForm.controls.userName.value,
+      email: this.staffForm.controls.emailAddress.value,
+      phone: this.staffForm.controls.phoneNumber.value,
+      // department: this.staffForm.controls.department.value,
+      role: this.staffForm.controls.designation.value,
+      id: this.editId
+      
+      // address: this.staffForm.controls.address.value,
+
+    };
+    this.DashboardService.editData(apiurl, data).subscribe({
+      error: (err: any) => { },
+      next: (data: any) => {
+        console.log(data.results)
+        this.setTable(data.results)
+        this.getAllTableData()
+        this.isExpand = false;
+
       },
 
     });

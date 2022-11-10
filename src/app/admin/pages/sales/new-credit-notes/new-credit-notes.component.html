@@ -1,7 +1,7 @@
-<app-admin-header [title]="'Purchases Return'"></app-admin-header>
+<app-admin-header [title]="'Sales Return'"></app-admin-header>
 <mat-accordion class="example-headers-align" multi>
     <mat-expansion-panel>
-        <mat-expansion-panel-header> Add Purchase Return</mat-expansion-panel-header>
+        <mat-expansion-panel-header> Add Sales Return</mat-expansion-panel-header>
         <div class="example-container">
             <mat-divider></mat-divider>
 
@@ -18,7 +18,7 @@
                     </mat-form-field>
                 </div>
 
-                <div class="col-md-6">
+                <!-- <div class="col-md-6">
                     <mat-form-field appearance="outline">
                         <mat-label>Purchase From</mat-label>
                         <mat-select>
@@ -27,7 +27,7 @@
                             </mat-option>
                         </mat-select>
                     </mat-form-field>
-                </div>
+                </div> -->
 
                 <div class="col-md-6">
                     <mat-form-field appearance="outline">
@@ -43,27 +43,6 @@
                         <input matInput placeholder="Refun Amoount" />
                     </mat-form-field>
                 </div>
-
-                
-            </div>
-         
-
-            <div class="row">
-                <mat-form-field appearance="outline">
-                    <mat-label>Purchase Return Note</mat-label>
-                    <textarea matInput placeholder="Purchase Note"></textarea>
-                </mat-form-field>
-            </div>
-
-            <div class="row">
-                <div class="col-md-6">
-
-                    <button mat-button class="upload-img" (click)="uploadFile()" style="background-color:#dfdfdf;">
-                        Upload Profile Picture
-                        <mat-icon>add_photo_alternate</mat-icon>
-
-                    </button>
-                </div>
                 <div class="col-md-6">
 
                     <mat-form-field appearance="outline">
@@ -75,24 +54,56 @@
                         </mat-select>
                     </mat-form-field>
                 </div>
+
+
             </div>
+
+            <div class="row">
+                <div class="col-md-6">
+
+                    <button mat-button class="upload-img" (click)="uploadFile()" style="background-color:#dfdfdf;">
+                        Upload Profile Picture
+                        <mat-icon>add_photo_alternate</mat-icon>
+
+                    </button>
+                </div>
+
+            </div>
+
+
+            <div class="row">
+                <mat-form-field appearance="outline">
+                    <mat-label>Purchase Return Note</mat-label>
+                    <textarea matInput placeholder="Purchase Note"></textarea>
+                </mat-form-field>
+            </div>
+
+<!-- 
             <div class="row" style="margin-top: 20px">
-                <div class="col-md-3">
+                <div class="col-md-3" style="display:contents">
                     <button mat-button color="primary" class="btn-submit">
                         <mat-icon>save</mat-icon>
-                        Save Purchase
+                        Save Sales Return
                     </button>
-                    <!-- &nbsp;&nbsp; -->
-                    <!-- <button
-            mat-button
-            color="primary"
-            style="background-color: lightgray; color: black"
-          >
-            <mat-icon>clear</mat-icon>
-            Clear
-          </button> -->
+                    &nbsp;&nbsp;
+                    <button mat-button color="primary" style="background-color: lightgray; color: black">
+                        <mat-icon>clear</mat-icon>
+                        Clear
+                    </button>
                 </div>
+            </div> -->
+
+            <div class="example-button-row">
+                <button mat-button color="primary" (click)="add()">
+                    <mat-icon>save</mat-icon>
+                    Save Sales Return
+                </button> &nbsp; &nbsp;
+                <button mat-button style="background-color:lightgray ;">
+                    <mat-icon>clear</mat-icon>
+                    Clear
+                </button>
             </div>
+
         </div>
     </mat-expansion-panel>
 </mat-accordion>

@@ -1,14 +1,17 @@
 <div [ngStyle]="{ 'min-width': + tableMinWidth + 'px' }">
         <table mat-table [dataSource]="dataSource" matSort>
-            <ng-container *ngFor="let column of columns">
+            <ng-container *ngFor="let column of columns;let i = index; ">
                 <ng-container matColumnDef="{{column}}">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header>{{column}}</mat-header-cell>
-                    <mat-cell *matCellDef="let row">{{ row[column] }}</mat-cell>
-                    <!-- <mat-cell *matCellDef="let row"><mat-icon>Close</mat-icon></mat-cell> -->
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>{{column}}  </mat-header-cell>
+                    <mat-cell *matCellDef="let row; ">{{ row[column] }} 
+                      <button *ngIf="i==columns.length-1 " (click)="click1(row)" md-raised-button >delete</button> 
+                      <button *ngIf="i==columns.length-2 " (click)="click(row)" md-raised-button >edit</button> 
+
+                    </mat-cell>
                 </ng-container>
 
-                
-
+             
+              
     <!-- Action Column -->
     <!-- <ng-container matColumnDef="edit">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Edit </mat-header-cell>
@@ -24,12 +27,8 @@
             <mat-icon>delete</mat-icon>
           </button> </mat-cell>
       </ng-container> -->
-
-
-
+    
             </ng-container>
-          
-
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
             <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
         </table>

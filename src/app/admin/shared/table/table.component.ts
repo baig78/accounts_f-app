@@ -19,7 +19,8 @@ export class TableComponent implements AfterViewInit, OnInit {
   @Input() pagination: number[] = [];
   @Input() pageSize: number | any;
   @Input() tableMinWidth: number = 500;
-
+  @Output() onClick = new EventEmitter();
+  @Output() deleteClick = new EventEmitter();
 
   dataSource = new MatTableDataSource<any>();
 
@@ -31,6 +32,7 @@ export class TableComponent implements AfterViewInit, OnInit {
   ngOnInit(): void {
     console.log("-1----",this.data)
     console.log("-2----",this.columns)
+    this.dataSource =  new MatTableDataSource();
     this.dataSource =  new MatTableDataSource(this.data);
     // this.displayedColumns = [...this.columns.map((c: { columnDef: any; }) => c.columnDef)];
     // if (this.buttons.length > 0 ) this.displayedColumns = [...this.displayedColumns, 'actions'];
@@ -40,8 +42,15 @@ export class TableComponent implements AfterViewInit, OnInit {
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
-  delete(){}
-  edit(){}
+
+  click(i:any) {
+    // do something
+    this.onClick.emit(i)
+}
+click1(i:any){
+  this.deleteClick.emit(i)
+
+}
 }
 
 // export interface PeriodicElement {

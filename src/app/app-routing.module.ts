@@ -17,16 +17,18 @@ import { CategoriesComponent } from './admin/pages/categories/categories.compone
 import { ExpensesComponent } from './admin/pages/expenses/expenses.component';
 import { PurchaseReturnComponent } from './admin/pages/purchases-return/purchase-return.component';
 import { DamagePurchasesComponent } from './admin/pages/damage-purchases/damage-purchases.component';
-import { SalesComponent } from './admin/pages/sales/sales/sales.component';
-import { SalesReturnComponent } from './admin/pages/sales/sales-return/sales-return.component';
+// import { SalesComponent } from './admin/pages/sales/newInvoice/sales.component';
+// import { SalesReturnComponent } from './admin/pages/sales/new-credit-notes/new-credit-notes.component';
 import { RetailersComponent } from './admin/pages/sales/retailers/retailers.component';
+import { NewInvoiceComponent } from './admin/pages/sales/new-invoice/new-invoice.component';
+import { NewCreditNotesComponent } from './admin/pages/sales/new-credit-notes/new-credit-notes.component';
 
 const routes: Routes = [
   { path: 'staff', component: StaffComponent },
   { path: 'supplier', component: SupplierComponent },
   { path: 'user-management', component: UserManagementComponent },
 
-  { path: 'your-crop', component: YourCropComponent },
+  // { path: 'your-crop', component: YourCropComponent },
   { path: 'user-questions', component: AskComponent },
   { path: 'notifications', component: NotificationsComponent },
   { path: 'login', component: AdminLoginComponent },
@@ -34,8 +36,9 @@ const routes: Routes = [
   { path: 'purchases', component: PurchasesComponent },
   { path: 'damage-purchases', component: DamagePurchasesComponent },
   { path: 'purchase-return', component: PurchaseReturnComponent },
-  { path: 'sales', component: SalesComponent },
-  { path: 'sales-return', component: SalesReturnComponent },
+  // { path: 'sales', component: NewInvoiceComponent },
+  { path: 'new-invoice', component: NewInvoiceComponent },
+  { path: 'new-credit-note', component: NewCreditNotesComponent },
   { path: 'retailers', component: RetailersComponent },
   // { path: 'diseasess', component: ExpensesComponent },
   { path: 'agri-map', component: AgriMapComponent },

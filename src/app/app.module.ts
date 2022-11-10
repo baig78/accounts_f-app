@@ -37,9 +37,11 @@ import { CategoriesComponent } from './admin/pages/categories/categories.compone
 import { ExpensesComponent } from './admin/pages/expenses/expenses.component';
 import { PurchaseReturnComponent } from './admin/pages/purchases-return/purchase-return.component';
 import { DamagePurchasesComponent } from './admin/pages/damage-purchases/damage-purchases.component';
-import { SalesComponent } from './admin/pages/sales/sales/sales.component';
-import { SalesReturnComponent } from './admin/pages/sales/sales-return/sales-return.component';
+// import { SalesComponent } from './admin/pages/sales/newInvoice/sales.component';
+// import { SalesReturnComponent } from './admin/pages/sales/new-credit-notes/sales-return.component';
 import { RetailersComponent } from './admin/pages/sales/retailers/retailers.component';
+import { NewInvoiceComponent } from './admin/pages/sales/new-invoice/new-invoice.component';
+import { NewCreditNotesComponent } from './admin/pages/sales/new-credit-notes/new-credit-notes.component';
 
 
 @NgModule({
@@ -57,8 +59,10 @@ import { RetailersComponent } from './admin/pages/sales/retailers/retailers.comp
     UserManagementComponent,
     PurchasesComponent,
     PurchaseReturnComponent,
-    SalesReturnComponent,
-    SalesComponent,
+    // SalesReturnComponent,
+    NewCreditNotesComponent,
+    // SalesComponent,
+    NewInvoiceComponent,
     RetailersComponent,
     ProoductListComponent,
     StaffComponent,
