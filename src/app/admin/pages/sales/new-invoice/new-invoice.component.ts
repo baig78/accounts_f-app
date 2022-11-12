@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import { MatTableDataSource } from '@angular/material/table';
+import { DashboardService } from '../../../services/dashboard.service';
+
 
 interface customer {
   value: string;
@@ -25,6 +28,12 @@ interface staff {
   styleUrls: ['./new-invoice.component.scss']
 })
 export class NewInvoiceComponent implements OnInit {
+  isTableShow: boolean = false;
+  billsColumns: TableColumn | any;
+  billsData: MatTableDataSource<UserData> | any;
+
+  billsForm: any = FormGroup;
+
   productctrl!: FormControl;
   disabled: boolean = true;
   buttons: TableBtn[] | any;
@@ -52,44 +61,196 @@ export class NewInvoiceComponent implements OnInit {
   footer: string = '';
   totalVolume: number = 0;
   fillerNav: string[] | any;
-  constructor() { }
+  isExpand: boolean =false;
+  editId: any;
+  mySearch:any;
+  apiData: any = [];
+  constructor(
+    public DashboardService: DashboardService,
+    private formBuilder: FormBuilder
+  ) { 
+    this.getAllTableData()
+
+  }
 
   ngOnInit(): void {
-    this.buttons = [
-      { styleClass: 'btn-success', icon: 'delete', payload: (element: UserData) => `${element.id}`, action: 'add' },
-      { styleClass: 'btn-primary', icon: 'edit', payload: (element: UserData) => `${element.id}`, action: 'edit' },
-    ];
-
-    this.columnsUsers = [
-      { columnDef: 's_no', header: '#', cell: (element: any) => `${element.s_no}` },
-      { columnDef: 'purchase_code', header: 'Purchase Code', cell: (element: any) => `${element.purchase_code}`},
-      { columnDef: 'date', header: 'Date', cell: (element: any) => `${element.date}`},
-      { columnDef: 'supplier', header: 'Supplier', cell: (element: any) => `${element.supplier}`},
-      { columnDef: 'sub_total', header: 'Sub Total', cell: (element: any) => `${element.sub_total}`},
-      { columnDef: 'discount', header: 'Discount', cell: (element: any) => `${element.discount}`},
-      { columnDef: 'transportation', header: 'Transportation', cell: (element: any) => `${element.transportation}`},
-      { columnDef: 'total', header: 'Total', cell: (element: any) => `${element.total}`},
-      { columnDef: 'paid', header: 'Paid', cell: (element: any) => `${element.paid}`},
-      { columnDef: 'due', header: 'Due', cell: (element: any) => `${element.due}`},
-      { columnDef: 'status', header: 'Status', cell: (element: any) => `${element.status}`},
-    ]
-
-    this.dataUsers = [
-      { 's_no': '1', 'purchase_code': 'cind_0002', 'date':'19/10/2022', 'supplier':'Kamp', 'sub_total':'₹ 1050.00' , 'discount':'₹ 150.00', 'transportation':'₹ 150.00', 'total':'₹ 1050.00', 'paid':'₹ 550.00', 'due':'₹ 500.00', 'status': 'Active'},
-      { 's_no': '2', 'purchase_code': 'cind_0001', 'date':'19/10/2022', 'supplier':'Cind', 'sub_total':'₹ 250.00' , 'discount':'₹ 50.00', 'transportation':'₹ 0.00', 'total':'₹ 200.00', 'paid':'₹ 100.00', 'due':'₹ 100.00', 'status': 'Active'},
-
-    ];
-    this.productctrl = new FormControl({value: '', disabled: this.disabled})
+    this.createBillForm();
+    
 
   }
-  buttonClick(e:any){}
-
-  uploadFile() {
-    let theEvent = document.createEvent("MouseEvent");
-    theEvent.initMouseEvent("click", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
-    var element: any = document.getElementById('fileUPload');
-    element.dispatchEvent(theEvent);
+  getAllTableData() {
+    this.DashboardService.getData("bills").subscribe({
+      error: (err: any) => { },
+      next: (data: any) => {
+        console.log(data)
+        this.apiData= data;
+        this.setTable(data)
+      },
+    });
   }
+
+  createBillForm() {
+    this.billsForm = this.formBuilder.group({
+      'invoiceNo': [null, Validators.required],
+      'retailerId': [null, Validators.required],
+      'quantity': [null, Validators.required],
+      'description': [null],
+      'advance': [null, Validators.required],
+      'balance': [null, Validators.required],
+      'total': [null, Validators.required],
+      'balanceDueDate': [null, Validators.required],
+      'updatedDate': [null, Validators.required],
+      'insertDate': [null, Validators.required],
+      'updateDate': [null, Validators.required],
+      'generateOtp': [null, Validators.required],
+      'otpStatus': [null, Validators.required],
+      'insertUserId': [null, Validators.required],
+      'updateUserId': [null, Validators.required],
+
+    });
+  }
+  setTable(tableData: any) {
+    
+
+    this.billsColumns = ['id', 'invoice_no', 'prd_batch_uid', 'rtr_id', 'qty', 'desc', 'advance', 'balance', 'total', 'balance_due_date', 'insert_date', 'updated_date', 'gen_otp', 'otp_status', 'insert_user_id', 'update_user_id', 'edit', 'delete'];
+
+    console.log('---------', tableData)
+ 
+    this.billsData = tableData;
+    this.isTableShow = true;
+  }
+  onSearch(e:any){
+    console.log('----',e.target.value)
+    // this.setTable(this.apiData.find((x:any)=>x.include(e.target.value)))
+    this.apiData.find((x:any)=>{x.description==e.target.value})
+    this.setTable(this.apiData.find((x:any)=>{x.description==e.target.value}))
+    console.log('----',this.apiData.find((x:any)=>{x.description==e.target.value}))
+
+
+  }
+  
+  gotoItem(data: any) {
+    this.isExpand = true;
+    console.log(data)
+    this.billsForm.patchValue({
+      invoiceNo: data.invoice_no,
+      prdBatchUid: data.prd_batch_uid,
+      retailerId: data.rtr_id,
+      quantity: data.qty,
+      description: data.description,
+      advance: data.advance,
+      balance: data.balance,
+      total: data.total,
+      balanceDueDate: data.balance_due_date,
+      insertDate: data.insert_date,
+      updateDate: data.updated_date,
+      generateOtp: data.gen_otp,
+      otpStatus: data.otp_status,
+      insertUserId: data.insert_user_id,
+      updateUserId: data.update_user_id,
+    })
+    this.editId=data.id
+  }
+  deleteItem(data: any) {
+    this.dele(data.id)
+    console.log(data)
+    this.getAllTableData()
+
+  }
+
+  // uploadFile() {
+  //   let theEvent = document.createEvent("MouseEvent");
+  //   theEvent.initMouseEvent("click", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+  //   var element: any = document.getElementById('fileUPload');
+  //   element.dispatchEvent(theEvent);
+  // }
+
+  add() {
+    this.billsForm
+    let apiurl = "insert_bill";
+    let data = {
+      // id: 0,
+      invoice_no: this.billsForm.controls.invoiceNo.value,
+      prd_batch_uid: this.billsForm.controls.retailerId.value,
+      rtr_id: this.billsForm.controls.quantity.value,
+      qty: this.billsForm.controls.quantity.value,
+      description: this.billsForm.controls.description.value,
+      advance: this.billsForm.controls.advance.value,
+      balance: this.billsForm.controls.balance.value,
+      total: this.billsForm.controls.total.value,
+      balance_due_date: this.billsForm.controls.balanceDueDate.value,
+      insert_date: this.billsForm.controls.insertDate.value,
+      updated_date: this.billsForm.controls.updateDate.value,
+      gen_otp: this.billsForm.controls.generateOtp.value,
+      otp_status: this.billsForm.controls.otpStatus.value,
+      insert_user_id: this.billsForm.controls.insertUserId.value,
+      update_user_id: this.billsForm.controls.updateUserId.value,
+
+    };
+    this.DashboardService.insertData(apiurl, data).subscribe({
+      error: (err: any) => { },
+      next: (data: any) => {
+        console.log(data.results)
+        this.setTable(data.results)
+        this.getAllTableData()
+        this.isExpand = false;
+
+      },
+
+    });
+
+  }
+  edit() {
+    this.billsForm
+    let apiurl = "edit_bill";
+    let data = {
+      id: this.editId,
+      invoice_no: this.billsForm.controls.invoiceNo.value,
+      prd_batch_uid: this.billsForm.controls.retailerId.value,
+      rtr_id: this.billsForm.controls.quantity.value,
+      qty: this.billsForm.controls.quantity.value,
+      description: this.billsForm.controls.description.value,
+      advance: this.billsForm.controls.advance.value,
+      balance: this.billsForm.controls.balance.value,
+      total: this.billsForm.controls.total.value,
+      balance_due_date: this.billsForm.controls.balanceDueDate.value,
+      insert_date: this.billsForm.controls.insertDate.value,
+      updated_date: this.billsForm.controls.updateDate.value,
+      gen_otp: this.billsForm.controls.generateOtp.value,
+      otp_status: this.billsForm.controls.otpStatus.value,
+      insert_user_id: this.billsForm.controls.insertUserId.value,
+      update_user_id: this.billsForm.controls.updateUserId.value,
+
+    };
+    this.DashboardService.editData(apiurl, data).subscribe({
+      error: (err: any) => { },
+      next: (data: any) => {
+        console.log(data.results)
+        this.setTable(data.results)
+        this.getAllTableData()
+        this.isExpand = false;
+
+      },
+
+    });
+
+  }
+
+  dele(id: any) {
+    let apiurl = "delete_bill";
+
+    this.DashboardService.deleteData(apiurl, id).subscribe({
+      error: (err: any) => { },
+      next: (data: any) => {
+        console.log(data.results)
+        this.setTable(data.results)
+        this.getAllTableData()
+      },
+
+    });
+
+  }
+
 }
 export interface UserData {
   id: string;

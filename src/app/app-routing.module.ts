@@ -22,6 +22,9 @@ import { DamagePurchasesComponent } from './admin/pages/damage-purchases/damage-
 import { RetailersComponent } from './admin/pages/sales/retailers/retailers.component';
 import { NewInvoiceComponent } from './admin/pages/sales/new-invoice/new-invoice.component';
 import { NewCreditNotesComponent } from './admin/pages/sales/new-credit-notes/new-credit-notes.component';
+import { ProductBatchComponent } from './admin/pages/product-batch/product-batch.component';
+import { ProductModelComponent } from './admin/pages/product-model/product-model.component';
+import { PaymentsComponent } from './admin/pages/payments/payments.component';
 
 const routes: Routes = [
   { path: 'staff', component: StaffComponent },
@@ -45,6 +48,9 @@ const routes: Routes = [
   { path: 'expenses', component: ExpensesComponent },
   { path: 'products-list', component: ProoductListComponent },
   { path: 'categories', component: CategoriesComponent },
+  { path: 'product-batch', component: ProductBatchComponent },
+  { path: 'product-model', component: ProductModelComponent },
+  { path: 'payment', component: PaymentsComponent },
   // { path: 'leaves', loadChildren: () => import(`./leaves/leaves.module`).then(m => m.LeavesModule) },
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   { path: '**', component: DashboardComponent },

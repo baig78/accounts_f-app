@@ -18,6 +18,7 @@ export class RetailersComponent implements OnInit {
   retailersForm: any = FormGroup;
   isTableShow: boolean = false;
 
+  isExpand: boolean = false;
 
   retailerData: MatTableDataSource<UserData> | any;
   retailersColumns: TableColumn | any;
@@ -30,6 +31,7 @@ export class RetailersComponent implements OnInit {
     { value: 'Inactive', viewValue: 'Inactive' },
   ];
   isTableVisible = false;
+  editId: any;
   constructor(
     public DashboardService: DashboardService,
     private formBuilder: FormBuilder
@@ -80,17 +82,7 @@ export class RetailersComponent implements OnInit {
       { styleClass: 'btn-primary', icon: 'edit', payload: (element: UserData) => `${element.id}`, action: 'edit' },
     ];
 
-    // this.retailersColumns = [
-    //   { columnDef: 'id', header: 'id', cell: (element: any) => `${element.id}` },
-    //   { columnDef: 'name', header: 'name', cell: (element: any) => `${element.name}` },
-    //   { columnDef: 'company_name', header: 'company_name', cell: (element: any) => `${element.company_name}`},
-    //   { columnDef: 'address', header: 'address', cell: (element: any) => `${element.address}`},
-    //   { columnDef: 'city', header: 'city', cell: (element: any) => `${element.city}`},
-    //   { columnDef: 'phone', header: 'phone', cell: (element: any) => `${element.phone}`},
-    //   { columnDef: 'alt_phone', header: 'alt_phone', cell: (element: any) => `${element.alt_phone}`},
-    //   { columnDef: 'email', header: 'email', cell: (element: any) => `${element.email}`},
 
-    // ]
     this.retailersColumns = ['id', 'name', 'email', 'phone', 'alt_phone', 'company_name', 'city', 'address', 'gst_no', 'edit', 'delete'];
     this.retailerData = tableData;
     this.isTableShow = true;
@@ -100,11 +92,27 @@ export class RetailersComponent implements OnInit {
   buttonClick(e: any) { }
   uploadFile() { }
 
+  gotoItem(data: any) {
+    this.isExpand = true;
+    console.log(data)
+    this.retailersForm.patchValue({
+      shopName: data.name,
+      emailAddress: data.email,
+      phoneNumber: data.phone,
+      altNumber: data.user_name,
+      ownerName: data.role,
+      city: data.role,
+      address: data.role,
+      gstNo: data.role,
+    })
+    this.editId=data.id
+    //do something
+  }
+
   add() {
     this.retailersForm
     let apiurl = "insert_retailers";
     let data = {
-      // id: 0,
       shop_name: this.retailersForm.controls.shopName.value,
       email: this.retailersForm.controls.emailAddress.value,
       phone: this.retailersForm.controls.phoneNumber.value,
@@ -121,42 +129,44 @@ export class RetailersComponent implements OnInit {
         console.log(data.results)
         this.setTable(data.results)
         this.getAllTableData()
+        this.isExpand = false;
 
       },
     });
   }
 
-  insertData() {
-    let payload =
-    {
-      // "id": 23,
-      // "name": this.retailersForm.controls['ownerName'].value,
-      // "email": this.retailersForm.controls['emailAddress'].value,
-      // "phone": this.retailersForm.controls['phoneNumber'].value,
-      // "alt_phone": this.retailersForm.controls['altNumber'].value,
-      // "company_name": this.retailersForm.controls['companyName'].value,
-      // "city": this.retailersForm.controls['city'].value,
-      // "address": this.retailersForm.controls['address'].value,
-      // "gst_no": this.retailersForm.controls['gstNo'].value,
-      // role: this.retailersForm.controls.accountType.value
 
-      // "status": 0,
-    }
-    // { name: "Karunakar", company_name: "Gelli treaders", address: "206/3rt, saidabad, hyd", city: "hyd",
-    //   phone: "1234567890", alt_phone: "1234567890", email: "sdf@fdg.sdf", gst_no: "1212324"
+  edit() {
+    this.retailersForm
+    let apiurl = "edit_rtr";
+    let data = {
+      // id: 0,
+      shop_name: this.retailersForm.controls.shopName.value,
+      email: this.retailersForm.controls.emailAddress.value,
+      phone: this.retailersForm.controls.phoneNumber.value,
+      alt_phone: this.retailersForm.controls.altNumber.value,
+      name: this.retailersForm.controls.ownerName.value,
+      city: this.retailersForm.controls.city.value,
+      address: this.retailersForm.controls.address.value,
+      gst_no: this.retailersForm.controls.gstNo.value,
+      id: this.editId
+      
+      // address: this.retailersForm.controls.address.value,
 
-    // };
-    this.DashboardService.insertData("insert_retailers", payload).subscribe({
+    };
+    this.DashboardService.editData(apiurl, data).subscribe({
       error: (err: any) => { },
       next: (data: any) => {
         console.log(data.results)
-
         this.setTable(data.results)
-      },
-    });
-    console.log(payload)
-  }
+        this.getAllTableData()
+        this.isExpand = false;
 
+      },
+
+    });
+
+  }
 
 
 

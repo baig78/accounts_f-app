@@ -42,6 +42,9 @@ import { DamagePurchasesComponent } from './admin/pages/damage-purchases/damage-
 import { RetailersComponent } from './admin/pages/sales/retailers/retailers.component';
 import { NewInvoiceComponent } from './admin/pages/sales/new-invoice/new-invoice.component';
 import { NewCreditNotesComponent } from './admin/pages/sales/new-credit-notes/new-credit-notes.component';
+import { ProductBatchComponent } from './admin/pages/product-batch/product-batch.component';
+import { ProductModelComponent } from './admin/pages/product-model/product-model.component';
+import { PaymentsComponent } from './admin/pages/payments/payments.component';
 
 
 @NgModule({
@@ -66,6 +69,9 @@ import { NewCreditNotesComponent } from './admin/pages/sales/new-credit-notes/ne
     RetailersComponent,
     ProoductListComponent,
     StaffComponent,
+    PaymentsComponent,
+    ProductModelComponent,
+    ProductBatchComponent,
     NotificationsComponent,
     AskComponent,
     MenuComponent,

@@ -24,40 +24,40 @@
         </mat-list-item>
         <mat-divider></mat-divider>
 
-        <mat-list-item routerLink="/staff" [ngClass]="this.router.url == '/staff' ? 'link-active' : ''">
+        <!-- <mat-list-item routerLink="/staff" [ngClass]="this.router.url == '/staff' ? 'link-active' : ''">
             <mat-icon>filter_vintage</mat-icon>
             &nbsp; &nbsp; Staff
         </mat-list-item>
-        <mat-divider></mat-divider>
+        <mat-divider></mat-divider> -->
 
 
 
 
         <mat-list-item routerLink="/supplier" [ngClass]="this.router.url == '/supplier' ? 'link-active' : ''">
             <mat-icon>group</mat-icon>
-            &nbsp; &nbsp; Supplier
+            &nbsp; &nbsp; Manufacturers
         </mat-list-item>
         <mat-divider></mat-divider>
 
-        <mat-list-item routerLink="/purchases" [ngClass]="this.router.url == '/purchases' ? 'link-active' : ''">
+        <!-- <mat-list-item routerLink="/purchases" [ngClass]="this.router.url == '/purchases' ? 'link-active' : ''">
             <mat-icon> format_list_bulleted</mat-icon>
             &nbsp; &nbsp; Purchases
-        </mat-list-item>
-        <mat-divider></mat-divider>
+        </mat-list-item> -->
+        <!-- <mat-divider></mat-divider> -->
 
-        <mat-list-item routerLink="/purchase-return"
+        <!-- <mat-list-item routerLink="/purchase-return"
             [ngClass]="this.router.url == '/purchase-return' ? 'link-active' : ''">
             <mat-icon> shopping_cart</mat-icon>
             &nbsp; &nbsp; Purchase Return
         </mat-list-item>
-        <mat-divider></mat-divider>
+        <mat-divider></mat-divider> -->
 
-        <mat-list-item routerLink="/damage-purchases"
+        <!-- <mat-list-item routerLink="/damage-purchases"
             [ngClass]="this.router.url == '/damage-purchases' ? 'link-active' : ''">
             <mat-icon> format_list_bulleted</mat-icon>
             &nbsp; &nbsp; Damage Purchases
         </mat-list-item>
-        <mat-divider></mat-divider>
+        <mat-divider></mat-divider> -->
 
 
         <mat-list-item routerLink="/retailers" [ngClass]="this.router.url == '/retailers' ? 'link-active' : ''">
@@ -66,7 +66,7 @@
         </mat-list-item>
         <mat-divider></mat-divider>
 
-        <mat-accordion class="app-nav-accordion">
+        <!-- <mat-accordion class="app-nav-accordion">
          
             <mat-expansion-panel class="mat-elevation-z0">
               <mat-expansion-panel-header>
@@ -88,7 +88,7 @@
               </mat-nav-list>
           </mat-expansion-panel>
           </mat-accordion>
-          <mat-divider></mat-divider>
+          <mat-divider></mat-divider> -->
 
 
 
@@ -98,28 +98,46 @@
         </mat-list-item>
         <mat-divider></mat-divider> -->
 
+        <mat-divider></mat-divider>
+        <mat-list-item routerLink="/new-invoice" [ngClass]="this.router.url == '/new-invoice' ? 'link-active' : ''">
+            <mat-icon>store</mat-icon> &nbsp; &nbsp; Bills
+        </mat-list-item>
+        <mat-divider></mat-divider>
+
 
         <mat-divider></mat-divider>
-        <mat-list-item routerLink="/categories" [ngClass]="this.router.url == '/categories' ? 'link-active' : ''">
-            <mat-icon>store</mat-icon> &nbsp; &nbsp; Categories
+        <mat-list-item routerLink="/product-model" [ngClass]="this.router.url == '/product-model' ? 'link-active' : ''">
+            <mat-icon>store</mat-icon> &nbsp; &nbsp; Product Modal
         </mat-list-item>
         <mat-divider></mat-divider>
 
         <mat-divider></mat-divider>
-        <mat-list-item routerLink="/expenses" [ngClass]="this.router.url == '/expenses' ? 'link-active' : ''">
+        <mat-list-item routerLink="/product-batch" [ngClass]="this.router.url == '/product-batch'? 'link-active' : ''">
+            <mat-icon>store</mat-icon> &nbsp; &nbsp; Product Batch
+        </mat-list-item>
+        <mat-divider></mat-divider>
+
+        <mat-list-item routerLink="/payment" [ngClass]="this.router.url == '/payment' ? 'link-active' : ''">
+            <mat-icon>group</mat-icon>
+            &nbsp; &nbsp; Payments
+        </mat-list-item>
+        <mat-divider></mat-divider>
+
+        <mat-divider></mat-divider>
+        <!-- <mat-list-item routerLink="/expenses" [ngClass]="this.router.url == '/expenses' ? 'link-active' : ''">
             <mat-icon>bug_report</mat-icon>
             &nbsp; &nbsp; Expenses
         </mat-list-item>
         <mat-divider></mat-divider>
-        <mat-divider></mat-divider>
+        <mat-divider></mat-divider> -->
 
-        <mat-list-item routerLink="/products-list" [ngClass]="this.router.url == '/products-list' ? 'link-active' : ''">
+        <!-- <mat-list-item routerLink="/products-list" [ngClass]="this.router.url == '/products-list' ? 'link-active' : ''">
             <mat-icon>shopping_cart</mat-icon>
             &nbsp; &nbsp; Products List
         </mat-list-item>
-        <mat-divider></mat-divider>
+        <mat-divider></mat-divider> -->
 
-        <mat-divider></mat-divider>
+        <!-- <mat-divider></mat-divider>
         <mat-list-item routerLink="/notifications" [ngClass]="this.router.url == '/notifications' ? 'link-active' : ''">
             <mat-icon>notification_important</mat-icon>
             &nbsp; &nbsp; Notifications
@@ -135,7 +153,7 @@
         <mat-list-item routerLink="/agri-map" [ngClass]="this.router.url == '/agri-map' ? 'link-active' : ''">
             <mat-icon> map</mat-icon>
             &nbsp; &nbsp; Agri Map
-        </mat-list-item>
+        </mat-list-item> -->
 
        
 

@@ -1,14 +1,16 @@
 <app-admin-header [title]="'New Invoice'"></app-admin-header>
 <mat-accordion class="example-headers-align" multi>
-    <mat-expansion-panel>
+    <mat-expansion-panel [expanded]="isExpand">
         <mat-expansion-panel-header> Add New Invoice </mat-expansion-panel-header>
         <div class="example-container">
-            <mat-divider></mat-divider>
+            <form [formGroup]="billsForm" class="form">
+                <mat-divider></mat-divider>
 
-            <div class="row">
+
+                <!-- <div class="row">
                 <div class="col-md-6">
                     <mat-form-field appearance="outline">
-                        <input matInput [matDatepicker]="picker1" placeholder="Angular forms" [formControl]="date" />
+                        <input matInput [matDatepicker]="picker1" [formControl]="date" />
                         <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                         <mat-datepicker #picker1></mat-datepicker>
                     </mat-form-field>
@@ -24,96 +26,130 @@
                         </mat-select>
                     </mat-form-field>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3 iw">
-                    <mat-form-field appearance="outline">
-                        <mat-label>Product Name</mat-label>
-                        <input matInput placeholder="Product Name" />
-                    </mat-form-field>
-                </div>
-                <div class="col-md-3 iw">
-                    <mat-form-field appearance="outline">
-                        <mat-label>Quantity</mat-label>
-                        <input matInput placeholder="Product Name" />
-                    </mat-form-field>
-                </div>
-                <div class="col-md-3 iw">
+            </div> -->
+                <div class="row">
+                    <div class="col-md-3 iw">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Invoice No</mat-label>
+                            <input matInput placeholder="Invoice No" formControlName="invoiceNo">
+                        </mat-form-field>
+
+
+                    </div>
+                    <div class="col-md-3 iw">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Retailer Id</mat-label>
+                            <input matInput placeholder="Retailer Id" formControlName="retailerId">
+                        </mat-form-field>
+                    </div>
+                    <!-- <div class="col-md-3 iw">
                     <mat-form-field appearance="outline">
                         <mat-label>Units</mat-label>
-                        <mat-select>
+                        <mat-select >
                             <mat-option *ngFor="let unit of units" [value]="unit.value">
                                 {{ unit.viewValue }}
                             </mat-option>
                         </mat-select>
                     </mat-form-field>
-                </div>
-                <div class="col-md-3 iw">
-                    <mat-form-field appearance="outline">
-                        <mat-label>Unit Price</mat-label>
-                        <input matInput placeholder="Unit Price" />
-                    </mat-form-field>
-                </div>
-                <div class="col-md-3 iw">
-                    <mat-form-field appearance="outline">
-                        <mat-label>Discount</mat-label>
-                        <input matInput placeholder="Discount" />
-                    </mat-form-field>
-                </div>
-                <div class="col-md-3 iw">
-                    <mat-form-field appearance="outline">
-                        <mat-label>Product Total</mat-label>
-                        <input matInput placeholder="Product Total" value="123456" [formControl]="productctrl" />
-                    </mat-form-field>
-                </div>
+                </div> -->
+                    <div class="col-md-3 iw">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Quantity</mat-label>
+                            <input matInput placeholder="quantity" formControlName="quantity">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-3 iw">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Description</mat-label>
+                            <input matInput placeholder="Description" formControlName="description">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-3 iw">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Advance</mat-label>
+                            <input matInput placeholder="Advance" formControlName="advance">
+                        </mat-form-field>
+                    </div>
 
-                <div class="col-md-3 iw" style="margin-top: 10px">
+                    <!-- <div class="col-md-3 iw" style="margin-top: 10px">
                     <button mat-button color="primary">
-            <mat-icon>add</mat-icon>
-          </button>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-3">
-                    <mat-form-field appearance="outline">
-                        <mat-label>Sub Total</mat-label>
-                        <input matInput placeholder="Sub Total" />
-                    </mat-form-field>
+                        <mat-icon>add</mat-icon>
+                    </button>
+                </div> -->
                 </div>
 
-                <div class="col-md-3">
-                    <mat-form-field appearance="outline">
-                        <mat-label>Total Discount</mat-label>
-                        <input matInput placeholder="Total Discount" [formControl]="productctrl" />
-                    </mat-form-field>
+                <div class="row">
+                    <div class="col-md-3">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Balance</mat-label>
+                            <input matInput placeholder="Balance" formControlName="balance">
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-md-3">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Total</mat-label>
+                            <input matInput placeholder="Total" formControlName="total">
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-md-3">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Balance Due Date</mat-label>
+                            <input matInput placeholder="Balance Due Date" formControlName="balanceDueDate">
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-md-3">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Insert Date</mat-label>
+                            <input matInput placeholder="Insert Date" formControlName="insertDate">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-3">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Update Date</mat-label>
+                            <input matInput placeholder="Update Date" formControlName="updateDate">
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-md-3">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Generate Otp</mat-label>
+                            <input matInput placeholder="Generate Otp" formControlName="generateOtp">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-3">
+                        <mat-form-field appearance="outline">
+                            <mat-label>OTP Status</mat-label>
+                            <input matInput placeholder="OTP Status" formControlName="otpStatus">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-3">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Insert User Id</mat-label>
+                            <input matInput placeholder="Insert User Id" formControlName="insertUserId">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-3">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Update User Id</mat-label>
+                            <input matInput placeholder="Update User Id" formControlName="updateUserId">
+                        </mat-form-field>
+                    </div>
                 </div>
 
-                <div class="col-md-3">
-                    <mat-form-field appearance="outline">
-                        <mat-label>Transport Cost</mat-label>
-                        <input matInput placeholder="Transport Cost" />
-                    </mat-form-field>
-                </div>
-                <div class="col-md-3">
-                    <mat-form-field appearance="outline">
-                        <mat-label>Grand Total</mat-label>
-                        <input matInput placeholder="Grand Total" [formControl]="productctrl" />
-                    </mat-form-field>
-                </div>
-            </div>
-
-            <div class="row">
+                <!-- <div class="row">
                 <div class="col-md-6">
                     <mat-form-field appearance="outline">
                         <mat-label>Total Paid</mat-label>
-                        <input matInput placeholder="Total Payment" />
+                        <input matInput placeholder="Total Payment" formControlName="totalPaid">
                     </mat-form-field>
                 </div>
                 <div class="col-md-6">
                     <mat-form-field appearance="outline">
                         <mat-label>Payment Meathod</mat-label>
-                        <mat-select>
+                        <mat-select >
                             <mat-option *ngFor="let payment of payments" [value]="payment.value">
                                 {{ payment.viewValue }}
                             </mat-option>
@@ -133,10 +169,10 @@
                 <div class="col-md-6">
 
                     <button mat-button class="upload-img" (click)="uploadFile()" style="background-color:#dfdfdf;">
-                Upload Profile Picture
-                <mat-icon>add_photo_alternate</mat-icon>
+                        Upload Profile Picture
+                        <mat-icon>add_photo_alternate</mat-icon>
 
-            </button>
+                    </button>
                 </div>
                 <div class="col-md-6">
 
@@ -149,28 +185,42 @@
                         </mat-select>
                     </mat-form-field>
                 </div>
-            </div>
-            <div class="row" style="margin-top: 20px">
-                <div class="col-md-3">
-                    <button mat-button color="primary" class="btn-submit">
-            <mat-icon>save</mat-icon>
-            Save Invoice</button>
-                    <!-- &nbsp;&nbsp; -->
-                    <!-- <button
-            mat-button
-            color="primary"
-            style="background-color: lightgray; color: black"
-          >
-            <mat-icon>clear</mat-icon>
-            Clear
-          </button> -->
+            </div> -->
+                <div class="example-button-row">
+                    <button *ngIf="!isExpand" mat-button color="primary" (click)="add()">
+                        Save
+                    </button> &nbsp; &nbsp;
+                    <button *ngIf="isExpand" mat-button color="primary" (click)="edit()">
+                        Save
+                    </button> &nbsp; &nbsp;
+                    <button mat-button style="background-color:lightgray ;">
+                        Cancel
+                    </button>
                 </div>
-            </div>
+            </form>
         </div>
     </mat-expansion-panel>
 </mat-accordion>
-<div class="row" style="margin-top: 20px">
-    <div class="col-md-6">
-        <app-table [columns]="columnsUsers" [buttons]="buttons" [data]="dataUsers" [pagination]="[5, 25, 100]" [pageSize]="5" [tableMinWidth]="1100" (buttonClick)="buttonClick($event)"></app-table>
+<div class="search" style="margin-top: 20px;">
+    <div class="row">
+        <div class="col-md-3">
+            <h2>Bills List</h2>
+        </div>
+        <div class="col-md-3"></div>
+        <div class="col-md-3"></div>
+
+        <div class="search col-md-3" style="float: right;">
+            <mat-form-field appearance="outline">
+                <mat-label>Search</mat-label>
+                <input matInput type="text" [ngModel]="mySearch" placeholder="Search" (keypress)="onSearch($event);">
+                <mat-icon matSuffix>search</mat-icon>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div *ngIf="isTableShow" style="overflow-x: scroll; width: 1000px;">
+        <app-table [columns]="billsColumns" [buttons]="buttons" [data]="billsData" [pagination]="[5, 25, 100]"
+            (onClick)="gotoItem($event)" (deleteClick)="deleteItem($event)" [pageSize]="5" [tableMinWidth]="1100">
+        </app-table>
     </div>
 </div>

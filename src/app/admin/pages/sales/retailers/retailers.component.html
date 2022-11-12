@@ -1,6 +1,6 @@
 <app-admin-header [title]="'Retailers'"></app-admin-header>
 <mat-accordion class="example-headers-align" multi>
-    <mat-expansion-panel>
+    <mat-expansion-panel [expanded]="isExpand">
         <mat-expansion-panel-header>
             Add Retailer
         </mat-expansion-panel-header>
@@ -65,7 +65,10 @@
             </div>
 
             <div class="example-button-row">
-                <button mat-button color="primary" (click)="add()">
+                <button *ngIf="!isExpand" mat-button color="primary" (click)="add()">
+                    Save
+                </button> &nbsp; &nbsp;
+                <button *ngIf="isExpand" mat-button color="primary" (click)="edit()">
                     Save
                 </button> &nbsp; &nbsp;
                 <button mat-button style="background-color:lightgray ;">

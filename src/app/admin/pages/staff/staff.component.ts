@@ -111,28 +111,28 @@ export class StaffComponent implements OnInit {
     this.DashboardService.setProduct(true);
   }
 
-  insertData() {
-    let payload =
-    {
-      "id": 23,
-      "name": this.staffForm.controls['employeeName'].value,
-      "user_name": this.staffForm.controls['userName'].value,
-      "phone": this.staffForm.controls['phoneNumber'].value,
-      "email": this.staffForm.controls['emailAddress'].value,
-      "role": this.staffForm.controls['designation'].value,
-      "address": this.staffForm.controls['address'].value,
-    }
+  // insertData() {
+  //   let payload =
+  //   {
+  //     "id": 23,
+  //     "name": this.staffForm.controls['employeeName'].value,
+  //     "user_name": this.staffForm.controls['userName'].value,
+  //     "phone": this.staffForm.controls['phoneNumber'].value,
+  //     "email": this.staffForm.controls['emailAddress'].value,
+  //     "role": this.staffForm.controls['designation'].value,
+  //     "address": this.staffForm.controls['address'].value,
+  //   }
 
-    this.DashboardService.insertData("insert_users", payload).subscribe({
-      error: (err: any) => { },
-      next: (data: any) => {
-        console.log(data.results)
+  //   this.DashboardService.insertData("insert_users", payload).subscribe({
+  //     error: (err: any) => { },
+  //     next: (data: any) => {
+  //       console.log(data.results)
 
-        this.setTable(data.results)
-      },
-    });
-    console.log('-----------yhnun', payload)
-  }
+  //       this.setTable(data.results)
+  //     },
+  //   });
+  //   console.log('-----------yhnun', payload)
+  // }
 
   add() {
     this.staffForm
