@@ -69,7 +69,7 @@
                     Save
                 </button> &nbsp; &nbsp;
                 <button *ngIf="isExpand" mat-button color="primary" (click)="edit()">
-                    Save-edit
+                    Save
                 </button> &nbsp; &nbsp;
                 <button mat-button style="background-color:lightgray ;">
                     Cancel
@@ -82,7 +82,7 @@
 
 <div class="row" style="margin-top: 20px;">
     <div class="col-md-6">
-        <h2>Supplier List</h2>
+        <!-- <h2>Supplier List</h2> -->
          <div *ngIf="isTableShow">
             <app-table [columns]="supplierColumns" [buttons]="buttons" (onClick)="gotoItem($event)" (deleteClick)="deleteItem($event)" [data]="supplierData" [pagination]="[5, 25, 100]"
                 [pageSize]="5" [tableMinWidth]="1100"></app-table>

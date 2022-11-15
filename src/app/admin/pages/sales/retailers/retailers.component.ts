@@ -83,31 +83,33 @@ export class RetailersComponent implements OnInit {
     ];
 
 
-    this.retailersColumns = ['id', 'name', 'email', 'phone', 'alt_phone', 'company_name', 'city', 'address', 'gst_no', 'edit', 'delete'];
+    this.retailersColumns = ['id', 'name', 'shop_name', 'address', 'city', 'phone', 'alt_phone', 'email', 'gst_no', 'edit', 'delete'];
     this.retailerData = tableData;
     this.isTableShow = true;
 
   }
 
-  buttonClick(e: any) { }
   uploadFile() { }
 
   gotoItem(data: any) {
     this.isExpand = true;
     console.log(data)
     this.retailersForm.patchValue({
-      shopName: data.name,
-      emailAddress: data.email,
+      ownerName: data.name,
+      shopName: data.shop_name,
+      address: data.address,
+      city: data.city,
       phoneNumber: data.phone,
-      altNumber: data.user_name,
-      ownerName: data.role,
-      city: data.role,
-      address: data.role,
-      gstNo: data.role,
+      altNumber: data.alt_phone,
+      emailAddress: data.email,
+      gstNo: data.gst_no,
     })
     this.editId=data.id
-    //do something
   }
+  deleteItem(data:any) {
+    this.dele(data.id)
+    console.log(data)
+}
 
   add() {
     this.retailersForm
@@ -168,6 +170,20 @@ export class RetailersComponent implements OnInit {
 
   }
 
+  dele(id:any){
+    let apiurl = "delete_rtr";
+
+    this.DashboardService.deleteData(apiurl,id).subscribe({
+      error: (err: any) => { },
+      next: (data: any) => {
+        console.log(data.results)
+        this.setTable(data.results)
+        this.getAllTableData()
+      },
+      
+    });
+
+  }
 
 
 

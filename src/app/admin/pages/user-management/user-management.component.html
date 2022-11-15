@@ -74,7 +74,7 @@
 
 <div class="row" style="margin-top: 20px;">
     <div class="col-md-6">
-        <h2>Users List</h2>
+        <!-- <h2>Users List</h2> -->
     
         <div *ngIf="isTableShow">
             <app-table [columns]="staffColumns" [buttons]="buttons" [data]="staffData" [pagination]="[5, 25, 100]" (onClick)="gotoItem($event)" (deleteClick)="deleteItem($event)"

@@ -1,5 +1,5 @@
 .mat-raised-button{
-    min-width:46% ;
+    min-width:100% ;
     margin-right:2% ;
     margin-left:2% ;
     margin-bottom:20px ;
@@ -50,4 +50,19 @@ img, svg{
 .chart-pie {
     height: 21rem;
     overflow: hidden;
+}
+
+
+.card-icon{
+    background-color: #5dbbc6;
+    width: 75px;
+    height: 75px;
+    vertical-align: middle !important;
+    text-align: center;
+    font-size: 70px;
+    margin-left: -13px;
+}
+
+.total{
+    color: black;
 }

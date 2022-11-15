@@ -1,9 +1,84 @@
 <app-admin-header [title]="'Payments'"></app-admin-header>
 <mat-accordion class="example-headers-align"  multi>
-    <mat-expansion-panel >
+    <mat-expansion-panel [expanded]="isExpand">
         <mat-expansion-panel-header>
-            Add Payment
+            Add Payments
         </mat-expansion-panel-header>
-        
+        <div class="example-container">
+            <form [formGroup]="paymentForm" class="form">
+
+                <mat-divider></mat-divider>
+                <mat-form-field appearance="outline">
+                    <mat-label>Invoice No</mat-label>
+                    <input matInput placeholder="Invoice No" formControlName="invoice_no">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Payment Type</mat-label>
+                    <input matInput placeholder="Payment Type" formControlName="payment_type">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Insert Date</mat-label>
+                    <input matInput placeholder="Insert Date" formControlName="insert_date">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Updated Date</mat-label>
+                    <input matInput placeholder="Updated Date" formControlName="updated_date">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Insert User Id</mat-label>
+                    <input matInput placeholder="Insert User Id" formControlName="insert_user_id">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Update User Id</mat-label>
+                    <input matInput placeholder="Update User Id" formControlName="update_user_id">
+                </mat-form-field>
+                
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Status</mat-label>
+                    <mat-select>
+                        <mat-option *ngFor="let staff of staffs" [value]="staff.value">
+                            {{staff.viewValue}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+
+                <div class="row" style="margin-bottom: 10px;">
+                    <div class="col-md-3">
+                        <button mat-button class="upload-img" (click)="uploadFile()" style="background-color:#dfdfdf;">
+                            Upload Profile Picture
+                            <mat-icon>add_photo_alternate</mat-icon>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="example-button-row">
+                    <button *ngIf="!isExpand" mat-button color="primary" (click)="add()">
+                        Save
+                    </button> &nbsp; &nbsp;
+                    <button *ngIf="isExpand" mat-button color="primary" (click)="edit()">
+                        Save
+                    </button> &nbsp; &nbsp;
+                    <button mat-button style="background-color:lightgray ;">
+                        Cancel
+                    </button>
+                </div>
+            </form>
+        </div>
     </mat-expansion-panel>
 </mat-accordion>
+
+<div class="row" style="margin-top: 20px;">
+    <div class="col-md-6">
+        <!-- <h2>Users List</h2> -->
+    
+        <div *ngIf="isTableShow">
+            <app-table [columns]="staffColumns" [buttons]="buttons" [data]="staffData" [pagination]="[5, 25, 100]" (onClick)="gotoItem($event)" (deleteClick)="deleteItem($event)"
+                [pageSize]="5" [tableMinWidth]="1100"></app-table>
+        </div>
+
+
+    </div>
+</div>
+

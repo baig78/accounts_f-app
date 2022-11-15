@@ -1,9 +1,59 @@
 <app-admin-header [title]="'Product Model'"></app-admin-header>
-<mat-accordion class="example-headers-align"  multi>
-    <mat-expansion-panel >
+<mat-accordion class="example-headers-align" multi>
+    <mat-expansion-panel [expanded]="isExpand">
         <mat-expansion-panel-header>
             Add Product Model
         </mat-expansion-panel-header>
-        
+        <div class="example-container">
+            <form [formGroup]="productModelForm" class="form">
+
+                <mat-divider></mat-divider>
+                <mat-form-field appearance="outline">
+                    <mat-label>Unique Id</mat-label>
+                    <input matInput placeholder="Unique Id" formControlName="uid">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Product Name</mat-label>
+                    <input matInput placeholder="Product Name" formControlName="name">
+                </mat-form-field>
+
+
+            </form>
+            <!-- <div class="row" style="margin-bottom: 10px;">
+                <div class="col-md-3">
+                    <button mat-button class="upload-img" (click)="uploadFile()" style="background-color:#dfdfdf;">
+                        Upload Profile Picture
+                        <mat-icon>add_photo_alternate</mat-icon>
+                    </button>
+                </div>
+            </div> -->
+
+            <div class="example-button-row">
+                <button *ngIf="!isExpand" mat-button color="primary" (click)="add()">
+                    Save
+                </button> &nbsp; &nbsp;
+                <button *ngIf="isExpand" mat-button color="primary" (click)="edit()">
+                    Save
+                </button> &nbsp; &nbsp;
+                <button mat-button style="background-color:lightgray ;">
+                    Cancel
+                </button>
+            </div>
+        </div>
     </mat-expansion-panel>
 </mat-accordion>
+
+
+
+
+<div class="row" style="margin-top: 20px;">
+    <div class="col-md-6">
+
+        <div *ngIf="isTableShow">
+            <app-table [columns]="retailersColumns" [buttons]="buttons" [data]="retailerData"
+                [pagination]="[5, 25, 100]" (onClick)="gotoItem($event)" (deleteClick)="deleteItem($event)"
+                [pageSize]="5" [tableMinWidth]="1100">
+            </app-table>
+        </div>
+    </div>
+</div>

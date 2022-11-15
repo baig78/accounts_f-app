@@ -1,9 +1,109 @@
 <app-admin-header [title]="'Product Batch'"></app-admin-header>
-<mat-accordion class="example-headers-align"  multi>
-    <mat-expansion-panel >
+<mat-accordion class="example-headers-align" multi>
+    <mat-expansion-panel [expanded]="isExpand">
         <mat-expansion-panel-header>
             Add Product Batch
         </mat-expansion-panel-header>
-        
+        <div class="example-container">
+            <form [formGroup]="productBatchForm" class="form">
+
+                <mat-divider></mat-divider>
+                <mat-form-field appearance="outline">
+                    <mat-label>Unique Id</mat-label>
+                    <input matInput placeholder="Unique Id" formControlName="uid">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Supplier Id</mat-label>
+                    <input matInput placeholder="Supplier Id" formControlName="mfr_id">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Batch</mat-label>
+                    <input matInput placeholder="Batch" formControlName="batch">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Model UID</mat-label>
+                    <input matInput placeholder="Model UID" formControlName="model_uid">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Color</mat-label>
+                    <input matInput placeholder="Color" formControlName="color">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Size</mat-label>
+                    <input matInput placeholder="Size" formControlName="size">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Price</mat-label>
+                    <input matInput placeholder="Price" formControlName="mfr_price">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>per_comm</mat-label>
+                    <input matInput placeholder="per_comm" formControlName="per_comm">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Supplier GST</mat-label>
+                    <input matInput placeholder="GST" formControlName="mfr_gst">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Retailer GST</mat-label>
+                    <input matInput placeholder="Retailer GST" formControlName="rtr_gst">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Available</mat-label>
+                    <input matInput placeholder="Available" formControlName="available">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Sold</mat-label>
+                    <input matInput placeholder="Sold" formControlName="sold">
+                </mat-form-field>
+
+
+            </form>
+            <!-- <div class="row" style="margin-bottom: 10px;">
+                <div class="col-md-3">
+                    <button mat-button class="upload-img" (click)="uploadFile()" style="background-color:#dfdfdf;">
+                        Upload Profile Picture
+                        <mat-icon>add_photo_alternate</mat-icon>
+                    </button>
+                </div>
+            </div> -->
+
+            <div class="example-button-row">
+                <button *ngIf="!isExpand" mat-button color="primary" (click)="add()">
+                    Save
+                </button> &nbsp; &nbsp;
+                <button *ngIf="isExpand" mat-button color="primary" (click)="edit()">
+                    Save
+                </button> &nbsp; &nbsp;
+                <button mat-button style="background-color:lightgray ;">
+                    Cancel
+                </button>
+            </div>
+        </div>
     </mat-expansion-panel>
 </mat-accordion>
+
+
+<div class="row" style="margin-top: 20px;">
+    <div class="col-md-6">
+
+
+        <div *ngIf="isTableShow" style="overflow-x: scroll; width: 1000px;">
+            <app-table [columns]="retailersColumns" [buttons]="buttons" [data]="retailerData"
+                [pagination]="[5, 25, 100]" (onClick)="gotoItem($event)" (deleteClick)="deleteItem($event)"
+                [pageSize]="5" [tableMinWidth]="1100">
+            </app-table>
+        </div>
+
+    </div>
+</div>

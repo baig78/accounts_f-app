@@ -80,12 +80,14 @@
 </mat-accordion>
 
 
+
 <div class="row" style="margin-top: 20px;">
     <div class="col-md-6">
-        <h2>Retailers List</h2>
-         <div *ngIf="isTableShow">
-            <app-table [columns]="retailersColumns" [buttons]="buttons" [data]="retailerData" [pagination]="[5, 25, 100]"
-                [pageSize]="5" [tableMinWidth]="1100"></app-table>
-        </div>
+
+<div *ngIf="isTableShow" >
+    <app-table [columns]="retailersColumns" [buttons]="buttons" [data]="retailerData" [pagination]="[5, 25, 100]"
+        (onClick)="gotoItem($event)" (deleteClick)="deleteItem($event)" [pageSize]="5" [tableMinWidth]="1100">
+    </app-table>
+</div>
     </div>
 </div>
