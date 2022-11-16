@@ -9,10 +9,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FooterComponent } from './mobile/shared/footer/footer.component';
 import { HeaderComponent } from './mobile/shared/header/header.component';
-import { YourCropComponent } from './mobile/pages/your-crop/your-crop.component';
 import { CommunityComponent } from './mobile/pages/community/community.component';
-import { DukaanComponent } from './mobile/pages/dukaan/dukaan.component';
-import { YourAccountComponent } from './mobile/pages/your-account/your-account.component';
 import { LoginComponent } from './mobile/pages/login/login.component';
 import { SupplierComponent } from './admin/pages/supplier/supplier.component';
 import { UserManagementComponent } from './admin/pages/user-management/user-management.component';
@@ -29,10 +26,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MaterialExampleModule} from '../app/material.module';
 import {HttpClientModule} from '@angular/common/http';
-import { AdminLoginComponent } from './admin/pages/login/login.component';
+import { AdminLoginComponent } from './admin/pages/login-signup/login/login.component';
 import { AdminHeaderComponent } from './admin/shared/header/header.component';
 import { ProoductListComponent } from './admin/pages/product-list/product-list.component';
-import { AgriMapComponent } from './admin/pages/agri-map/agri-map.component';
 import { CategoriesComponent } from './admin/pages/categories/categories.component';
 import { ExpensesComponent } from './admin/pages/expenses/expenses.component';
 import { PurchaseReturnComponent } from './admin/pages/purchases-return/purchase-return.component';
@@ -52,10 +48,7 @@ import { PaymentsComponent } from './admin/pages/payments/payments.component';
     AppComponent,
     FooterComponent,
     HeaderComponent,
-    YourCropComponent,
     CommunityComponent,
-    DukaanComponent,
-    YourAccountComponent,
     LoginComponent,
     AdminLoginComponent,
     SupplierComponent,
@@ -78,7 +71,6 @@ import { PaymentsComponent } from './admin/pages/payments/payments.component';
     DashboardComponent,
     TableComponent,
     AdminHeaderComponent,
-    AgriMapComponent,
     CategoriesComponent,
     ExpensesComponent,
     DamagePurchasesComponent

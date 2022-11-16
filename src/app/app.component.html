@@ -7,7 +7,7 @@
     width: 22%;
     margin-top: 46px;
     border-right: 1px solid #dfdfdf;
-    float: left;">
+    float: left;" *ngIf="this.router.url!='/login'">
     <!-- <div class="side-nav active"> -->
         
     <mat-list>
@@ -176,29 +176,12 @@
       </mat-accordion> -->
 
 </div>
-<div class="content-area active" style="
-    height: 87%;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    width: 78%;
-    margin: 0px;
-    margin-top: 46px;
-    padding: 10px;
-    float: left;
-  ">
+<div class="content-area active">
     <router-outlet></router-outlet>
 </div>
 <!-- </div> -->
-<mat-toolbar class="example-toolbar" style="
-    position: fixed;
-    height: 35px;
-    width: 100%;
-    line-height: 35px;
-    border-top: 1px solid #dfdfdf;
-    bottom: 0px;
-    max-height: 35px;
-  ">
-    <p class="example-app-name" style="font-size: 12px">@ Powred by Agri Plus</p>
+<mat-toolbar class="example-toolbar" >
+    <p class="example-app-name" style="font-size: 12px">@ Powred by Cinderella Footwear</p>
 </mat-toolbar>
 <!-- </div> -->
 

@@ -54,7 +54,7 @@ img, svg{
 
 
 .card-icon{
-    background-color: #5dbbc6;
+    background-color: #fff;
     width: 75px;
     height: 75px;
     vertical-align: middle !important;
@@ -63,6 +63,29 @@ img, svg{
     margin-left: -13px;
 }
 
-.total{
-    color: black;
+
+.card-head{
+    position: absolute;
+    display: flow-root;
+    top: 40px;
+    left: 80px;
+    color: white;
+}
+
+.card-desc{
+    margin-top: -50px;
+    margin-left: 35px;
+}
+
+.card-body-text{
+    text-align: center;
+}
+.tbody, td, tfoot, th, thead, tr{
+    padding: 15px;
+    text-align: center;
+    width: 18%;
+}
+
+.dl, ol, ul{
+    list-style: none;
 }

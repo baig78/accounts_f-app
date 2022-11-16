@@ -1,6 +1,9 @@
-import {AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatTableDataSource} from '@angular/material/table';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+import { empty } from 'rxjs';
+// import * as XLSX from 'xlsx';
+
 
 @Component({
   selector: 'app-table',
@@ -8,14 +11,10 @@ import {MatTableDataSource} from '@angular/material/table';
   styleUrls: ['./table.component.scss']
 })
 export class TableComponent implements AfterViewInit, OnInit {
-
-  // displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   @Input() data: any[] = [];
-  // @Input() columns: string[] = [];
   @Input() columns: any = [];
   @Input() buttons: TableBtn[] = [];
   @Output() buttonClick = new EventEmitter<string[]>();
-
   @Input() pagination: number[] = [];
   @Input() pageSize: number | any;
   @Input() tableMinWidth: number = 500;
@@ -23,65 +22,67 @@ export class TableComponent implements AfterViewInit, OnInit {
   @Output() deleteClick = new EventEmitter();
 
   dataSource = new MatTableDataSource<any>();
-
   displayedColumns: TableColumn[] = [];
+  mymodel: any;
+  mySearch: any;
 
-  // dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+  @ViewChild(MatPaginator) paginator: any = MatPaginator;
+  @ViewChild('TABLE') table: ElementRef | any;
 
-  @ViewChild(MatPaginator) paginator:any= MatPaginator;
   ngOnInit(): void {
-    console.log("-1----",this.data)
-    console.log("-2----",this.columns)
-    this.dataSource =  new MatTableDataSource();
-    this.dataSource =  new MatTableDataSource(this.data);
-    // this.displayedColumns = [...this.columns.map((c: { columnDef: any; }) => c.columnDef)];
-    // if (this.buttons.length > 0 ) this.displayedColumns = [...this.displayedColumns, 'actions'];
-    // console.log('----------',this.displayedColumns)
+    console.log("-1----", this.data)
+    console.log("-2----", this.columns)
+    this.dataSource = new MatTableDataSource();
+    this.dataSource = new MatTableDataSource(this.data);
     this.displayedColumns = this.columns;
   }
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
 
-  click(i:any) {
-    // do something
+  click(i: any) {
     this.onClick.emit(i)
-}
-click1(i:any){
-  this.deleteClick.emit(i)
+  }
+  click1(i: any) {
+    this.deleteClick.emit(i)
+  }
+  onSearch(e: any) {
+    let indexs: any[] = [];
+    this.data.find((x: any) => {
+      Object.keys(x).forEach(function (key) {
+        if(!e){
+          
+        }else if(e!='' && e!=null && e!=undefined){
+          console.log('------e----',e)
+          if (("" + (x[key]) + "").toLowerCase().includes(e.toLowerCase()) && !indexs.includes(x.id)) {
+            indexs.push(x.id)
+          }
+        }
+      });
+    })
+    this.dataSource = new MatTableDataSource();
+    console.log(indexs);
+    let data: any[] = [];
+    if(indexs.length>0){
+      indexs.find((x: any) => {
+        data.push(this.data.find((a: any) => a.id == x))
+      })
+      this.dataSource = new MatTableDataSource(data);
+    }else{
+      this.dataSource = new MatTableDataSource(this.data);
+    }
+  }
 
-}
-}
+  ExportTOExcel() {
+    // const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(this.table.nativeElement);
+    // const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    // XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
 
-// export interface PeriodicElement {
-//   name: string;
-//   position: number;
-//   weight: number;
-//   symbol: string;
-// }
+    // /* save to file */
+    // XLSX.writeFile(wb, 'TablesSize.xlsx');
 
-// const ELEMENT_DATA: PeriodicElement[] = [
-//   {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-//   {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-//   {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-//   {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-//   {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-//   {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-//   {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-//   {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-//   {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-//   {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-//   {position: 11, name: 'Sodium', weight: 22.9897, symbol: 'Na'},
-//   {position: 12, name: 'Magnesium', weight: 24.305, symbol: 'Mg'},
-//   {position: 13, name: 'Aluminum', weight: 26.9815, symbol: 'Al'},
-//   {position: 14, name: 'Silicon', weight: 28.0855, symbol: 'Si'},
-//   {position: 15, name: 'Phosphorus', weight: 30.9738, symbol: 'P'},
-//   {position: 16, name: 'Sulfur', weight: 32.065, symbol: 'S'},
-//   {position: 17, name: 'Chlorine', weight: 35.453, symbol: 'Cl'},
-//   {position: 18, name: 'Argon', weight: 39.948, symbol: 'Ar'},
-//   {position: 19, name: 'Potassium', weight: 39.0983, symbol: 'K'},
-//   {position: 20, name: 'Calcium', weight: 40.078, symbol: 'Ca'},
-// ];
+  }
+}
 export interface TableColumn {
   columnDef: string;
   header: string;

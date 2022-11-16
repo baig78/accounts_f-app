@@ -4,33 +4,48 @@
     <div class="row">
         <div class="col-md-3">
             <button mat-raised-button color="primary">
-                <mat-icon class="card-icon"> airline_seat_legroom_reduced</mat-icon> &nbsp; Total Models
+                <!-- <mat-icon class="card-icon"> scatter_plot</mat-icon> &nbsp; -->
+                <img src="../../../../assets/images/dashboard/totl_mod.png" class="card-icon" alt=""> &nbsp;
+                <div class="card-head">
+                    <div class="card-desc"> Total Models </div>
+                    <div class="card-desc"> <strong> 75 </strong></div>
+                </div>
             </button>
 
         </div>
         <div class="col-12 col-sm-6 col-md-3">
 
-            <button mat-raised-button color="accent">
-                <mat-icon class="card-icon"> scatter_plot</mat-icon> &nbsp;
-                    <span> Total Products </span>
-                    <span class="total">baig</span>
+            <button mat-raised-button color="primary">
+                <!-- <mat-icon class="card-icon"> scatter_plot</mat-icon> &nbsp; -->
+                <img src="../../../../assets/images/dashboard/total_pr.jpg" class="card-icon" alt=""> &nbsp;
+                <div class="card-head">
+                    <div class="card-desc"> Total Products </div>
+                    <div class="card-desc"> <strong> 90 </strong></div>
+                </div>
             </button>
 
-            <div>
-                <mat-icon class="card-icon"> scatter_plot</mat-icon> &nbsp; <span> Total Products </span>
-                <span class="total">baig</span>
-            </div>
+
         </div>
         <div class="col-md-3">
 
-            <button mat-raised-button color="warn">
-                <mat-icon class="card-icon"> scatter_plot</mat-icon> &nbsp; Available
+            <button mat-raised-button color="primary">
+                <!-- <mat-icon class="card-icon"> scatter_plot</mat-icon> &nbsp; -->
+                <img src="../../../../assets/images/dashboard/available.png" class="card-icon" alt=""> &nbsp;
+                <div class="card-head">
+                    <div class="card-desc"> Availabe </div>
+                    <div class="card-desc"> <strong> 85 </strong></div>
+                </div>
             </button>
         </div>
         <div class="col-md-3">
 
-            <button mat-raised-button style="background-color: #119911; color: white;">
-                <mat-icon class="card-icon"> scatter_plot</mat-icon> &nbsp; Sold
+            <button mat-raised-button color="primary">
+                <!-- <mat-icon class="card-icon"> scatter_plot</mat-icon> &nbsp; -->
+                <img src="../../../../assets/images/dashboard/sold.jfif" class="card-icon" alt=""> &nbsp;
+                <div class="card-head">
+                    <div class="card-desc"> Sold </div>
+                    <div class="card-desc"> <strong> 89 </strong></div>
+                </div>
             </button>
         </div>
 
@@ -39,7 +54,8 @@
 
 </mat-card>
 
-<div class="col-12 col-sm-6 col-md-3 stats"><a href="http://productify.codeshaper.tech/admin/categories"><div class="info-box"><span class="info-box-icon bg-success elevation-1"><i class="fas fa-tags"></i></span> <div class="info-box-content"><span class="info-box-text">Product Categories</span> <span class="info-box-number">20</span></div></div></a></div>
+
+
 
 
 
@@ -49,29 +65,169 @@
 <div class="main-container container-fluid">
 
     <div class="page-header">
-        <h1 class="page-title">C3-Pie Charts</h1>
+        <!-- <h1 class="page-title">C3-Pie Charts</h1> -->
 
     </div>
     <div class="row">
         <div class="col-lg-6 col-md-12">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Pie Chart</h3>
-                </div>
-                <div class="card-body">
-                    <div id="chart-pie" class="chartsh"></div>
-                </div>
-            </div>
+            <mat-accordion class="example-headers-align" multi>
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <div> Model 1 </div>
+                        <ul>
+                            <li>Total :<span> 99</span> &nbsp; <span> Available :</span> <span>99</span> &nbsp; <span>
+                                    Sold :</span> <span>99</span></li>
+
+                        </ul>
+                    </mat-expansion-panel-header>
+                    <div class="example-container">
+                        <table>
+
+                            <tr>
+                                <th>#</th>
+                                <th>Total</th>
+                                <th>Available</th>
+                                <th>Sold</th>
+                            </tr>
+                            <tr>
+                                <td>Black</td>
+                                <td>99</td>
+                                <td>99</td>
+                                <td>99</td>
+                            </tr>
+                            <tr>
+                                <td>Red</td>
+                                <td>88</td>
+                                <td>88</td>
+                                <td>88</td>
+                            </tr>
+                        </table>
+
+                    </div>
+
+                </mat-expansion-panel>
+            </mat-accordion>
         </div>
+
+
         <div class="col-lg-6 col-md-12">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Pie Chart with Multiple colors</h3>
-                </div>
-                <div class="card-body">
-                    <div id="chart-pie2" class="chartsh"></div>
-                </div>
-            </div>
+            <mat-accordion class="example-headers-align" multi>
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <div> Model 2 </div>
+                        <ul>
+                            <li>Total :<span> 99</span> &nbsp; <span> Available :</span> <span>99</span> &nbsp; <span>
+                                    Sold :</span> <span>99</span></li>
+
+                        </ul>
+                    </mat-expansion-panel-header>
+                    <div class="example-container">
+                        <table>
+
+                            <tr>
+                                <th>#</th>
+                                <th>Total</th>
+                                <th>Available</th>
+                                <th>Sold</th>
+                            </tr>
+                            <tr>
+                                <td>Black</td>
+                                <td>99</td>
+                                <td>99</td>
+                                <td>99</td>
+                            </tr>
+                            <tr>
+                                <td>Red</td>
+                                <td>88</td>
+                                <td>88</td>
+                                <td>88</td>
+                            </tr>
+                        </table>
+
+                    </div>
+
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+
+        <div class="col-lg-6 col-md-12">
+            <mat-accordion class="example-headers-align" multi>
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <div> Model 3 </div>
+                        <ul>
+                            <li>Total :<span> 99</span> &nbsp; <span> Available :</span> <span>99</span> &nbsp; <span>
+                                    Sold :</span> <span>99</span></li>
+
+                        </ul>
+                    </mat-expansion-panel-header>
+                    <div class="example-container">
+                        <table>
+
+                            <tr>
+                                <th>#</th>
+                                <th>Total</th>
+                                <th>Available</th>
+                                <th>Sold</th>
+                            </tr>
+                            <tr>
+                                <td>Black</td>
+                                <td>99</td>
+                                <td>99</td>
+                                <td>99</td>
+                            </tr>
+                            <tr>
+                                <td>Red</td>
+                                <td>88</td>
+                                <td>88</td>
+                                <td>88</td>
+                            </tr>
+                        </table>
+
+                    </div>
+
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+
+        <div class="col-lg-6 col-md-12">
+            <mat-accordion class="example-headers-align" multi>
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <div> Model 4 </div>
+                        <ul>
+                            <li>Total :<span> 99</span> &nbsp; <span> Available :</span> <span>99</span> &nbsp; <span>
+                                    Sold :</span> <span>99</span></li>
+
+                        </ul>
+                    </mat-expansion-panel-header>
+                    <div class="example-container">
+                        <table>
+
+                            <tr>
+                                <th>#</th>
+                                <th>Total</th>
+                                <th>Available</th>
+                                <th>Sold</th>
+                            </tr>
+                            <tr>
+                                <td>Black</td>
+                                <td>99</td>
+                                <td>99</td>
+                                <td>99</td>
+                            </tr>
+                            <tr>
+                                <td>Red</td>
+                                <td>88</td>
+                                <td>88</td>
+                                <td>88</td>
+                            </tr>
+                        </table>
+
+                    </div>
+
+                </mat-expansion-panel>
+            </mat-accordion>
         </div>
     </div>
 </div>
