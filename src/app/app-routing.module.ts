@@ -23,6 +23,7 @@ import { NewCreditNotesComponent } from './admin/pages/sales/new-credit-notes/ne
 import { ProductBatchComponent } from './admin/pages/product-batch/product-batch.component';
 import { ProductModelComponent } from './admin/pages/product-model/product-model.component';
 import { PaymentsComponent } from './admin/pages/payments/payments.component';
+import { NewSalesComponent } from './admin/pages/sales/new-sales/new-sales.component';
 
 const routes: Routes = [
   { path: 'staff', component: StaffComponent },
@@ -47,6 +48,7 @@ const routes: Routes = [
   { path: 'product-batch', component: ProductBatchComponent },
   { path: 'product-model', component: ProductModelComponent },
   { path: 'payment', component: PaymentsComponent },
+  { path: 'new-sales', component: NewSalesComponent },
   // { path: 'leaves', loadChildren: () => import(`./leaves/leaves.module`).then(m => m.LeavesModule) },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: '**', component: AdminLoginComponent },

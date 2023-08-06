@@ -1,0 +1,119 @@
+<app-admin-header></app-admin-header>
+
+<div class="title">Sales</div>
+<mat-divider></mat-divider>
+
+
+<div class="example-container">
+    <form [formGroup]="billsForm" class="form">
+
+
+        <div class="row">
+            <div class="col-md-3 iw">
+                <mat-form-field appearance="outline">
+                    <mat-label>Customer Name</mat-label>
+                    <input matInput placeholder="Customer Name" formControlName="customerName">
+                </mat-form-field>
+            </div>
+
+            <!-- <div class="col-md-3 iw">
+                <mat-form-field appearance="outline">
+                    <mat-label>Date</mat-label>
+                    <input matInput placeholder="Date" formControlName="date">
+                </mat-form-field>
+            </div> -->
+
+            <div class="col-md-3 iw">
+                <mat-form-field>
+                    <mat-label>Choose a date</mat-label>
+                    <input matInput [matDatepicker]="picker">
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+
+            </div>
+
+
+            <div class="col-md-3 iw">
+                <mat-form-field appearance="outline">
+                    <mat-label>Invoice No</mat-label>
+                    <input matInput placeholder="Invoice No" formControlName="invoiceNo">
+                </mat-form-field>
+            </div>
+
+
+
+            <div class="col-md-3 iw">
+                <mat-form-field appearance="outline">
+                    <mat-label>Retailer Id</mat-label>
+                    <input matInput placeholder="Retailer Id" formControlName="retailerId">
+                </mat-form-field>
+            </div>
+
+
+        </div>
+
+
+
+
+        <!-- <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Total Paid</mat-label>
+                        <input matInput placeholder="Total Payment" formControlName="totalPaid">
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Payment Meathod</mat-label>
+                        <mat-select >
+                            <mat-option *ngFor="let payment of payments" [value]="payment.value">
+                                {{ payment.viewValue }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="row">
+                <mat-form-field appearance="outline">
+                    <mat-label>Sales Note</mat-label>
+                    <textarea matInput placeholder="Purchase Note"></textarea>
+                </mat-form-field>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+
+                    <button mat-button class="upload-img" (click)="uploadFile()" style="background-color:#dfdfdf;">
+                        Upload Profile Picture
+                        <mat-icon>add_photo_alternate</mat-icon>
+
+                    </button>
+                </div>
+                <div class="col-md-6">
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Status</mat-label>
+                        <mat-select>
+                            <mat-option *ngFor="let staff of staffs" [value]="staff.value">
+                                {{staff.viewValue}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div> -->
+        <!-- <div class="example-button-row">
+                    <button *ngIf="!isExpand" mat-button color="primary" (click)="add()">
+                        Save
+                    </button> &nbsp; &nbsp;
+                    <button *ngIf="isExpand" mat-button color="primary" (click)="edit()">
+                        Save
+                    </button> &nbsp; &nbsp;
+                    <button mat-button style="background-color:lightgray ;">
+                        Cancel
+                    </button>
+                </div> -->
+    </form>
+</div>

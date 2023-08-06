@@ -9,7 +9,7 @@
     border-right: 1px solid #dfdfdf;
     float: left;" *ngIf="this.router.url!='/login'">
     <!-- <div class="side-nav active"> -->
-        
+
     <mat-list>
         <mat-list-item routerLink="/dashboard" [ngClass]="this.router.url == '/dashboard' ? 'link-active' : ''">
             <mat-icon>tab</mat-icon>
@@ -17,11 +17,226 @@
         </mat-list-item>
         <mat-divider></mat-divider>
 
-        <mat-list-item routerLink="/user-management"
-            [ngClass]="this.router.url == '/user-management' ? 'link-active' : ''">
-            <mat-icon>group</mat-icon>
-            &nbsp; &nbsp; Users
-        </mat-list-item>
+        <mat-accordion class="app-nav-accordion">
+
+            <mat-expansion-panel class="mat-elevation-z0">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>Sales</mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-nav-list>
+                    <mat-list-item routerLink="/new-sales" [ngClass]="this.router.url == '/new-sales'? 'link-active' : ''">
+                        <mat-icon> format_list_bulleted</mat-icon>
+                        &nbsp; &nbsp; New Sales
+                    </mat-list-item>
+                    <mat-list-item routerLink="/new-invoice">
+                        <mat-icon> format_list_bulleted</mat-icon>
+                        &nbsp; &nbsp; Sales List
+                    </mat-list-item>
+                    <mat-list-item routerLink="/new-invoice">
+                        <mat-icon> format_list_bulleted</mat-icon>
+                        &nbsp; &nbsp; New Sales Return
+                    </mat-list-item>
+                    <mat-list-item routerLink="/new-invoice">
+                        <mat-icon> format_list_bulleted</mat-icon>
+                        &nbsp; &nbsp; Sales Return
+                    </mat-list-item>
+
+                    <!-- <a mat-list-item>Questions</a>
+                    <a mat-list-item>Create New Quote</a> -->
+
+                </mat-nav-list>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <mat-divider></mat-divider>
+
+        <mat-accordion class="app-nav-accordion">
+
+            <mat-expansion-panel class="mat-elevation-z0">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>Customers</mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-nav-list>
+                    <mat-list-item>
+                        <mat-icon> format_list_bulleted</mat-icon>
+                        &nbsp; &nbsp; New Customer
+                    </mat-list-item>
+                    <mat-list-item>
+                        <mat-icon> format_list_bulleted</mat-icon>
+                        &nbsp; &nbsp; Customer List
+                    </mat-list-item>
+
+
+                    <!-- <a mat-list-item>Questions</a>
+                    <a mat-list-item>Create New Quote</a> -->
+
+                </mat-nav-list>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <mat-divider></mat-divider>
+
+        <mat-accordion class="app-nav-accordion">
+
+            <mat-expansion-panel class="mat-elevation-z0">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>Purchase</mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-nav-list>
+                    <mat-list-item>
+                        <mat-icon> format_list_bulleted</mat-icon>
+                        &nbsp; &nbsp; New Purchase
+                    </mat-list-item>
+                    <mat-list-item routerLink="/new-invoice">
+                        <mat-icon> format_list_bulleted</mat-icon>
+                        &nbsp; &nbsp; Purchase List
+                    </mat-list-item>
+                    <mat-list-item routerLink="/new-invoice">
+                        <mat-icon> format_list_bulleted</mat-icon>
+                        &nbsp; &nbsp; New Purchase Return
+                    </mat-list-item>
+                    <mat-list-item routerLink="/new-invoice">
+                        <mat-icon> format_list_bulleted</mat-icon>
+                        &nbsp; &nbsp; Purchase Return
+                    </mat-list-item>
+
+                    <!-- <a mat-list-item>Questions</a>
+                    <a mat-list-item>Create New Quote</a> -->
+
+                </mat-nav-list>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <mat-divider></mat-divider>
+
+        <mat-accordion class="app-nav-accordion">
+
+            <mat-expansion-panel class="mat-elevation-z0">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>Supplier</mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-nav-list>
+                    <mat-list-item>
+                        <mat-icon> format_list_bulleted</mat-icon>
+                        &nbsp; &nbsp; New Supplier
+                    </mat-list-item>
+                    <mat-list-item routerLink="/new-invoice">
+                        <mat-icon> format_list_bulleted</mat-icon>
+                        &nbsp; &nbsp; Supplier List
+                    </mat-list-item>
+
+                    <!-- <a mat-list-item>Questions</a>
+                    <a mat-list-item>Create New Quote</a> -->
+
+                </mat-nav-list>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <mat-divider></mat-divider>
+
+        <mat-accordion class="app-nav-accordion">
+
+            <mat-expansion-panel class="mat-elevation-z0">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>Expenses</mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-nav-list>
+                    <mat-list-item>
+                        <mat-icon> format_list_bulleted</mat-icon>
+                        &nbsp; &nbsp; New Expenses
+                    </mat-list-item>
+                    <mat-list-item routerLink="/new-invoice">
+                        <mat-icon> format_list_bulleted</mat-icon>
+                        &nbsp; &nbsp; Expenses List
+                    </mat-list-item>
+                    <mat-list-item>
+                        <mat-icon> format_list_bulleted</mat-icon>
+                        &nbsp; &nbsp; New Category
+                    </mat-list-item>
+                    <mat-list-item routerLink="/new-invoice">
+                        <mat-icon> format_list_bulleted</mat-icon>
+                        &nbsp; &nbsp; Category List
+                    </mat-list-item>
+
+                    <!-- <a mat-list-item>Questions</a>
+                    <a mat-list-item>Create New Quote</a> -->
+
+                </mat-nav-list>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <mat-divider></mat-divider>
+
+        <mat-accordion class="app-nav-accordion">
+
+            <mat-expansion-panel class="mat-elevation-z0">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>Reports</mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-nav-list>
+                    <mat-list-item>
+                        <mat-icon> format_list_bulleted</mat-icon>
+                        &nbsp; &nbsp; Profit & Loss Report
+                    </mat-list-item>
+                    <mat-list-item routerLink="/new-invoice">
+                        <mat-icon> format_list_bulleted</mat-icon>
+                        &nbsp; &nbsp; Purchase Report
+                    </mat-list-item>
+                    <mat-list-item>
+                        <mat-icon> format_list_bulleted</mat-icon>
+                        &nbsp; &nbsp; Purchase Return Report
+                    </mat-list-item>
+                    <mat-list-item routerLink="/new-invoice">
+                        <mat-icon> format_list_bulleted</mat-icon>
+                        &nbsp; &nbsp; Purchase Payments Report
+                    </mat-list-item>
+                    <mat-list-item routerLink="/new-invoice">
+                        <mat-icon> format_list_bulleted</mat-icon>
+                        &nbsp; &nbsp; Sales Report
+                    </mat-list-item>
+                    <mat-list-item routerLink="/new-invoice">
+                        <mat-icon> format_list_bulleted</mat-icon>
+                        &nbsp; &nbsp; Sales Return Report
+                    </mat-list-item>
+                    <mat-list-item routerLink="/new-invoice">
+                        <mat-icon> format_list_bulleted</mat-icon>
+                        &nbsp; &nbsp; Sales Payments Report
+                    </mat-list-item>
+                    <mat-list-item routerLink="/new-invoice">
+                        <mat-icon> format_list_bulleted</mat-icon>
+                        &nbsp; &nbsp; Expense Report
+                    </mat-list-item>
+
+                    <!-- <a mat-list-item>Questions</a>
+                    <a mat-list-item>Create New Quote</a> -->
+
+                </mat-nav-list>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <mat-divider></mat-divider>
+
+        <mat-accordion class="app-nav-accordion">
+
+            <mat-expansion-panel class="mat-elevation-z0">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>Users</mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-nav-list>
+                    <mat-list-item>
+                        <mat-icon> format_list_bulleted</mat-icon>
+                        &nbsp; &nbsp; New User
+                    </mat-list-item>
+                    <mat-list-item routerLink="/new-invoice">
+                        <mat-icon> format_list_bulleted</mat-icon>
+                        &nbsp; &nbsp; User List
+                    </mat-list-item>
+
+                    <mat-list-item routerLink="/new-invoice">
+                        <mat-icon> format_list_bulleted</mat-icon>
+                        &nbsp; &nbsp; Roles List
+                    </mat-list-item>
+
+                    <!-- <a mat-list-item>Questions</a>
+                    <a mat-list-item>Create New Quote</a> -->
+
+                </mat-nav-list>
+            </mat-expansion-panel>
+        </mat-accordion>
         <mat-divider></mat-divider>
 
         <!-- <mat-list-item routerLink="/staff" [ngClass]="this.router.url == '/staff' ? 'link-active' : ''">
@@ -32,12 +247,12 @@
 
 
 
-
+        <!-- 
         <mat-list-item routerLink="/supplier" [ngClass]="this.router.url == '/supplier' ? 'link-active' : ''">
             <mat-icon>group</mat-icon>
             &nbsp; &nbsp; Manufacturers
         </mat-list-item>
-        <mat-divider></mat-divider>
+        <mat-divider></mat-divider> -->
 
         <!-- <mat-list-item routerLink="/purchases" [ngClass]="this.router.url == '/purchases' ? 'link-active' : ''">
             <mat-icon> format_list_bulleted</mat-icon>
@@ -60,35 +275,13 @@
         <mat-divider></mat-divider> -->
 
 
-        <mat-list-item routerLink="/retailers" [ngClass]="this.router.url == '/retailers' ? 'link-active' : ''">
+        <!-- <mat-list-item routerLink="/retailers" [ngClass]="this.router.url == '/retailers' ? 'link-active' : ''">
             <mat-icon> format_list_bulleted</mat-icon>
             &nbsp; &nbsp; Retailers
         </mat-list-item>
-        <mat-divider></mat-divider>
+        <mat-divider></mat-divider> -->
 
-        <!-- <mat-accordion class="app-nav-accordion">
-         
-            <mat-expansion-panel class="mat-elevation-z0">
-              <mat-expansion-panel-header>
-                  <mat-panel-title>Sales</mat-panel-title>
-              </mat-expansion-panel-header>
-              <mat-nav-list>
-                  <a mat-list-item>Invoices</a>
-                  <mat-list-item routerLink="/new-invoice" [ngClass]="this.router.url == '/new-invoice'? 'link-active' : ''">
-                    <mat-icon> format_list_bulleted</mat-icon>
-                    &nbsp; &nbsp; New Sales Invoice
-                </mat-list-item>
-                  <a mat-list-item>New Sales Invoice</a>
-                  <a mat-list-item>New Invoice</a>
-                  <a mat-list-item>Credit Notes</a>
-                  <a mat-list-item>New Credit Notes</a>
-                  <a mat-list-item>Questions</a>
-                  <a mat-list-item>Create New Quote</a>
-                  
-              </mat-nav-list>
-          </mat-expansion-panel>
-          </mat-accordion>
-          <mat-divider></mat-divider> -->
+
 
 
 
@@ -98,8 +291,8 @@
         </mat-list-item>
         <mat-divider></mat-divider> -->
 
-        <mat-divider></mat-divider>
-        <mat-list-item routerLink="/new-invoice" [ngClass]="this.router.url == '/new-invoice' ? 'link-active' : ''">
+        <!-- <mat-divider></mat-divider>
+        <mat-list-item routerLink="/new-invoice">
             <mat-icon>store</mat-icon> &nbsp; &nbsp; Bills
         </mat-list-item>
         <mat-divider></mat-divider>
@@ -121,9 +314,14 @@
             <mat-icon>group</mat-icon>
             &nbsp; &nbsp; Payments
         </mat-list-item>
-        <mat-divider></mat-divider>
+        <mat-divider></mat-divider> -->
 
-        <mat-divider></mat-divider>
+        <!-- <mat-list-item routerLink="/user-management" [ngClass]="this.router.url == '/user-management' ? 'link-active' : ''">
+            <mat-icon>group</mat-icon>
+            &nbsp; &nbsp; Users
+        </mat-list-item>
+        <mat-divider></mat-divider> -->
+
         <!-- <mat-list-item routerLink="/expenses" [ngClass]="this.router.url == '/expenses' ? 'link-active' : ''">
             <mat-icon>bug_report</mat-icon>
             &nbsp; &nbsp; Expenses
@@ -155,7 +353,7 @@
             &nbsp; &nbsp; Agri Map
         </mat-list-item> -->
 
-       
+
 
     </mat-list>
     <!-- <mat-accordion class="app-nav-accordion">
@@ -180,8 +378,7 @@
     <router-outlet></router-outlet>
 </div>
 <!-- </div> -->
-<mat-toolbar class="example-toolbar" >
+<mat-toolbar class="example-toolbar">
     <p class="example-app-name" style="font-size: 12px">@ Powred by Cinderella Footwear</p>
 </mat-toolbar>
 <!-- </div> -->
-

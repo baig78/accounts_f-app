@@ -93,10 +93,14 @@ table.mat-table {
     width: 95%;
 }
 
-.ng-tns-c94-13.ng-trigger.ng-trigger-transformPanel.mat-select-panel{
+.ng-tns-c94-13.ng-trigger.ng-trigger-transformPanel.mat-select-panel {
     // margin-top: 29px;
 }
 
-.mat-select-panel:not([class*=mat-elevation-z]){
+.mat-select-panel:not([class*=mat-elevation-z]) {
     margin-top: 29px;
+}
+
+.example-container {
+    margin-top: 25px;
 }

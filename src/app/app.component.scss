@@ -1,6 +1,7 @@
-.mat-accordion .mat-expansion-panel:last-of-type{
+.mat-accordion .mat-expansion-panel:last-of-type {
     margin: 10px 0px;
 }
+
 // .content-area{
 //     margin-top: 85px;
 //      width: 96%; margin-left: 2%;
@@ -15,11 +16,11 @@
 // .side-nav.active{
 //     width: 20%;
 // }
-::ng-deep body{
+::ng-deep body {
     overflow: hidden;
 }
 
-.content-area{
+.content-area {
     height: 87%;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -30,7 +31,7 @@
     float: left;
 }
 
-.example-toolbar{
+.example-toolbar {
     position: fixed;
     height: 35px;
     width: 100%;

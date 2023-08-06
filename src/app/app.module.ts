@@ -41,6 +41,7 @@ import { NewCreditNotesComponent } from './admin/pages/sales/new-credit-notes/ne
 import { ProductBatchComponent } from './admin/pages/product-batch/product-batch.component';
 import { ProductModelComponent } from './admin/pages/product-model/product-model.component';
 import { PaymentsComponent } from './admin/pages/payments/payments.component';
+import { NewSalesComponent } from './admin/pages/sales/new-sales/new-sales.component';
 
 
 @NgModule({
@@ -73,7 +74,8 @@ import { PaymentsComponent } from './admin/pages/payments/payments.component';
     AdminHeaderComponent,
     CategoriesComponent,
     ExpensesComponent,
-    DamagePurchasesComponent
+    DamagePurchasesComponent,
+    NewSalesComponent
 
   ],
   imports: [
