@@ -7,6 +7,9 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./new-sales.component.scss']
 })
 export class NewSalesComponent implements OnInit {
+  selectedDate: Date = new Date();
+  date = new FormControl();
+
   
   billsForm: any = FormGroup;
   createBillForm() {

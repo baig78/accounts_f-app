@@ -11,8 +11,10 @@
     <!-- <div class="side-nav active"> -->
 
     <mat-list>
+
+
         <mat-list-item routerLink="/dashboard" [ngClass]="this.router.url == '/dashboard' ? 'link-active' : ''">
-            <mat-icon>tab</mat-icon>
+            <!-- <mat-icon>tab</mat-icon> -->
             &nbsp; &nbsp; Dashboard
         </mat-list-item>
         <mat-divider></mat-divider>
@@ -44,6 +46,7 @@
                     <!-- <a mat-list-item>Questions</a>
                     <a mat-list-item>Create New Quote</a> -->
 
+
                 </mat-nav-list>
             </mat-expansion-panel>
         </mat-accordion>
@@ -56,11 +59,11 @@
                     <mat-panel-title>Customers</mat-panel-title>
                 </mat-expansion-panel-header>
                 <mat-nav-list>
-                    <mat-list-item>
+                    <mat-list-item routerLink="/new-customer" [ngClass]="this.router.url == '/new-customer'? 'link-active' : ''">
                         <mat-icon> format_list_bulleted</mat-icon>
                         &nbsp; &nbsp; New Customer
                     </mat-list-item>
-                    <mat-list-item>
+                    <mat-list-item routerLink="/customer-list" [ngClass]="this.router.url == '/customer-list'? 'link-active' : ''">
                         <mat-icon> format_list_bulleted</mat-icon>
                         &nbsp; &nbsp; Customer List
                     </mat-list-item>

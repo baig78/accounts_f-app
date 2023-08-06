@@ -40,3 +40,8 @@
     bottom: 0px;
     max-height: 35px;
 }
+
+::ng-deep .mat-list-base .mat-list-item .mat-list-item-content,
+.mat-list-base .mat-list-option .mat-list-item-content {
+    font-size: 13px;
+}

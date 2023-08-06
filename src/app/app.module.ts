@@ -42,6 +42,8 @@ import { ProductBatchComponent } from './admin/pages/product-batch/product-batch
 import { ProductModelComponent } from './admin/pages/product-model/product-model.component';
 import { PaymentsComponent } from './admin/pages/payments/payments.component';
 import { NewSalesComponent } from './admin/pages/sales/new-sales/new-sales.component';
+import { CustomerListComponent } from './admin/pages/customer/customer-list/customer-list.component';
+import { NewCustomerComponent } from './admin/pages/customer/new-customer/new-customer.component';
 
 
 @NgModule({
@@ -75,7 +77,9 @@ import { NewSalesComponent } from './admin/pages/sales/new-sales/new-sales.compo
     CategoriesComponent,
     ExpensesComponent,
     DamagePurchasesComponent,
-    NewSalesComponent
+    NewSalesComponent,
+    CustomerListComponent,
+    NewCustomerComponent
 
   ],
   imports: [

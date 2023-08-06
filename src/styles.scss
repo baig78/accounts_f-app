@@ -93,14 +93,28 @@ table.mat-table {
     width: 95%;
 }
 
-.ng-tns-c94-13.ng-trigger.ng-trigger-transformPanel.mat-select-panel {
-    // margin-top: 29px;
-}
-
+// .ng-tns-c94-13.ng-trigger.ng-trigger-transformPanel.mat-select-panel {
+// margin-top: 29px;
+// }
 .mat-select-panel:not([class*=mat-elevation-z]) {
     margin-top: 29px;
 }
 
 .example-container {
     margin-top: 25px;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline {
+    color: #3f51b5;
+}
+
+.title {
+    font-size: 22px;
+    font-weight: 500;
+}
+
+::ng-deep .mat-list-base .mat-list-item .mat-list-item-content,
+.mat-list-base .mat-list-option .mat-list-item-content {
+    padding: 0 0px;
+    font-size: 17px;
 }
