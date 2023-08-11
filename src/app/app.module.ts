@@ -44,6 +44,8 @@ import { PaymentsComponent } from './admin/pages/payments/payments.component';
 import { NewSalesComponent } from './admin/pages/sales/new-sales/new-sales.component';
 import { CustomerListComponent } from './admin/pages/customer/customer-list/customer-list.component';
 import { NewCustomerComponent } from './admin/pages/customer/new-customer/new-customer.component';
+import { AddTableComponent } from './admin/shared/add-table/add-table.component';
+import { ButtonComponent } from './admin/shared/buttons/button/button.component';
 
 
 @NgModule({
@@ -79,7 +81,9 @@ import { NewCustomerComponent } from './admin/pages/customer/new-customer/new-cu
     DamagePurchasesComponent,
     NewSalesComponent,
     CustomerListComponent,
-    NewCustomerComponent
+    NewCustomerComponent,
+    AddTableComponent,
+    ButtonComponent
 
   ],
   imports: [

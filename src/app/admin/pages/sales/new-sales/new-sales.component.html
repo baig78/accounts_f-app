@@ -116,3 +116,160 @@
 
     </form>
 </div>
+
+
+
+<div class="center-container">
+    <app-button color="primary" (click)="addRow()">
+        <mat-icon>add</mat-icon>
+        Add New Item
+    </app-button>
+    <p class="error-message">{{ errorMessage }}</p>
+</div>
+<!-- <button mat-raised-button color="primary" (click)="addRow()">Add Row</button> -->
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef class="center-align-header"> Description </th>
+        <td mat-cell *matCellDef="let element">
+            <mat-form-field appearance="outline">
+                <!-- <mat-label>description</mat-label> -->
+                <input matInput placeholder="Description" [(ngModel)]="element.description">
+            </mat-form-field>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="quantity">
+        <th mat-header-cell *matHeaderCellDef class="center-align-header"> Quantity </th>
+        <td mat-cell *matCellDef="let element" class="quantity-cell">
+            <div class="quantity-controls">
+                <button mat-icon-button color="primary" class="min-plus-icon" (click)="decrementQuantity(element)">
+                    <mat-icon>remove</mat-icon>
+                </button>
+                <mat-form-field ngClass="amount-input-width" appearance="outline" class="quantity-input">
+                    <input matInput placeholder="Quantity" [(ngModel)]="element.quantity">
+                </mat-form-field>
+                <button mat-icon-button color="primary" class="min-plus-icon" (click)="incrementQuantity(element)">
+                    <mat-icon>add</mat-icon>
+                </button>
+            </div>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="unitPrice">
+        <th mat-header-cell *matHeaderCellDef class="center-align-header"> Unit Price </th>
+        <td mat-cell *matCellDef="let element">
+            <mat-form-field ngClass="amount-input-width" appearance="outline">
+                <!-- <mat-label>description</mat-label> -->
+                <input matInput placeholder="Unit Price" [(ngModel)]="element.unitPrice">
+            </mat-form-field>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="discount">
+        <th mat-header-cell *matHeaderCellDef class="center-align-header"> Discount </th>
+        <td mat-cell *matCellDef="let element">
+            <mat-form-field ngClass="amount-input-width" appearance="outline">
+                <!-- <mat-label>description</mat-label> -->
+                <input matInput placeholder="Discount" [(ngModel)]="element.discount">
+            </mat-form-field>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="taxAmount">
+        <th mat-header-cell *matHeaderCellDef class="center-align-header"> Tax Amount </th>
+        <td mat-cell *matCellDef="let element">
+            <mat-form-field ngClass="amount-input-width" appearance="outline">
+                <!-- <mat-label>description</mat-label> -->
+                <input matInput placeholder="Tax Amount" [(ngModel)]="element.taxAmount">
+            </mat-form-field>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="totalAmount">
+        <th mat-header-cell *matHeaderCellDef class="center-align-header"> Total Amount </th>
+        <td mat-cell *matCellDef="let element">
+            <mat-form-field ngClass="amount-input-width" appearance="outline">
+                <!-- <mat-label>description</mat-label> -->
+                <input matInput placeholder="Total Amount" [(ngModel)]="element.totalAmount">
+            </mat-form-field>
+        </td>
+    </ng-container>
+
+
+
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef class="center-align-header"> Actions </th>
+        <td mat-cell *matCellDef="let element">
+            <app-button color="warn" [floatLeft]="true" (click)="deleteRow(element)">
+                <mat-icon>delete</mat-icon>
+            </app-button>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<!-- <button mat-raised-button color="primary" (click)="saveData()">Save</button> -->
+
+
+<ng-template #popupTemplate let-dialogRef>
+    <h2 mat-dialog-title>Form Popup</h2>
+    <mat-dialog-content>
+        <form (ngSubmit)="onSubmit()" #form="ngForm">
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field>
+                        <mat-label>Tax Type</mat-label>
+                        <mat-select [(ngModel)]="formData.taxType" name="taxType" required>
+                            <mat-option value="sales">Inclusive</mat-option>
+                            <mat-option value="vat">Exclusive</mat-option>
+                            <!-- Add more options as needed -->
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+
+                    <mat-form-field>
+                        <mat-label>Tax</mat-label>
+                        <mat-select [(ngModel)]="formData.tax" name="tax">
+                            <mat-option value="5">5%</mat-option>
+                            <mat-option value="10">10%</mat-option>
+                            <!-- Add more options as needed -->
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field>
+                        <mat-label>Discount Type</mat-label>
+                        <mat-select [(ngModel)]="formData.discountType" name="discountType" required>
+                            <mat-option value="fixed">Fixed Amount(₹)</mat-option>
+                            <mat-option value="percentage">Percentage(%)</mat-option>
+                            <!-- Add more options as needed -->
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+
+                    <mat-form-field>
+                        <mat-label>Discount</mat-label>
+                        <input matInput type="number" [(ngModel)]="formData.discount" name="discount">
+                    </mat-form-field>
+                </div>
+            </div>
+        </form>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <mat-dialog-actions>
+            <button mat-button (click)="dialogRef.close()">Close</button>
+            <button mat-button color="primary" (click)="onSubmit()">Save</button>
+        </mat-dialog-actions>
+    </mat-dialog-actions>
+</ng-template>
+
+<button mat-button (click)="openPopup(popupTemplate)">Open Popup</button>

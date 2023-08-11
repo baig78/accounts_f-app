@@ -5,6 +5,13 @@
 
 
 <div class="example-container">
-    dfdasf
+    <div class="search" style="margin-top: 20px;">
+        <div class="row">
+        </div>
+        <div *ngIf="isTableShow" style="overflow-x: scroll; width: 1000px;">
+            <app-table [columns]="billsColumns" [buttons]="buttons" [data]="billsData" [pagination]="[5, 25, 100]" (onClick)="gotoItem($event)" (deleteClick)="deleteItem($event)" [pageSize]="5" [tableMinWidth]="1100">
+            </app-table>
+        </div>
+    </div>
 
 </div>
