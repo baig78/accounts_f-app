@@ -2,7 +2,8 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatDialog } from '@angular/material/dialog';
+import { DialogService } from 'src/app/admin/shared/dialog.service';
+// import { MatDialog } from '@angular/material/dialog';
 
 
 @Component({
@@ -11,17 +12,13 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./new-sales.component.scss']
 })
 export class NewSalesComponent implements OnInit {
+  discount: string = '';
   selectedDate: Date = new Date();
   date = new FormControl();
   errorMessage: string = '';
 
 
-  formData = {
-    taxType: 'sales',
-    tax: '',
-    discountType: 'fixed',
-    discount: ''
-  };
+
 
   
   billsForm: any = FormGroup;
@@ -40,12 +37,23 @@ export class NewSalesComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private _snackBar: MatSnackBar,
-    private dialog: MatDialog
+    // private dialog: MatDialog
+    private dialogService: DialogService
 
-  ) { }
+  ) {
+    this.dataSource = new MatTableDataSource<Person>([
+      // Initialize your data source here
+    ]);
+   }
+  openDialog(): void {
+    this.dialogService.openDialog();
+  }
 
   ngOnInit(): void {
-    this.createBillForm()
+    this.createBillForm();
+    this.dialogService.getInputValueObservable().subscribe((value) => {
+      this.discount = value;
+    });
   }
 
   myFilter(d: Date): boolean {
@@ -66,8 +74,7 @@ export class NewSalesComponent implements OnInit {
       return false;
     }
 
-    /** Prevent Saturday, Sunda.*/
-    //		return day !== 0 && day !== 6;
+
   }
 
 
@@ -120,10 +127,7 @@ export class NewSalesComponent implements OnInit {
       this.openSnackBar('Please fill all fields.', 'Got it');
     }
   }
-  saveRow(row: Person) {
-    // Here you can perform the logic to save the specific row's data, for example, send it to an API.
-    console.log('Saving:', row);
-  }
+
 
   incrementQuantity(row: Person) {
     row.quantity += 1;
@@ -135,30 +139,65 @@ export class NewSalesComponent implements OnInit {
     }
   }
 
-  openPopup(templateRef: TemplateRef<any>) {
-    const dialogRef = this.dialog.open(templateRef, {
-      width: '400px', // Adjust the width as needed
-    });
+
+
+
+
+  // onSubmit(formData:any) {
+  //   if (!this.formData.tax || !this.formData.discount) {
+  //     // Handle form validation errors
+  //     return;
+  //   }
+
+  //   // Perform form submission and save logic here
+  //   console.log('Form data submitted:', this.formData);
+
+  //   // Close the popup after submitting the form
+  //   this.dialog.closeAll();
+  // }
+
+  saveData(){
+
   }
 
-  saveForm() {
-    // Perform form submission and save logic here
-    console.log('Form data:', this.formData);
+  // calculateTotalAmount(): number {
+  //   let totalAmount = 0;
+  
+  //   for (let element of this.dataSource.data) {
+  //     let quantity = element.quantity || 0;
+  //     let unitPrice = element.unitPrice || 0;
+  //     let discount = element.discount || 0;
+  //     let taxAmount = element.taxAmount || 0;
+  
+  //     let subTotal = quantity * unitPrice
+  //     let discnt = ( discount / 100) * discount
+  //     let mainTotal = subTotal - discnt
+  //     let taxAmt = taxAmount
+  //     let totalAmt = mainTotal + taxAmt
+  //     totalAmount += totalAmt;
+  //   }
+  
+  //   return totalAmount;
+  // }
+  
+  calculateTotalAmount(element: any): number {
+     var a = ((element.quantity * element.unitPrice) - element.discount); 
+    var b =  parseInt(element.taxAmount);
+    return (a)+(b);
   }
 
-  onSubmit() {
-    if (!this.formData.tax || !this.formData.discount) {
-      // Handle form validation errors
-      return;
+  calculateTotalDiscount(): number {
+    let totalDiscount = 0;
+
+    for (const element of this.dataSource.data) {
+        // Assuming 'element.discount' contains the discount for each row
+        totalDiscount += element.discount || 0;
     }
 
-    // Perform form submission and save logic here
-    console.log('Form data submitted:', this.formData);
-
-    // Close the popup after submitting the form
-    this.dialog.closeAll();
-  }
-
+    return totalDiscount;
+}
+  
+  
   
 
 }

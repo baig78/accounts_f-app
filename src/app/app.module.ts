@@ -46,6 +46,7 @@ import { CustomerListComponent } from './admin/pages/customer/customer-list/cust
 import { NewCustomerComponent } from './admin/pages/customer/new-customer/new-customer.component';
 import { AddTableComponent } from './admin/shared/add-table/add-table.component';
 import { ButtonComponent } from './admin/shared/buttons/button/button.component';
+import { DialogComponent } from './admin/shared/dialog/dialog.component';
 
 
 @NgModule({
@@ -83,7 +84,8 @@ import { ButtonComponent } from './admin/shared/buttons/button/button.component'
     CustomerListComponent,
     NewCustomerComponent,
     AddTableComponent,
-    ButtonComponent
+    ButtonComponent,
+    DialogComponent
 
   ],
   imports: [
