@@ -160,25 +160,7 @@ export class NewSalesComponent implements OnInit {
 
   }
 
-  // calculateTotalAmount(): number {
-  //   let totalAmount = 0;
-  
-  //   for (let element of this.dataSource.data) {
-  //     let quantity = element.quantity || 0;
-  //     let unitPrice = element.unitPrice || 0;
-  //     let discount = element.discount || 0;
-  //     let taxAmount = element.taxAmount || 0;
-  
-  //     let subTotal = quantity * unitPrice
-  //     let discnt = ( discount / 100) * discount
-  //     let mainTotal = subTotal - discnt
-  //     let taxAmt = taxAmount
-  //     let totalAmt = mainTotal + taxAmt
-  //     totalAmount += totalAmt;
-  //   }
-  
-  //   return totalAmount;
-  // }
+
   
   calculateTotalAmount(element: any): number {
      var a = ((element.quantity * element.unitPrice) - element.discount); 
@@ -190,11 +172,13 @@ export class NewSalesComponent implements OnInit {
     let totalQuantity = 0;
 
     for (const element of this.dataSource.data) {
-        totalQuantity += element.quantity || 0;
+        const quantityAsString = String(element.quantity);
+        totalQuantity += parseInt(quantityAsString) || 0;
     }
 
     return totalQuantity;
 }
+
 
 calculateSubTotal(): number {
   let subTotal = 0;
