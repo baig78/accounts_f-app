@@ -24,6 +24,8 @@ import { ProductBatchComponent } from './admin/pages/product-batch/product-batch
 import { ProductModelComponent } from './admin/pages/product-model/product-model.component';
 import { PaymentsComponent } from './admin/pages/payments/payments.component';
 import { NewSalesComponent } from './admin/pages/sales/new-sales/new-sales.component';
+import { NewCustomerComponent } from './admin/pages/customer/new-customer/new-customer.component';
+import { CustomerListComponent } from './admin/pages/customer/customer-list/customer-list.component';
 
 const routes: Routes = [
   { path: 'staff', component: StaffComponent },
@@ -48,7 +50,14 @@ const routes: Routes = [
   { path: 'product-batch', component: ProductBatchComponent },
   { path: 'product-model', component: ProductModelComponent },
   { path: 'payment', component: PaymentsComponent },
+
+  // --------new--------
   { path: 'new-sales', component: NewSalesComponent },
+  { path: 'new-customer', component: NewCustomerComponent },
+  { path: 'customer-list', component: CustomerListComponent },
+
+
+
   // { path: 'leaves', loadChildren: () => import(`./leaves/leaves.module`).then(m => m.LeavesModule) },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: '**', component: AdminLoginComponent },

@@ -1,233 +1,497 @@
 <app-admin-header [title]="title"></app-admin-header>
 
-<mat-card>
-    <div class="row">
-        <div class="col-md-3">
-            <button mat-raised-button color="primary">
-                <!-- <mat-icon class="card-icon"> scatter_plot</mat-icon> &nbsp; -->
-                <img src="../../../../assets/images/dashboard/totl_mod.png" class="card-icon" alt=""> &nbsp;
-                <div class="card-head">
-                    <div class="card-desc"> Total Models </div>
-                    <div class="card-desc"> <strong> 75 </strong></div>
+<div style="display: block;" id="content" class="animate-bottom">
+    <div class="row" style="width: 100%;">
+        <div class="container-fluid">
+            <div class="col-md-12">
+                <div class="brand-text float-left mt-4">
+                    <h3>Welcome <span>admin</span> </h3>
                 </div>
-            </button>
-
-        </div>
-        <div class="col-12 col-sm-6 col-md-3">
-
-            <button mat-raised-button color="primary">
-                <!-- <mat-icon class="card-icon"> scatter_plot</mat-icon> &nbsp; -->
-                <img src="../../../../assets/images/dashboard/total_pr.jpg" class="card-icon" alt=""> &nbsp;
-                <div class="card-head">
-                    <div class="card-desc"> Total Products </div>
-                    <div class="card-desc"> <strong> 90 </strong></div>
+                <div class="filter-toggle btn-group ">
+                    <button class="btn btn-secondary date-btn" data-start_date="2023-03-31" data-end_date="2023-03-31">Today</button>
+                    <button class="btn btn-secondary date-btn" data-start_date="2023-03-24" data-end_date="2023-03-31">Last 7
+              Days</button>
+                    <button class="btn btn-secondary date-btn" data-start_date="2023-03-01" data-end_date="2023-03-31">This
+              Month</button>
+                    <button class="btn btn-secondary date-btn active" data-start_date="2023-01-01" data-end_date="2023-12-31">This
+              Year</button>
                 </div>
-            </button>
-
-
+            </div>
         </div>
-        <div class="col-md-3">
-
-            <button mat-raised-button color="primary">
-                <!-- <mat-icon class="card-icon"> scatter_plot</mat-icon> &nbsp; -->
-                <img src="../../../../assets/images/dashboard/available.png" class="card-icon" alt=""> &nbsp;
-                <div class="card-head">
-                    <div class="card-desc"> Availabe </div>
-                    <div class="card-desc"> <strong> 85 </strong></div>
-                </div>
-            </button>
-        </div>
-        <div class="col-md-3">
-
-            <button mat-raised-button color="primary">
-                <!-- <mat-icon class="card-icon"> scatter_plot</mat-icon> &nbsp; -->
-                <img src="../../../../assets/images/dashboard/sold.jfif" class="card-icon" alt=""> &nbsp;
-                <div class="card-head">
-                    <div class="card-desc"> Sold </div>
-                    <div class="card-desc"> <strong> 89 </strong></div>
-                </div>
-            </button>
-        </div>
-
     </div>
 
+    <section class="dashboard-counts">
 
-</mat-card>
+        <div class="container-fluid">
 
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <div class="row">
+                        <!-- Count item widget-->
+                        <div class="col-sm-3">
+                            <div class="wrapper count-title">
+                                <mat-icon class="icon" style="color: #733686">signal_cellular_alt</mat-icon>
+                                <div>
+                                    <div class="count-number revenue-data">1404.00</div>
+                                    <div class="name"><strong style="color: #733686">Revenue</strong></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Count item widget-->
+                        <div class="col-sm-3">
+                            <div class="wrapper count-title">
+                                <mat-icon class="icon" style="color: #ff8952">keyboard_return</mat-icon>
+                                <div>
+                                    <div class="count-number return-data">3200.00</div>
+                                    <div class="name"><strong style="color: #ff8952">Sale Return</strong></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Count item widget-->
+                        <div class="col-sm-3">
+                            <div class="wrapper count-title">
+                                <mat-icon class="icon" style="color: #00c689">loop</mat-icon>
+                                <div>
+                                    <div class="count-number purchase_return-data">0.00</div>
+                                    <div class="name"><strong style="color: #00c689">Purchase Return</strong></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Count item widget-->
+                        <div class="col-sm-3">
+                            <div class="wrapper count-title">
+                                <mat-icon class="icon" style="color: #297ff9">developer_board</mat-icon>
+                                <div>
 
+                                    <div class="count-number profit-data">-2230.99</div>
+                                    <div class="name"><strong style="color: #297ff9">Profit</strong></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-
-
-
-
-
-
-<div class="main-container container-fluid">
-
-    <div class="page-header">
-        <!-- <h1 class="page-title">C3-Pie Charts</h1> -->
-
-    </div>
-    <div class="row">
-        <div class="col-lg-6 col-md-12">
-            <mat-accordion class="example-headers-align" multi>
-                <mat-expansion-panel>
-                    <mat-expansion-panel-header>
-                        <div> Model 1 </div>
-                        <ul>
-                            <li>Total :<span> 99</span> &nbsp; <span> Available :</span> <span>99</span> &nbsp; <span>
-                                    Sold :</span> <span>99</span></li>
-
-                        </ul>
-                    </mat-expansion-panel-header>
-                    <div class="example-container">
-                        <table>
-
-                            <tr>
-                                <th>#</th>
-                                <th>Total</th>
-                                <th>Available</th>
-                                <th>Sold</th>
-                            </tr>
-                            <tr>
-                                <td>Black</td>
-                                <td>99</td>
-                                <td>99</td>
-                                <td>99</td>
-                            </tr>
-                            <tr>
-                                <td>Red</td>
-                                <td>88</td>
-                                <td>88</td>
-                                <td>88</td>
-                            </tr>
-                        </table>
+                <div class="col-md-7 mt-4">
+                    <div class="card line-chart-example">
+                        <div class="card-header d-flex align-items-center">
+                            <h4>Cash Flow</h4>
+                        </div>
+                        <app-line-chart></app-line-chart>
 
                     </div>
+                </div>
+                <div class="col-md-5 mt-4">
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h4>March 2023</h4>
+                        </div>
 
-                </mat-expansion-panel>
-            </mat-accordion>
-        </div>
-
-
-        <div class="col-lg-6 col-md-12">
-            <mat-accordion class="example-headers-align" multi>
-                <mat-expansion-panel>
-                    <mat-expansion-panel-header>
-                        <div> Model 2 </div>
-                        <ul>
-                            <li>Total :<span> 99</span> &nbsp; <span> Available :</span> <span>99</span> &nbsp; <span>
-                                    Sold :</span> <span>99</span></li>
-
-                        </ul>
-                    </mat-expansion-panel-header>
-                    <div class="example-container">
-                        <table>
-
-                            <tr>
-                                <th>#</th>
-                                <th>Total</th>
-                                <th>Available</th>
-                                <th>Sold</th>
-                            </tr>
-                            <tr>
-                                <td>Black</td>
-                                <td>99</td>
-                                <td>99</td>
-                                <td>99</td>
-                            </tr>
-                            <tr>
-                                <td>Red</td>
-                                <td>88</td>
-                                <td>88</td>
-                                <td>88</td>
-                            </tr>
-                        </table>
-
+                        <app-doughnut-chart></app-doughnut-chart>
                     </div>
-
-                </mat-expansion-panel>
-            </mat-accordion>
+                </div>
+            </div>
         </div>
 
-        <div class="col-lg-6 col-md-12">
-            <mat-accordion class="example-headers-align" multi>
-                <mat-expansion-panel>
-                    <mat-expansion-panel-header>
-                        <div> Model 3 </div>
-                        <ul>
-                            <li>Total :<span> 99</span> &nbsp; <span> Available :</span> <span>99</span> &nbsp; <span>
-                                    Sold :</span> <span>99</span></li>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header d-flex align-items-center">
+                            <h4>Yearly Report</h4>
+                        </div>
 
-                        </ul>
-                    </mat-expansion-panel-header>
-                    <div class="example-container">
-                        <table>
-
-                            <tr>
-                                <th>#</th>
-                                <th>Total</th>
-                                <th>Available</th>
-                                <th>Sold</th>
-                            </tr>
-                            <tr>
-                                <td>Black</td>
-                                <td>99</td>
-                                <td>99</td>
-                                <td>99</td>
-                            </tr>
-                            <tr>
-                                <td>Red</td>
-                                <td>88</td>
-                                <td>88</td>
-                                <td>88</td>
-                            </tr>
-                        </table>
-
+                        <app-bar-chart></app-bar-chart>
                     </div>
-
-                </mat-expansion-panel>
-            </mat-accordion>
-        </div>
-
-        <div class="col-lg-6 col-md-12">
-            <mat-accordion class="example-headers-align" multi>
-                <mat-expansion-panel>
-                    <mat-expansion-panel-header>
-                        <div> Model 4 </div>
-                        <ul>
-                            <li>Total :<span> 99</span> &nbsp; <span> Available :</span> <span>99</span> &nbsp; <span>
-                                    Sold :</span> <span>99</span></li>
-
+                </div>
+                <div class="col-md-7">
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h4>Recent Transaction</h4>
+                            <div class="right-column">
+                                <div class="badge badge-primary">Latest 5</div>
+                            </div>
+                        </div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#sale-latest" role="tab" data-toggle="tab">Sale</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#purchase-latest" role="tab" data-toggle="tab">Purchase</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#quotation-latest" role="tab" data-toggle="tab">Quotation</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#payment-latest" role="tab" data-toggle="tab">Payment</a>
+                            </li>
                         </ul>
-                    </mat-expansion-panel-header>
-                    <div class="example-container">
-                        <table>
 
-                            <tr>
-                                <th>#</th>
-                                <th>Total</th>
-                                <th>Available</th>
-                                <th>Sold</th>
-                            </tr>
-                            <tr>
-                                <td>Black</td>
-                                <td>99</td>
-                                <td>99</td>
-                                <td>99</td>
-                            </tr>
-                            <tr>
-                                <td>Red</td>
-                                <td>88</td>
-                                <td>88</td>
-                                <td>88</td>
-                            </tr>
-                        </table>
-
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane fade show active" id="sale-latest">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Date</th>
+                                                <th>Reference</th>
+                                                <th>Customer</th>
+                                                <th>Status</th>
+                                                <th>Grand Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>28/03/2023</td>
+                                                <td>posr-20230328-082004</td>
+                                                <td>walk-in-customer</td>
+                                                <td>
+                                                    <div class="badge badge-success">Completed</div>
+                                                </td>
+                                                <td>565</td>
+                                            </tr>
+                                            <tr>
+                                                <td>28/03/2023</td>
+                                                <td>posr-20230328-075104</td>
+                                                <td>walk-in-customer</td>
+                                                <td>
+                                                    <div class="badge badge-success">Completed</div>
+                                                </td>
+                                                <td>2839</td>
+                                            </tr>
+                                            <tr>
+                                                <td>28/03/2023</td>
+                                                <td>posr-20230328-071108</td>
+                                                <td>walk-in-customer</td>
+                                                <td>
+                                                    <div class="badge badge-success">Completed</div>
+                                                </td>
+                                                <td>1200</td>
+                                            </tr>
+                                            <tr>
+                                                <td>16/01/2023</td>
+                                                <td>sr-20230116-115629</td>
+                                                <td>kkk</td>
+                                                <td>
+                                                    <div class="badge badge-success">Completed</div>
+                                                </td>
+                                                <td>400</td>
+                                            </tr>
+                                            <tr>
+                                                <td>12/01/2023</td>
+                                                <td>sr-20230112-014037</td>
+                                                <td>kkk</td>
+                                                <td>
+                                                    <div class="badge badge-success">Completed</div>
+                                                </td>
+                                                <td>120</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="purchase-latest">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Date</th>
+                                                <th>Reference</th>
+                                                <th>Supplier</th>
+                                                <th>Status</th>
+                                                <th>Grand Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>19/01/2023</td>
+                                                <td>pr-20230119-053825</td>
+                                                <td>N/A</td>
+                                                <td>
+                                                    <div class="badge badge-success">Recieved</div>
+                                                </td>
+                                                <td>90</td>
+                                            </tr>
+                                            <tr>
+                                                <td>09/01/2023</td>
+                                                <td>pr-20230109-124630</td>
+                                                <td>N/A</td>
+                                                <td>
+                                                    <div class="badge badge-success">Recieved</div>
+                                                </td>
+                                                <td>1920</td>
+                                            </tr>
+                                            <tr>
+                                                <td>11/12/2022</td>
+                                                <td>pr-20221211-025454</td>
+                                                <td>abdullah</td>
+                                                <td>
+                                                    <div class="badge badge-success">Recieved</div>
+                                                </td>
+                                                <td>200</td>
+                                            </tr>
+                                            <tr>
+                                                <td>24/11/2022</td>
+                                                <td>pr-20221124-043710</td>
+                                                <td>N/A</td>
+                                                <td>
+                                                    <div class="badge badge-success">Recieved</div>
+                                                </td>
+                                                <td>190</td>
+                                            </tr>
+                                            <tr>
+                                                <td>20/11/2022</td>
+                                                <td>pr-20221120-122035</td>
+                                                <td>abdullah</td>
+                                                <td>
+                                                    <div class="badge badge-success">Recieved</div>
+                                                </td>
+                                                <td>320</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="quotation-latest">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Date</th>
+                                                <th>Reference</th>
+                                                <th>Customer</th>
+                                                <th>Status</th>
+                                                <th>Grand Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>15/01/2023</td>
+                                                <td>qr-20230115-053442</td>
+                                                <td>kkk</td>
+                                                <td>
+                                                    <div class="badge badge-success">Sent</div>
+                                                </td>
+                                                <td>286</td>
+                                            </tr>
+                                            <tr>
+                                                <td>08/03/2022</td>
+                                                <td>qr-20220308-040521</td>
+                                                <td>dhiman</td>
+                                                <td>
+                                                    <div class="badge badge-danger">Pending</div>
+                                                </td>
+                                                <td>566</td>
+                                            </tr>
+                                            <tr>
+                                                <td>19/02/2022</td>
+                                                <td>qr-20220219-124638</td>
+                                                <td>walk-in-customer</td>
+                                                <td>
+                                                    <div class="badge badge-danger">Pending</div>
+                                                </td>
+                                                <td>430</td>
+                                            </tr>
+                                            <tr>
+                                                <td>19/02/2022</td>
+                                                <td>qr-20220219-124103</td>
+                                                <td>walk-in-customer</td>
+                                                <td>
+                                                    <div class="badge badge-danger">Pending</div>
+                                                </td>
+                                                <td>430</td>
+                                            </tr>
+                                            <tr>
+                                                <td>19/02/2022</td>
+                                                <td>qr-20220219-122055</td>
+                                                <td>Ashfaq</td>
+                                                <td>
+                                                    <div class="badge badge-danger">Pending</div>
+                                                </td>
+                                                <td>120</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="payment-latest">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Date</th>
+                                                <th>Reference</th>
+                                                <th>Amount</th>
+                                                <th>Paid By</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>28/03/2023</td>
+                                                <td>spr-20230328-082004</td>
+                                                <td>565</td>
+                                                <td>Cash</td>
+                                            </tr>
+                                            <tr>
+                                                <td>28/03/2023</td>
+                                                <td>spr-20230328-075104</td>
+                                                <td>2839</td>
+                                                <td>Cash</td>
+                                            </tr>
+                                            <tr>
+                                                <td>28/03/2023</td>
+                                                <td>spr-20230328-071108</td>
+                                                <td>1200</td>
+                                                <td>Cash</td>
+                                            </tr>
+                                            <tr>
+                                                <td>16/01/2023</td>
+                                                <td>spr-20230116-120840</td>
+                                                <td>50</td>
+                                                <td>Cash</td>
+                                            </tr>
+                                            <tr>
+                                                <td>16/01/2023</td>
+                                                <td>spr-20230116-120414</td>
+                                                <td>50</td>
+                                                <td>Cash</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
-                </mat-expansion-panel>
-            </mat-accordion>
+                </div>
+                <div class="col-md-5">
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h4>Best Seller March</h4>
+                            <div class="right-column">
+                                <div class="badge badge-primary">Top 5</div>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Product Details</th>
+                                        <th>Qty</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><img src="https://salepropos.com/demo/public/images/product/toponemouse.jpg" height="25" width="30"> Mouse [63920719]</td>
+                                        <td>5</td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="https://salepropos.com/demo/public/images/product/mango.jpg" height="25" width="30"> mango [72782608]</td>
+                                        <td>2</td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="https://salepropos.com/demo/public/images/product/ldms.jpg" height="25" width="30"> ldms [40624536]
+                                        </td>
+                                        <td>2</td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="https://salepropos.com/demo/public/images/product/iphoneX.jpg" height="25" width="30"> iphone-X [97103461]</td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="https://salepropos.com/demo/public/images/product/SamsungGalaxyS9.jpg" height="25" width="30"> Galaxy S9 [72100265]</td>
+                                        <td>1</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h4>Best Seller 2023(Qty)</h4>
+                            <div class="right-column">
+                                <div class="badge badge-primary">Top 5</div>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Product Details</th>
+                                        <th>Qty</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><img src="https://salepropos.com/demo/public/images/product/toponemouse.jpg" height="25" width="30"> Mouse [63920719]</td>
+                                        <td>7</td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="https://salepropos.com/demo/public/images/product/iphoneX.jpg" height="25" width="30"> iphone-X [97103461]</td>
+                                        <td>2</td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="https://salepropos.com/demo/public/images/product/lalacrybabydoll.jpg" height="25" width="30"> Baby doll [31261512]</td>
+                                        <td>2</td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="https://salepropos.com/demo/public/images/product/mango.jpg" height="25" width="30"> mango [72782608]</td>
+                                        <td>2</td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="https://salepropos.com/demo/public/images/product/ldms.jpg" height="25" width="30"> ldms [40624536]
+                                        </td>
+                                        <td>2</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h4>Best Seller 2023(Price)</h4>
+                            <div class="right-column">
+                                <div class="badge badge-primary">Top 5</div>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Product Details</th>
+                                        <th>Grand Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><img src="https://salepropos.com/demo/public/images/product/toponemouse.jpg" height="25" width="30"> Mouse [63920719]</td>
+                                        <td>2800.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="https://salepropos.com/demo/public/images/product/iphoneX.jpg" height="25" width="30"> iphone-X [97103461]</td>
+                                        <td>2000.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="https://salepropos.com/demo/public/images/product/SamsungGalaxyS9.jpg" height="25" width="30"> Galaxy S9 [72100265]</td>
+                                        <td>1000.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="https://salepropos.com/demo/public/images/product/Shoe.jpg" height="25" width="30"> Shoe [90471412]
+                                        </td>
+                                        <td>300.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="https://salepropos.com/demo/public/images/product/mango.jpg" height="25" width="30"> mango [72782608]</td>
+                                        <td>288.00</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
 </div>

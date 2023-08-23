@@ -1,8 +1,3 @@
-.title {
-    font-size: 22px;
-    font-weight: 500;
-}
-
 .example-header {
     display: flex;
     align-items: center;
@@ -14,4 +9,75 @@
     height: 1em;
     font-weight: 500;
     text-align: center;
+}
+
+.mat-form-field {
+    float: left;
+}
+
+.mat-raised-button:not([class*=mat-elevation-z]) {
+    float: left;
+}
+
+.center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 16px;
+    /* Add margin if needed */
+}
+
+.error-message {
+    color: red;
+    margin-top: 8px;
+}
+
+.quantity-cell {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+}
+
+.quantity-input {
+    flex: 1;
+    margin: 0 10px;
+    text-align: center;
+}
+
+.min-plus-icon {
+    margin-top: -20px;
+}
+
+.amount-input-width {
+    width: 110px;
+}
+
+
+/* Center-align header cells */
+
+.center-align-header {
+    text-align: center;
+    color: #fff;
+}
+
+
+/* Set red background color for the header row */
+
+.mat-header-row {
+    background-color: #3f51b5;
+    ;
+}
+
+.moreCalculation {
+    margin-top: 50px;
+    padding: 20px;
+}
+
+.col-md-6 {
+    display: flex;
 }

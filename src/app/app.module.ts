@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {MatTabsModule} from '@angular/material/tabs';
-import {MatIconModule} from '@angular/material/icon';
-import {MatSelectModule} from '@angular/material/select';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSelectModule } from '@angular/material/select';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,8 +24,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
-import {MaterialExampleModule} from '../app/material.module';
-import {HttpClientModule} from '@angular/common/http';
+import { MaterialExampleModule } from '../app/material.module';
+import { HttpClientModule } from '@angular/common/http';
 import { AdminLoginComponent } from './admin/pages/login-signup/login/login.component';
 import { AdminHeaderComponent } from './admin/shared/header/header.component';
 import { ProoductListComponent } from './admin/pages/product-list/product-list.component';
@@ -42,6 +42,19 @@ import { ProductBatchComponent } from './admin/pages/product-batch/product-batch
 import { ProductModelComponent } from './admin/pages/product-model/product-model.component';
 import { PaymentsComponent } from './admin/pages/payments/payments.component';
 import { NewSalesComponent } from './admin/pages/sales/new-sales/new-sales.component';
+import { CustomerListComponent } from './admin/pages/customer/customer-list/customer-list.component';
+import { NewCustomerComponent } from './admin/pages/customer/new-customer/new-customer.component';
+import { AddTableComponent } from './admin/shared/add-table/add-table.component';
+import { ButtonComponent } from './admin/shared/buttons/button/button.component';
+import { DialogComponent } from './admin/shared/dialog/dialog.component';
+import { LineChartComponent } from './admin/shared/charts/line-chart/line-chart.component';
+import { BarChartComponent } from './admin/shared/charts/bar-chart/bar-chart.component';
+import { DoughnutChartComponent } from './admin/shared/charts/doughnut-chart/doughnut-chart.component';
+
+
+
+
+
 
 
 @NgModule({
@@ -75,27 +88,42 @@ import { NewSalesComponent } from './admin/pages/sales/new-sales/new-sales.compo
     CategoriesComponent,
     ExpensesComponent,
     DamagePurchasesComponent,
-    NewSalesComponent
+    NewSalesComponent,
+    CustomerListComponent,
+    NewCustomerComponent,
+    AddTableComponent,
+    ButtonComponent,
+    DialogComponent,
+    LineChartComponent,
+    DoughnutChartComponent,
+    BarChartComponent,
+
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatTabsModule,
+    MatTabsModule, 
     MatSortModule,
-  MatTableModule,
-  BrowserAnimationsModule,
-  BrowserModule,
-  FormsModule,
-  HttpClientModule,
-  MatNativeDateModule,
-  MaterialExampleModule,
-  ReactiveFormsModule,
-  MatIconModule,
-  MatSelectModule
+    MatTableModule,
+    BrowserAnimationsModule,
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
+    MatNativeDateModule,
+    MaterialExampleModule,
+    ReactiveFormsModule,
+    MatIconModule,
+    MatSelectModule,
+
+
+    
+    
+    
+    
   ],
-  exports:[TableComponent,AdminHeaderComponent],
+  exports: [TableComponent, AdminHeaderComponent],
   providers: [],
   bootstrap: [AppComponent, TableComponent, AdminHeaderComponent]
 })

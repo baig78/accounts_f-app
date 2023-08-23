@@ -1,5 +1,7 @@
-<app-admin-header [title]="'New Invoice'"></app-admin-header>
-<mat-accordion class="example-headers-align" multi>
+<app-admin-header></app-admin-header>
+<div class="title">Sales List</div>
+<mat-divider></mat-divider>
+<!-- <mat-accordion class="example-headers-align" multi>
     <mat-expansion-panel [expanded]="isExpand">
         <mat-expansion-panel-header> Add New Invoice </mat-expansion-panel-header>
         <div class="example-container">
@@ -7,26 +9,7 @@
                 <mat-divider></mat-divider>
 
 
-                <!-- <div class="row">
-                <div class="col-md-6">
-                    <mat-form-field appearance="outline">
-                        <input matInput [matDatepicker]="picker1" [formControl]="date" />
-                        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-                        <mat-datepicker #picker1></mat-datepicker>
-                    </mat-form-field>
-                </div>
-
-                <div class="col-md-6">
-                    <mat-form-field appearance="outline">
-                        <mat-label>Customer</mat-label>
-                        <mat-select>
-                            <mat-option *ngFor="let customer of customers" [value]="customer.value">
-                                {{ customer.viewValue }}
-                            </mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
-            </div> -->
+                
                 <div class="row">
                     <div class="col-md-3 iw">
                         <mat-form-field appearance="outline">
@@ -42,16 +25,7 @@
                             <input matInput placeholder="Retailer Id" formControlName="retailerId">
                         </mat-form-field>
                     </div>
-                    <!-- <div class="col-md-3 iw">
-                    <mat-form-field appearance="outline">
-                        <mat-label>Units</mat-label>
-                        <mat-select >
-                            <mat-option *ngFor="let unit of units" [value]="unit.value">
-                                {{ unit.viewValue }}
-                            </mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div> -->
+                 
                     <div class="col-md-3 iw">
                         <mat-form-field appearance="outline">
                             <mat-label>Quantity</mat-label>
@@ -71,11 +45,7 @@
                         </mat-form-field>
                     </div>
 
-                    <!-- <div class="col-md-3 iw" style="margin-top: 10px">
-                    <button mat-button color="primary">
-                        <mat-icon>add</mat-icon>
-                    </button>
-                </div> -->
+               
                 </div>
 
                 <div class="row">
@@ -139,53 +109,6 @@
                     </div>
                 </div>
 
-                <!-- <div class="row">
-                <div class="col-md-6">
-                    <mat-form-field appearance="outline">
-                        <mat-label>Total Paid</mat-label>
-                        <input matInput placeholder="Total Payment" formControlName="totalPaid">
-                    </mat-form-field>
-                </div>
-                <div class="col-md-6">
-                    <mat-form-field appearance="outline">
-                        <mat-label>Payment Meathod</mat-label>
-                        <mat-select >
-                            <mat-option *ngFor="let payment of payments" [value]="payment.value">
-                                {{ payment.viewValue }}
-                            </mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
-            </div>
-
-            <div class="row">
-                <mat-form-field appearance="outline">
-                    <mat-label>Sales Note</mat-label>
-                    <textarea matInput placeholder="Purchase Note"></textarea>
-                </mat-form-field>
-            </div>
-
-            <div class="row">
-                <div class="col-md-6">
-
-                    <button mat-button class="upload-img" (click)="uploadFile()" style="background-color:#dfdfdf;">
-                        Upload Profile Picture
-                        <mat-icon>add_photo_alternate</mat-icon>
-
-                    </button>
-                </div>
-                <div class="col-md-6">
-
-                    <mat-form-field appearance="outline">
-                        <mat-label>Status</mat-label>
-                        <mat-select>
-                            <mat-option *ngFor="let staff of staffs" [value]="staff.value">
-                                {{staff.viewValue}}
-                            </mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
-            </div> -->
                 <div class="example-button-row">
                     <button *ngIf="!isExpand" mat-button color="primary" (click)="add()">
                         Save
@@ -200,16 +123,15 @@
             </form>
         </div>
     </mat-expansion-panel>
-</mat-accordion>
+</mat-accordion> -->
 <div class="search" style="margin-top: 20px;">
     <div class="row">
- 
-      
+
+
     </div>
 
     <div *ngIf="isTableShow" style="overflow-x: scroll; width: 1000px;">
-        <app-table [columns]="billsColumns" [buttons]="buttons" [data]="billsData" [pagination]="[5, 25, 100]"
-            (onClick)="gotoItem($event)" (deleteClick)="deleteItem($event)" [pageSize]="5" [tableMinWidth]="1100">
+        <app-table [columns]="billsColumns" [buttons]="buttons" [data]="billsData" [pagination]="[5, 25, 100]" (onClick)="gotoItem($event)" (deleteClick)="deleteItem($event)" [pageSize]="5" [tableMinWidth]="1100">
         </app-table>
     </div>
 </div>

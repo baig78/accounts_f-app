@@ -1,0 +1,52 @@
+<h2 mat-dialog-title>Form Popup</h2>
+<mat-dialog-content>
+    <form #form="ngForm">
+        <div class="row">
+            <div class="col-md-6">
+                <mat-form-field>
+                    <mat-label>Tax Type</mat-label>
+                    <mat-select [(ngModel)]="formData.taxType" name="taxType">
+                        <mat-option value="sales">Inclusive</mat-option>
+                        <mat-option value="vat">Exclusive</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+
+                <mat-form-field>
+                    <mat-label>Tax</mat-label>
+                    <mat-select [(ngModel)]="formData.tax" name="tax">
+                        <mat-option value="5">5%</mat-option>
+                        <mat-option value="10">10%</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <mat-form-field>
+                    <mat-label>Discount Type</mat-label>
+                    <mat-select [(ngModel)]="formData.discountType" name="discountType">
+                        <mat-option value="fixed">Fixed Amount(₹)</mat-option>
+                        <mat-option value="percentage">Percentage(%)</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+
+                <mat-form-field>
+                    <mat-label>Discount</mat-label>
+                    <input matInput type="text" [(ngModel)]="formData.inputValue" name="inputValue">
+                </mat-form-field>
+            </div>
+        </div>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+
+    <mat-dialog-actions>
+        <button mat-button mat-dialog-close>Cancel</button>
+        <button mat-button color="primary" (click)="onSubmit(formData)">Confirm</button>
+    </mat-dialog-actions>
+</mat-dialog-actions>
