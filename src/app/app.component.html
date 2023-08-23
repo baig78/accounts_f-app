@@ -15,8 +15,14 @@
 
         <mat-list-item routerLink="/dashboard" [ngClass]="this.router.url == '/dashboard' ? 'link-active' : ''">
             <!-- <mat-icon>tab</mat-icon> -->
-            &nbsp; &nbsp; Dashboard
+            <mat-icon>dashboard</mat-icon>
+            <span class="sidenav-text"> Dashboard</span>
         </mat-list-item>
+
+        <!-- <mat-list-item routerLink="/dashboard">
+            <mat-icon>dashboard</mat-icon>
+            <span class="sidenav-text"> Dashboard</span>
+        </mat-list-item> -->
         <mat-divider></mat-divider>
 
         <mat-accordion class="app-nav-accordion">
@@ -382,6 +388,6 @@
 </div>
 <!-- </div> -->
 <mat-toolbar class="example-toolbar">
-    <p class="example-app-name" style="font-size: 12px">@ Powred by Cinderella Footwear</p>
+    <p class="example-app-name" style="font-size: 12px">@ Powred by Accounts Manager</p>
 </mat-toolbar>
 <!-- </div> -->

@@ -210,12 +210,22 @@
 </table>
 
 
-<div class="discount-display">
-    <mat-form-field appearance="outline">
-        <label for="discount">Discount Value:</label>
-        <input matInput id="discount" placeholder="Discount" [value]="calculateTotalDiscount()" readonly>
-    </mat-form-field>
+<div class="moreCalculation row">
+    <div class="col-md-6">
+        <label for="quantity">Quantity:</label>
+        <input style="margin-left: 20px;" matInput id="quantity" [value]="calculateTotalQuantity()" readonly>
+    </div>
+    <div class="col-md-6">
+        <label for="subTotal">SubTotal:</label>
+        <input style="margin-left: 20px;" matInput id="subTotal" [value]="calculateSubTotal()" readonly>
+    </div>
+
+
+
 </div>
+
+
+
 
 
 

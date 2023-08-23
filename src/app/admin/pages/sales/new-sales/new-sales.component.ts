@@ -186,16 +186,28 @@ export class NewSalesComponent implements OnInit {
     return (a)+(b);
   }
 
-  calculateTotalDiscount(): number {
-    let totalDiscount = 0;
+  calculateTotalQuantity(): number {
+    let totalQuantity = 0;
 
     for (const element of this.dataSource.data) {
-        // Assuming 'element.discount' contains the discount for each row
-        totalDiscount += element.discount || 0;
+        totalQuantity += element.quantity || 0;
     }
 
-    return totalDiscount;
+    return totalQuantity;
 }
+
+calculateSubTotal(): number {
+  let subTotal = 0;
+
+  for (const element of this.dataSource.data) {
+      // Calculate the total amount using the calculateTotalAmount function
+      const totalAmount = this.calculateTotalAmount(element);
+      subTotal += totalAmount;
+  }
+
+  return subTotal;
+}
+
   
   
   
