@@ -55,7 +55,21 @@ export class NewSalesComponent implements OnInit {
       this.discount = value;
     });
   }
+  otherCharges: { label: string, value: string }[] = [
+    { label: '5%', value: '5%' },
+    { label: '10%', value: '10%' },
+    { label: '15%', value: '15%' },
+    { label: 'fixed', value: 'fixed' },
 
+    // Add more options as needed
+  ];
+  discountAll: { label: string, value: string }[] = [
+    { label: '5%', value: '5%' },
+    { label: '10%', value: '10%' },
+    { label: '15%', value: '15%' },
+    { label: 'fixed', value: 'fixed' },
+    // Add more options as needed
+  ];
   myFilter(d: Date): boolean {
     const day = d.getDay();
     const month = d.getMonth();
@@ -119,7 +133,7 @@ export class NewSalesComponent implements OnInit {
 
   addRow() {
     if (this.validateInputFields()) {
-      const newRow: Person = { description: '', quantity: 1, unitPrice: 1.00, discount: 0, taxAmount: 0, totalAmount: 0 };
+      const newRow: Person = { description: '', quantity: 1, unitPrice: 0, discount: 0, taxAmount: 0, totalAmount: 0 };
       this.dataSource.data.push(newRow);
       this.dataSource._updateChangeSubscription();
       this.openSnackBar('New row added!', 'Close');
@@ -191,6 +205,8 @@ calculateSubTotal(): number {
 
   return subTotal;
 }
+
+
 
   
   
