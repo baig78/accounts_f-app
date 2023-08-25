@@ -16,7 +16,13 @@ export class NewSalesComponent implements OnInit {
   selectedDate: Date = new Date();
   date = new FormControl();
   errorMessage: string = '';
+  selectedAmount: number = 0;
+  selectedCharge: string = '';
+  calculatedValue: number = 0;
 
+  selectedDiscountAmount: number = 0;
+  selectedDiscount: string = '';
+  calculatedDiscountValue: number = 0;
 
 
 
@@ -206,9 +212,42 @@ calculateSubTotal(): number {
   return subTotal;
 }
 
+// calculate() {
+//   const amount = parseFloat(this.selectedAmount.toString()); // Convert to number
+//   const percentage = parseFloat(this.selectedCharge.toString()); // Already a number (percentage)
 
+//   // Perform the calculation: ((amount * percentage) / 100) + amount
+//   this.calculatedValue = ((amount * percentage) / 100) + amount;
+// }
 
   
+calculate() {
+  const amount = parseFloat(this.selectedAmount.toString()); // Convert to number
+
+  if (this.selectedCharge === 'fixed') {
+      // Calculate only based on selectedAmount when the fixed charge is selected
+      this.calculatedValue = amount;
+  } else {
+      const percentage = parseFloat(this.selectedCharge.toString()); // Already a number (percentage)
+      
+      // Perform the calculation: ((amount * percentage) / 100) + amount
+      this.calculatedValue = ((amount * percentage) / 100) + amount;
+  }
+}
+
+calculateDiscount(){
+  const amount = parseFloat(this.selectedDiscountAmount.toString()); // Convert to number
+
+  if (this.selectedDiscount === 'fixed') {
+      // Calculate only based on selectedDiscountAmount when the fixed charge is selected
+      this.calculatedDiscountValue = amount;
+  } else {
+      const percentage = parseFloat(this.selectedDiscount.toString()); // Already a number (percentage)
+      
+      // Perform the calculation: ((amount * percentage) / 100) + amount
+      this.calculatedDiscountValue = ((amount * percentage) / 100) + amount;
+  }
+}
   
   
 
