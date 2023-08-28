@@ -74,10 +74,32 @@
 }
 
 .moreCalculation {
-    margin-top: 50px;
+    // margin-top: 50px;
     padding: 20px;
 }
 
-.col-md-6 {
+.subR {
     display: flex;
+    align-items: center;
+    justify-content: space-between
+}
+
+.subMoreCalculation {
+    padding: 0 0 0 20px;
+}
+
+.title {
+    font-weight: 700;
+    font-size: 15px;
+    padding-bottom: 30px;
+}
+
+.amount-color {
+    font-weight: 700;
+    font-size: 15px;
+    color: green;
+}
+
+td {
+    padding: 0px 8px 16px 30px;
 }

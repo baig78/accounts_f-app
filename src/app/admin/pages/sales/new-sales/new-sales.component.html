@@ -188,7 +188,7 @@
             <mat-form-field ngClass="amount-input-width" appearance="outline">
                 <!-- <mat-label>description</mat-label> -->
                 <!-- <input matInput placeholder="Total Amount" [(ngModel)]="element.totalAmount"> -->
-                <input matInput placeholder="Total Amount" [value]="calculateTotalAmount(element) | currency: 'USD': 'symbol'" readonly>
+                <input matInput placeholder="Total Amount" [value]="calculateTotalAmount(element) | currency: 'INR': 'symbol'" readonly>
 
             </mat-form-field>
         </td>
@@ -211,20 +211,102 @@
 
 
 <div class="moreCalculation row">
-    <div class="col-md-6">
+    <div class="col-md-6 subR">
         <label for="quantity">Quantity:</label>
         <input style="margin-left: 20px;" matInput id="quantity" [value]="calculateTotalQuantity()" readonly>
     </div>
-    <div class="col-md-6">
+    <!-- <div class="col-md-6 subR " style="padding: 0 0 0 197px; font-size: 15px;">
         <label for="subTotal">SubTotal:</label>
-        <input style="margin-left: 20px;" matInput id="subTotal" [value]="calculateSubTotal()" readonly>
-    </div>
-
-
-
+        <input style="margin-left: 73px; color: green;font-weight: 700;" matInput id="subTotal" [value]="calculateSubTotal()" readonly>
+    </div> -->
 </div>
 
 
+<div class="row">
+    <!-- Left side: Form -->
+    <div class="col-md-6">
+        <div class="subMoreCalculation">
+            <!-- Other Charges -->
+            <div class="subR">
+                <div>
+                    <label for="otherCharges">Other Charges</label>
+                </div>
+                <div>
+                    <mat-form-field appearance="outline" class="amount-input-width">
+                        <input matInput placeholder="Amount" [(ngModel)]="selectedAmount" (input)="calculate()">
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field appearance="outline">
+                        <mat-select [(ngModel)]="selectedCharge" (ngModelChange)="calculate()">
+                            <mat-option *ngFor="let charge of otherCharges" [value]="charge.value">
+                                {{ charge.label }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+
+
+
+            <!-- Discount on All -->
+            <div class="subR">
+                <div>
+                    <label for="discountAll">Discount on All</label>
+                </div>
+                <div>
+                    <mat-form-field appearance="outline" class="amount-input-width">
+                        <input matInput placeholder="Amount" [(ngModel)]="selectedDiscountAmount" (input)="calculateDiscount()">
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field appearance="outline">
+                        <mat-select [(ngModel)]="selectedDiscount" (ngModelChange)="calculateDiscount()">
+                            <mat-option *ngFor="let disAll of discountAll" [value]="disAll.value">
+                                {{ disAll.label }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <!-- Note -->
+            <div class="subR">
+                <div>
+                    <label for="note">Note</label>
+                </div>
+                <mat-form-field appearance="outline" style="width: 73%;">
+                    <textarea matInput matTextareaAutosize matAutosizeMinRows="3" matAutosizeMaxRows="6"></textarea>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+
+    <!-- Right side: Table -->
+    <div class="col-md-6 d-flex justify-content-center align-items-center">
+        <table style="margin-top: -100px;">
+            <tr>
+                <td class="title">Subtotal</td>
+                <td class="amount-color"> <input matInput id="subTotal" [value]="'₹' + calculateSubTotal().toFixed(2)" readonly>
+
+                </td>
+            </tr>
+            <tr>
+                <td class="title">Other Charges</td>
+                <td class="amount-color">{{ calculatedValue | currency:'INR':'symbol':'1.2-2' }}</td>
+            </tr>
+            <tr>
+                <td class="title">Discount on All</td>
+                <td class="amount-color">{{ calculatedDiscountValue | currency:'INR':'symbol':'1.2-2' }}</td>
+
+            </tr>
+            <tr>
+                <td class="title">Grand Total</td>
+                <td class="amount-color">4</td>
+            </tr>
+        </table>
+    </div>
+</div>
 
 
 

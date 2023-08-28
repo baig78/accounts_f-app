@@ -16,7 +16,13 @@ export class NewSalesComponent implements OnInit {
   selectedDate: Date = new Date();
   date = new FormControl();
   errorMessage: string = '';
+  selectedAmount: number = 0;
+  selectedCharge: string = '';
+  calculatedValue: number = 0;
 
+  selectedDiscountAmount: number = 0;
+  selectedDiscount: string = '';
+  calculatedDiscountValue: number = 0;
 
 
 
@@ -55,7 +61,21 @@ export class NewSalesComponent implements OnInit {
       this.discount = value;
     });
   }
+  otherCharges: { label: string, value: string }[] = [
+    { label: '5%', value: '5%' },
+    { label: '10%', value: '10%' },
+    { label: '15%', value: '15%' },
+    { label: 'fixed', value: 'fixed' },
 
+    // Add more options as needed
+  ];
+  discountAll: { label: string, value: string }[] = [
+    { label: '5%', value: '5%' },
+    { label: '10%', value: '10%' },
+    { label: '15%', value: '15%' },
+    { label: 'fixed', value: 'fixed' },
+    // Add more options as needed
+  ];
   myFilter(d: Date): boolean {
     const day = d.getDay();
     const month = d.getMonth();
@@ -119,7 +139,7 @@ export class NewSalesComponent implements OnInit {
 
   addRow() {
     if (this.validateInputFields()) {
-      const newRow: Person = { description: '', quantity: 1, unitPrice: 1.00, discount: 0, taxAmount: 0, totalAmount: 0 };
+      const newRow: Person = { description: '', quantity: 1, unitPrice: 0, discount: 0, taxAmount: 0, totalAmount: 0 };
       this.dataSource.data.push(newRow);
       this.dataSource._updateChangeSubscription();
       this.openSnackBar('New row added!', 'Close');
@@ -160,25 +180,7 @@ export class NewSalesComponent implements OnInit {
 
   }
 
-  // calculateTotalAmount(): number {
-  //   let totalAmount = 0;
-  
-  //   for (let element of this.dataSource.data) {
-  //     let quantity = element.quantity || 0;
-  //     let unitPrice = element.unitPrice || 0;
-  //     let discount = element.discount || 0;
-  //     let taxAmount = element.taxAmount || 0;
-  
-  //     let subTotal = quantity * unitPrice
-  //     let discnt = ( discount / 100) * discount
-  //     let mainTotal = subTotal - discnt
-  //     let taxAmt = taxAmount
-  //     let totalAmt = mainTotal + taxAmt
-  //     totalAmount += totalAmt;
-  //   }
-  
-  //   return totalAmount;
-  // }
+
   
   calculateTotalAmount(element: any): number {
      var a = ((element.quantity * element.unitPrice) - element.discount); 
@@ -190,11 +192,13 @@ export class NewSalesComponent implements OnInit {
     let totalQuantity = 0;
 
     for (const element of this.dataSource.data) {
-        totalQuantity += element.quantity || 0;
+        const quantityAsString = String(element.quantity);
+        totalQuantity += parseInt(quantityAsString) || 0;
     }
 
     return totalQuantity;
 }
+
 
 calculateSubTotal(): number {
   let subTotal = 0;
@@ -208,7 +212,42 @@ calculateSubTotal(): number {
   return subTotal;
 }
 
+// calculate() {
+//   const amount = parseFloat(this.selectedAmount.toString()); // Convert to number
+//   const percentage = parseFloat(this.selectedCharge.toString()); // Already a number (percentage)
+
+//   // Perform the calculation: ((amount * percentage) / 100) + amount
+//   this.calculatedValue = ((amount * percentage) / 100) + amount;
+// }
+
   
+calculate() {
+  const amount = parseFloat(this.selectedAmount.toString()); // Convert to number
+
+  if (this.selectedCharge === 'fixed') {
+      // Calculate only based on selectedAmount when the fixed charge is selected
+      this.calculatedValue = amount;
+  } else {
+      const percentage = parseFloat(this.selectedCharge.toString()); // Already a number (percentage)
+      
+      // Perform the calculation: ((amount * percentage) / 100) + amount
+      this.calculatedValue = ((amount * percentage) / 100) + amount;
+  }
+}
+
+calculateDiscount(){
+  const amount = parseFloat(this.selectedDiscountAmount.toString()); // Convert to number
+
+  if (this.selectedDiscount === 'fixed') {
+      // Calculate only based on selectedDiscountAmount when the fixed charge is selected
+      this.calculatedDiscountValue = amount;
+  } else {
+      const percentage = parseFloat(this.selectedDiscount.toString()); // Already a number (percentage)
+      
+      // Perform the calculation: ((amount * percentage) / 100) + amount
+      this.calculatedDiscountValue = ((amount * percentage) / 100) + amount;
+  }
+}
   
   
 
