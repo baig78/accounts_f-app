@@ -13,23 +13,23 @@
     <mat-list>
 
 
-        <mat-list-item routerLink="/dashboard" [ngClass]="this.router.url == '/dashboard' ? 'link-active' : ''">
-            <!-- <mat-icon>tab</mat-icon> -->
-            <mat-icon>dashboard</mat-icon>
-            <span class="sidenav-text"> Dashboard</span>
-        </mat-list-item>
+        <mat-nav-list>
 
-        <!-- <mat-list-item routerLink="/dashboard">
-            <mat-icon>dashboard</mat-icon>
-            <span class="sidenav-text"> Dashboard</span>
-        </mat-list-item> -->
+            <mat-list-item routerLink="/dashboard" [ngClass]="this.router.url == '/dashboard' ? 'link-active' : ''">
+
+                <mat-icon style="margin-left: 9px;">dashboard</mat-icon> &nbsp; &nbsp;
+                <span class="sidenav-text"> Dashboard</span>
+            </mat-list-item>
+        </mat-nav-list>
+
         <mat-divider></mat-divider>
 
         <mat-accordion class="app-nav-accordion">
 
             <mat-expansion-panel class="mat-elevation-z0">
                 <mat-expansion-panel-header>
-                    <mat-panel-title>Sales</mat-panel-title>
+                    <mat-icon>card_travel</mat-icon> &nbsp; &nbsp;
+                    <span class="sidenav-text">Sales</span>
                 </mat-expansion-panel-header>
                 <mat-nav-list>
                     <mat-list-item routerLink="/new-sales" [ngClass]="this.router.url == '/new-sales'? 'link-active' : ''">
@@ -62,7 +62,8 @@
 
             <mat-expansion-panel class="mat-elevation-z0">
                 <mat-expansion-panel-header>
-                    <mat-panel-title>Customers</mat-panel-title>
+                    <mat-icon>card_travel</mat-icon> &nbsp; &nbsp;
+                    <span>Customers</span>
                 </mat-expansion-panel-header>
                 <mat-nav-list>
                     <mat-list-item routerLink="/new-customer" [ngClass]="this.router.url == '/new-customer'? 'link-active' : ''">
@@ -91,7 +92,9 @@
 
             <mat-expansion-panel class="mat-elevation-z0">
                 <mat-expansion-panel-header>
-                    <mat-panel-title>Purchase</mat-panel-title>
+                    <mat-icon>card_travel</mat-icon> &nbsp; &nbsp;
+
+                    <span>Purchase</span>
                 </mat-expansion-panel-header>
                 <mat-nav-list>
                     <mat-list-item>
@@ -123,7 +126,9 @@
 
             <mat-expansion-panel class="mat-elevation-z0">
                 <mat-expansion-panel-header>
-                    <mat-panel-title>Supplier</mat-panel-title>
+                    <mat-icon>card_travel</mat-icon> &nbsp; &nbsp;
+
+                    <span>Supplier</span>
                 </mat-expansion-panel-header>
                 <mat-nav-list>
                     <mat-list-item>
@@ -147,7 +152,8 @@
 
             <mat-expansion-panel class="mat-elevation-z0">
                 <mat-expansion-panel-header>
-                    <mat-panel-title>Expenses</mat-panel-title>
+                    <mat-icon>card_travel</mat-icon> &nbsp; &nbsp;
+                    <span>Expenses</span>
                 </mat-expansion-panel-header>
                 <mat-nav-list>
                     <mat-list-item>
@@ -179,7 +185,8 @@
 
             <mat-expansion-panel class="mat-elevation-z0">
                 <mat-expansion-panel-header>
-                    <mat-panel-title>Reports</mat-panel-title>
+                    <mat-icon>card_travel</mat-icon> &nbsp; &nbsp;
+                    <span>Reports</span>
                 </mat-expansion-panel-header>
                 <mat-nav-list>
                     <mat-list-item>
@@ -227,7 +234,8 @@
 
             <mat-expansion-panel class="mat-elevation-z0">
                 <mat-expansion-panel-header>
-                    <mat-panel-title>Users</mat-panel-title>
+                    <mat-icon>card_travel</mat-icon> &nbsp; &nbsp;
+                    <span>Users</span>
                 </mat-expansion-panel-header>
                 <mat-nav-list>
                     <mat-list-item>
