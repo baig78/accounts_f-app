@@ -1,30 +1,27 @@
-
 <div class="search col-md-3" style="display: contents;">
     <button mat-raised-button color="primary" (click)="ExportTOExcel()">Export as Excel</button>
     <mat-form-field style="float: right;" appearance="outline">
-        <mat-label >Search</mat-label>
-        <input matInput type="text" [ngModel]="mySearch" placeholder="Search" 
-        [ngModel]="mymodel" (ngModelChange)="onSearch($event)"
-        (change)="onSearch($event);">
+        <mat-label>Search</mat-label>
+        <input matInput type="text" [ngModel]="mySearch" placeholder="Search" [ngModel]="mymodel" (ngModelChange)="onSearch($event)" (change)="onSearch($event);">
         <mat-icon matSuffix>search</mat-icon>
     </mat-form-field>
 </div>
 <div [ngStyle]="{ 'min-width': + tableMinWidth + 'px' }" #TABLE>
-        <table mat-table #table [dataSource]="dataSource" matSort>
-            <ng-container *ngFor="let column of columns;let i = index; ">
-                <ng-container matColumnDef="{{column}}">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header>{{column}}  </mat-header-cell>
-                    <mat-cell *matCellDef="let row; ">{{ row[column] }} 
-                      <button *ngIf="i==columns.length-1 " (click)="click1(row)" md-raised-button >delete</button> 
-                      <button *ngIf="i==columns.length-2 " (click)="click(row)" md-raised-button >edit</button> 
+    <table mat-table #table [dataSource]="dataSource" matSort>
+        <ng-container *ngFor="let column of columns;let i = index; ">
+            <ng-container matColumnDef="{{column}}">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>{{column}} </mat-header-cell>
+                <mat-cell *matCellDef="let row; ">{{ row[column] }}
+                    <button style="border: none; color: red;" *ngIf="i==columns.length-1 " (click)="click1(row)" md-raised-button><mat-icon>delete</mat-icon></button>
+                    <button style="border: none; color: green;" *ngIf="i==columns.length-2 " (click)="click(row)"><mat-icon>edit</mat-icon></button>
 
-                    </mat-cell>
-                </ng-container>
+                </mat-cell>
+            </ng-container>
 
-             
-              
-    <!-- Action Column -->
-    <!-- <ng-container matColumnDef="edit">
+
+
+            <!-- Action Column -->
+            <!-- <ng-container matColumnDef="edit">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Edit </mat-header-cell>
         <mat-cell *matCellDef="let element"> <button mat-icon-button matTooltip="Click to Edit" class="iconbutton"
             color="primary" (click)="edit()">
@@ -38,14 +35,14 @@
             <mat-icon>delete</mat-icon>
           </button> </mat-cell>
       </ng-container> -->
-    
-            </ng-container>
-            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-        </table>
+
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </table>
 
 
- <!-- <table mat-table [dataSource]="dataSource" matSort>
+    <!-- <table mat-table [dataSource]="dataSource" matSort>
         <ng-container *ngFor="let column of columns">
             <ng-container matColumnDef="{{column.columnDef}}">
                 <mat-header-cell *matHeaderCellDef mat-sort-header>{{ column.header }}</mat-header-cell>
