@@ -53,8 +53,18 @@
 
 .sidenav-text {
     font-size: 15px;
+    color: #b8c7ce;
+}
+
+.mat-elevation-z0 mat-nav-list mat-list-item span {
+    color: #b8c7ce;
 }
 
 .mat-icon-class {
-    margin-right: 10px;
+    color: #00c0ef;
+}
+
+.mat-elevation-z0 {
+    background: #333;
+    color: #b8c7ce;
 }
