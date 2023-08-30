@@ -177,6 +177,18 @@ export class NewSalesComponent implements OnInit {
   // }
 
   saveData(){
+    const formValues = this.billsForm.value;
+
+    // Log the form values, calculations, and other data to the console
+    console.log('Form Values:', formValues);
+    console.log('Calculated Value:', this.calculatedValue);
+    console.log('Calculated Discount Value:', this.calculatedDiscountValue);
+    console.log('Selected Amount:', this.selectedAmount);
+    console.log('Selected Charge:', this.selectedCharge);
+    console.log('Selected Discount Amount:', this.selectedDiscountAmount);
+    console.log('Selected Discount:', this.selectedDiscount);
+    console.log('Calculated Grand Total:', this.calculateGrandTotal());
+
 
   }
 
@@ -221,7 +233,7 @@ calculateSubTotal(): number {
 // }
 
   
-calculate() {
+calculateOtherCharges() {
   const amount = parseFloat(this.selectedAmount.toString()); // Convert to number
 
   if (this.selectedCharge === 'fixed') {
@@ -248,7 +260,11 @@ calculateDiscount(){
       this.calculatedDiscountValue = ((amount * percentage) / 100) + amount;
   }
 }
-  
+calculateGrandTotal(): number {
+  const subTotal = this.calculateSubTotal();
+  const grandTotal = subTotal + this.calculatedValue - this.calculatedDiscountValue;
+  return grandTotal;
+}
   
 
 }

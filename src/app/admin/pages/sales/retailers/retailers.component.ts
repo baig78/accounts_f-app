@@ -62,16 +62,17 @@ export class RetailersComponent implements OnInit {
 
   createForm() {
     this.retailersForm = this.formBuilder.group({
-      'shopName': [null, Validators.required],
+      'companyName': [null, Validators.required],
       'emailAddress': [null, Validators.required],
       'phoneNumber': [null, Validators.required],
       'altNumber': [''],
       'ownerName': [null, Validators.required],
-      'designation': [null, Validators.required],
       'address': [null, Validators.required],
       'city': [null, Validators.required],
       'status': [null, Validators.required],
       'gstNo': [null, Validators.required],
+      'postalCode': [null, Validators.required],
+      'country': [null, Validators.required],
     });
   }
   setTable(tableData: any) {
@@ -83,7 +84,7 @@ export class RetailersComponent implements OnInit {
     ];
 
 
-    this.retailersColumns = ['id', 'name', 'shop_name', 'address', 'city', 'phone', 'alt_phone', 'email', 'gst_no', 'edit', 'delete'];
+    this.retailersColumns = ['id', 'company_name', 'name', 'mobile', 'phone', 'email', 'country', 'address', 'city', 'postal_code', 'gst_no', 'edit', 'delete'];
     this.retailerData = tableData;
     this.isTableShow = true;
 
@@ -96,33 +97,37 @@ export class RetailersComponent implements OnInit {
     console.log(data)
     this.retailersForm.patchValue({
       ownerName: data.name,
-      shopName: data.shop_name,
+      companyName: data.company_name,
       address: data.address,
+      country: data.country,
       city: data.city,
       phoneNumber: data.phone,
-      altNumber: data.alt_phone,
+      altNumber: data.mobile,
       emailAddress: data.email,
       gstNo: data.gst_no,
+      postalCode: data.postal_code,
     })
-    this.editId=data.id
+    this.editId = data.id
   }
-  deleteItem(data:any) {
+  deleteItem(data: any) {
     this.dele(data.id)
     console.log(data)
-}
+  }
 
   add() {
     this.retailersForm
     let apiurl = "insert_retailers";
     let data = {
-      shop_name: this.retailersForm.controls.shopName.value,
+      company_name: this.retailersForm.controls.companyName.value,
       email: this.retailersForm.controls.emailAddress.value,
       phone: this.retailersForm.controls.phoneNumber.value,
-      alt_phone: this.retailersForm.controls.altNumber.value,
+      mobile: this.retailersForm.controls.altNumber.value,
       name: this.retailersForm.controls.ownerName.value,
       city: this.retailersForm.controls.city.value,
       address: this.retailersForm.controls.address.value,
       gst_no: this.retailersForm.controls.gstNo.value,
+      country: this.retailersForm.controls.country.value,
+      postal_code: this.retailersForm.controls.postalCode.value,
 
     };
     this.DashboardService.insertData(apiurl, data).subscribe({
@@ -143,16 +148,19 @@ export class RetailersComponent implements OnInit {
     let apiurl = "edit_rtr";
     let data = {
       // id: 0,
-      shop_name: this.retailersForm.controls.shopName.value,
+      id: this.editId,
+
+      company_name: this.retailersForm.controls.companyName.value,
       email: this.retailersForm.controls.emailAddress.value,
       phone: this.retailersForm.controls.phoneNumber.value,
-      alt_phone: this.retailersForm.controls.altNumber.value,
+      mobile: this.retailersForm.controls.altNumber.value,
       name: this.retailersForm.controls.ownerName.value,
       city: this.retailersForm.controls.city.value,
       address: this.retailersForm.controls.address.value,
       gst_no: this.retailersForm.controls.gstNo.value,
-      id: this.editId
-      
+      country: this.retailersForm.controls.country.value,
+      postal_code: this.retailersForm.controls.postalCode.value,
+
       // address: this.retailersForm.controls.address.value,
 
     };
@@ -170,20 +178,21 @@ export class RetailersComponent implements OnInit {
 
   }
 
-  dele(id:any){
+  dele(id: any) {
     let apiurl = "delete_rtr";
 
-    this.DashboardService.deleteData(apiurl,id).subscribe({
+    this.DashboardService.deleteData(apiurl, id).subscribe({
       error: (err: any) => { },
       next: (data: any) => {
         console.log(data.results)
         this.setTable(data.results)
         this.getAllTableData()
       },
-      
+
     });
 
   }
+  
 
 
 
