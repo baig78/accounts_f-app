@@ -6,31 +6,32 @@
 <div class="example-container">
     <form [formGroup]="billsForm" class="form">
 
-        <div class="row">
-            <div class="col-md-3 iw">
-                <mat-form-field appearance="outline">
+        <div>
+            <div>
+                <mat-form-field appearance="outline" class="mat-form-field-form">
                     <mat-label>Customer Name</mat-label>
                     <input matInput placeholder="Customer Name" formControlName="customerName">
                 </mat-form-field>
             </div>
 
-            <div class="col-md-3 iw">
-                <mat-form-field appearance="outline">
+            <div>
+                <mat-form-field appearance="outline" class="mat-form-field-form">
+                    <mat-label>Select Date</mat-label>
                     <input matInput [matDatepicker]="dp" placeholder="Select Date" [(ngModel)]="selectedDate" formControlName="date">
                     <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
                     <mat-datepicker #dp></mat-datepicker>
                 </mat-form-field>
             </div>
 
-            <div class="col-md-3 iw">
-                <mat-form-field appearance="outline">
+            <div>
+                <mat-form-field appearance="outline" class="mat-form-field-form">
                     <mat-label>Invoice No</mat-label>
                     <input matInput placeholder="Invoice No" formControlName="invoiceNo">
                 </mat-form-field>
             </div>
 
-            <div class="col-md-3 iw">
-                <mat-form-field appearance="outline">
+            <div>
+                <mat-form-field appearance="outline" class="mat-form-field-form">
                     <mat-label>Retailer Id</mat-label>
                     <input matInput placeholder="Retailer Id" formControlName="retailerId">
                 </mat-form-field>
@@ -68,7 +69,7 @@
                     <mat-icon>remove</mat-icon>
                 </button>
                 <mat-form-field ngClass="amount-input-width" appearance="outline" class="quantity-input">
-                    <input matInput placeholder="Quantity" [(ngModel)]="element.quantity">
+                    <input matInput placeholder="Quantity" [(ngModel)]="element.quantity" appNumbersOnly>
                 </mat-form-field>
                 <button mat-icon-button color="primary" class="min-plus-icon" (click)="incrementQuantity(element)">
                     <mat-icon>add</mat-icon>
@@ -77,22 +78,31 @@
         </td>
     </ng-container>
 
+    <!-- <ng-container matColumnDef="unitPrice">
+        <th mat-header-cell *matHeaderCellDef class="center-align-header"> Unit Price </th>
+        <td mat-cell *matCellDef="let element">
+            <mat-form-field ngClass="amount-input-width" appearance="outline">
+                <input matInput placeholder="Unit Price" [(ngModel)]="element.unitPrice">
+            </mat-form-field>
+        </td>
+    </ng-container> -->
     <ng-container matColumnDef="unitPrice">
         <th mat-header-cell *matHeaderCellDef class="center-align-header"> Unit Price </th>
         <td mat-cell *matCellDef="let element">
             <mat-form-field ngClass="amount-input-width" appearance="outline">
-                <!-- <mat-label>description</mat-label> -->
-                <input matInput placeholder="Unit Price" [(ngModel)]="element.unitPrice">
+                <input matInput placeholder="Unit Price" [(ngModel)]="element.unitPrice" appNumbersOnly>
             </mat-form-field>
         </td>
     </ng-container>
+
+
 
     <ng-container matColumnDef="discount">
         <th mat-header-cell *matHeaderCellDef class="center-align-header"> Discount </th>
         <td mat-cell *matCellDef="let element">
             <mat-form-field ngClass="amount-input-width" appearance="outline" (click)="openDialog()">
                 <!-- <mat-label>description</mat-label> -->
-                <input matInput placeholder="Discount" [(ngModel)]="element.discount">
+                <input matInput placeholder="Discount" [(ngModel)]="element.discount" appNumbersOnly>
             </mat-form-field>
 
         </td>
@@ -103,7 +113,7 @@
         <td mat-cell *matCellDef="let element">
             <mat-form-field ngClass="amount-input-width" appearance="outline" (click)="openDialog()">
                 <!-- <mat-label>description</mat-label> -->
-                <input matInput placeholder="Tax Amount" [(ngModel)]="element.taxAmount">
+                <input matInput placeholder="Tax Amount" [(ngModel)]="element.taxAmount" appNumbersOnly>
             </mat-form-field>
         </td>
     </ng-container>
@@ -123,7 +133,7 @@
     <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef class="center-align-header"> Actions </th>
         <td mat-cell *matCellDef="let element">
-            <app-button color="warn" [floatLeft]="true" (click)="deleteRow(element)">
+            <app-button [color]="'warn'" [floatLeft]="true" [addMargin]="true" (click)="deleteRow(element)">
                 <mat-icon>delete</mat-icon>
             </app-button>
         </td>
@@ -136,7 +146,9 @@
 <div class="moreCalculation row">
     <div class="col-md-6 subR">
         <label for="quantity">Quantity:</label>
-        <input style="margin-left: 20px;" matInput id="quantity" [value]="calculateTotalQuantity()" readonly>
+        <input style="margin-left: 20px; font-weight: 700;
+        font-size: 15px;
+        color: green;" matInput id="quantity" [value]="calculateTotalQuantity()" readonly>
     </div>
 </div>
 
@@ -151,7 +163,7 @@
                 </div>
                 <div>
                     <mat-form-field appearance="outline" class="amount-input-width">
-                        <input matInput placeholder="Amount" [(ngModel)]="selectedAmount" (input)="calculateOtherCharges()">
+                        <input matInput placeholder="Amount" [(ngModel)]="selectedAmount" (input)="calculateOtherCharges()" appNumbersOnly>
                     </mat-form-field>
                 </div>
                 <div>
@@ -172,7 +184,7 @@
                 </div>
                 <div>
                     <mat-form-field appearance="outline" class="amount-input-width">
-                        <input matInput placeholder="Amount" [(ngModel)]="selectedDiscountAmount" (input)="calculateDiscount()">
+                        <input matInput placeholder="Amount" [(ngModel)]="selectedDiscountAmount" (input)="calculateDiscount()" appNumbersOnly>
                     </mat-form-field>
                 </div>
                 <div>
@@ -202,29 +214,39 @@
     <div class="col-md-6 d-flex justify-content-center align-items-center">
         <table style="margin-top: -100px;">
             <tr>
-                <td class="title">Subtotal</td>
+                <td class="title-ns">Subtotal</td>
                 <td class="amount-color"> <input matInput id="subTotal" [value]="'₹' + calculateSubTotal().toFixed(2)" readonly>
 
                 </td>
             </tr>
             <tr>
-                <td class="title">Other Charges</td>
+                <td class="title-ns">Other Charges</td>
                 <td class="amount-color">{{ calculatedValue | currency:'INR':'symbol':'1.2-2' }}</td>
             </tr>
             <tr>
-                <td class="title">Discount on All</td>
+                <td class="title-ns">Discount on All</td>
                 <td class="amount-color">{{ calculatedDiscountValue | currency:'INR':'symbol':'1.2-2' }}</td>
 
             </tr>
             <tr>
-                <td class="title">Grand Total</td>
+                <td class="title-ns">Grand Total</td>
                 <td class="amount-color">{{ calculateGrandTotal() | currency:'INR':'symbol':'1.2-2' }}</td>
             </tr>
         </table>
     </div>
 </div>
 
-<app-button color="primary" (click)="saveData()">
-    <mat-icon>add</mat-icon>
-    Save
-</app-button>
+<div class="center-container">
+    <app-button color="primary" (click)="saveData()">
+        <mat-icon>save</mat-icon>
+        <span> Save </span>
+    </app-button>
+    <!-- <app-button mat-raised-button [color]="'warn'" (click)="cancel()">
+        <mat-icon>close</mat-icon>
+        <span> Cancel </span>
+    </app-button> -->
+
+    <button style="margin-left: 10px;" mat-raised-button color="warn" (click)="cancel()">
+        <mat-icon>close</mat-icon>
+        Cancel</button>
+</div>

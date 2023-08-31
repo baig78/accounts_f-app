@@ -18,6 +18,7 @@ export class ButtonComponent implements OnInit {
   
   @Input() color: string = 'primary';
   @Input() floatLeft: boolean = false;
+  @Input() addMargin: boolean = false;
 
   constructor() { }
 
