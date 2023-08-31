@@ -1,12 +1,11 @@
 <!-- <div class="mat-elevation-z8" style="height: 98vh; margin-top: 0px;"> -->
 <!-- <app-admin-header></app-admin-header> -->
 
-<div style="
-    height: 87%;
-    overflow-y: auto;
-    width: 22%;
-    margin-top: 46px;
-   
+<div class="scroll-container" style="
+        background: #333;
+    height: 95%;
+    width: 18%;
+    margin-top: 45px;
     float: left;" *ngIf="this.router.url!='/login'">
     <!-- <div class="side-nav active"> -->
 
@@ -254,6 +253,13 @@
                 </mat-nav-list>
             </mat-expansion-panel>
         </mat-accordion>
+
+        <mat-nav-list>
+            <mat-list-item>
+
+                <span style="color: rgb(148, 148, 148);"> @ Powred by Naimath</span>
+            </mat-list-item>
+        </mat-nav-list>
         <mat-divider></mat-divider>
 
         <!-- <mat-list-item routerLink="/staff" [ngClass]="this.router.url == '/staff' ? 'link-active' : ''">
@@ -395,7 +401,7 @@
     <router-outlet></router-outlet>
 </div>
 <!-- </div> -->
-<mat-toolbar class="example-toolbar">
+<!-- <mat-toolbar class="example-toolbar mat-elevation-z0">
     <p class="example-app-name" style="font-size: 12px">@ Powred by Accounts Manager</p>
-</mat-toolbar>
+</mat-toolbar> -->
 <!-- </div> -->

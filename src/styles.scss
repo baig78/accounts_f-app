@@ -19,7 +19,7 @@ body {
 .mat-icon-button.mat-primary,
 .mat-stroked-button.mat-primary {
     color: white;
-    background-color: #3f51b5;
+    background-color: #3c8dbc;
 }
 
 .mat-form-field-appearance-outline .mat-form-field-wrapper {
@@ -101,7 +101,7 @@ table.mat-table {
 }
 
 .example-container {
-    margin-top: 25px;
+    padding: 15px;
 }
 
 .mat-form-field-appearance-outline .mat-form-field-outline {
@@ -117,4 +117,8 @@ table.mat-table {
 .mat-list-base .mat-list-option .mat-list-item-content {
     padding: 0 0px;
     font-size: 17px;
+}
+
+.mat-toolbar.mat-primary {
+    background: #3c8dbc;
 }

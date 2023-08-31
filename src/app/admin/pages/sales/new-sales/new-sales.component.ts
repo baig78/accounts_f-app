@@ -56,6 +56,8 @@ export class NewSalesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.selectedCharge = '5%';
+    this.selectedDiscount = '5%';
     this.createBillForm();
     this.dialogService.getInputValueObservable().subscribe((value) => {
       this.discount = value;
@@ -264,6 +266,10 @@ calculateGrandTotal(): number {
   const subTotal = this.calculateSubTotal();
   const grandTotal = subTotal + this.calculatedValue - this.calculatedDiscountValue;
   return grandTotal;
+}
+
+cancel(){
+  
 }
   
 

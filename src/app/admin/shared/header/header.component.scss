@@ -1,0 +1,8 @@
+.example-toolbar {
+    background: #3c8dbc;
+}
+
+::ng-deep .mat-expansion-panel-header-description,
+.mat-expansion-indicator::after {
+    color: white !important;
+}

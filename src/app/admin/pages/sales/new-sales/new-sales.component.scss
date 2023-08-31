@@ -69,7 +69,7 @@
 /* Set red background color for the header row */
 
 .mat-header-row {
-    background-color: #3f51b5;
+    background-color: #3c8dbc;
     ;
 }
 
@@ -88,7 +88,7 @@
     padding: 0 0 0 20px;
 }
 
-.title {
+.title-ns {
     font-weight: 700;
     font-size: 15px;
     padding-bottom: 30px;
@@ -103,4 +103,17 @@
 
 td {
     padding: 0px 0px 16px 0px;
+}
+
+.add-new-item-btn {
+    background-color: green;
+}
+
+.example-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.mat-form-field-form {
+    margin-right: 48px;
 }

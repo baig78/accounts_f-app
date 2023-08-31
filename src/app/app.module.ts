@@ -50,6 +50,7 @@ import { DialogComponent } from './admin/shared/dialog/dialog.component';
 import { LineChartComponent } from './admin/shared/charts/line-chart/line-chart.component';
 import { BarChartComponent } from './admin/shared/charts/bar-chart/bar-chart.component';
 import { DoughnutChartComponent } from './admin/shared/charts/doughnut-chart/doughnut-chart.component';
+import { NumbersOnlyDirective } from './admin/shared/numbers-only.directive';
 
 
 
@@ -97,6 +98,7 @@ import { DoughnutChartComponent } from './admin/shared/charts/doughnut-chart/dou
     LineChartComponent,
     DoughnutChartComponent,
     BarChartComponent,
+    NumbersOnlyDirective
 
 
   ],
