@@ -51,7 +51,7 @@ import { LineChartComponent } from './admin/shared/charts/line-chart/line-chart.
 import { BarChartComponent } from './admin/shared/charts/bar-chart/bar-chart.component';
 import { DoughnutChartComponent } from './admin/shared/charts/doughnut-chart/doughnut-chart.component';
 import { NumbersOnlyDirective } from './admin/shared/numbers-only.directive';
-
+import { NgChartsModule } from 'ng2-charts';
 
 
 
@@ -118,6 +118,7 @@ import { NumbersOnlyDirective } from './admin/shared/numbers-only.directive';
     ReactiveFormsModule,
     MatIconModule,
     MatSelectModule,
+    NgChartsModule
 
 
     

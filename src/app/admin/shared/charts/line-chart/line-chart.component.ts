@@ -10,8 +10,6 @@ import { Chart } from 'highcharts';
   styleUrls: ['./line-chart.component.scss']
 })
 export class LineChartComponent  {
-
-  canvasData: any;
   lineChartData = {
     labels: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
     datasets: [{
