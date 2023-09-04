@@ -1,5 +1,6 @@
 <div class="search col-md-3" style="display: contents;">
-    <button mat-raised-button color="primary" (click)="ExportTOExcel()">Export as Excel</button>
+    <!-- <button mat-raised-button color="primary" (click)="ExportTOExcel()">Export as Excel</button> -->
+    <app-button (click)="ExportTOExcel()">Export as Excel</app-button>
     <mat-form-field style="float: right;" appearance="outline">
         <mat-label>Search</mat-label>
         <input matInput type="text" [ngModel]="mySearch" placeholder="Search" [ngModel]="mymodel" (ngModelChange)="onSearch($event)" (change)="onSearch($event);">

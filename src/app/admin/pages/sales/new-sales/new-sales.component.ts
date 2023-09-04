@@ -19,17 +19,18 @@ export class NewSalesComponent implements OnInit {
   date = new FormControl();
   errorMessage: string = '';
   selectedAmount: number = 0;
-  selectedCharge: string = '';
+  selectedCharge: string = '5%';
   calculatedValue: number = 0;
-    selectedDiscountAmount: number = 0;
-  selectedDiscount: string = '';
+  selectedDiscountAmount: number = 0;
+  selectedDiscount: string = '5%';
   calculatedDiscountValue: number = 0;
   billsForm: any = FormGroup;
+  ddlCompanies: any = []
 
   createBillForm() {
     this.billsForm = this.formBuilder.group({
       'invoiceNo': [null, Validators.required],
-      'retailerId': [null, Validators.required],
+      'retailerId': [],
       'customerName': [null, Validators.required],
       'date': [null, Validators.required],
     });
@@ -51,11 +52,9 @@ export class NewSalesComponent implements OnInit {
     this.dialogService.openDialog();
   }
 
-  ddlCompanies: any = []
   ngOnInit(): void {
+    this.getSalesTableData();
     this.getAllTableData();
-    this.selectedCharge = '5%';
-    this.selectedDiscount = '5%';
     this.createBillForm();
     this.dialogService.getInputValueObservable().subscribe((value) => {
       this.discount = value;
@@ -170,15 +169,57 @@ export class NewSalesComponent implements OnInit {
   // }
 
   saveData() {
-    const formValues = this.billsForm.value;
-    console.log('Form Values:', formValues);
-    console.log('Calculated Value:', this.calculatedValue);
-    console.log('Calculated Discount Value:', this.calculatedDiscountValue);
-    console.log('Selected Amount:', this.selectedAmount);
-    console.log('Selected Charge:', this.selectedCharge);
-    console.log('Selected Discount Amount:', this.selectedDiscountAmount);
-    console.log('Selected Discount:', this.selectedDiscount);
-    console.log('Calculated Grand Total:', this.calculateGrandTotal());
+    // const formValues = this.billsForm.value;
+    // const logMessage = `
+    //   Form Values: ${JSON.stringify(formValues)}
+    //   Calculated Value: ${this.calculatedValue}
+    //   Calculated Discount Value: ${this.calculatedDiscountValue}
+    //   Selected Amount: ${this.selectedAmount}
+    //   Selected Charge: ${this.selectedCharge}
+    //   Selected Discount Amount: ${this.selectedDiscountAmount}
+    //   Selected Discount: ${this.selectedDiscount}
+    //   Calculated Grand Total: ${this.calculateGrandTotal()}
+    // `;
+    // console.log(logMessage);
+
+
+    this.billsForm
+    let apiurl = "insert_new_sale";
+    let data = {
+      customerName: this.billsForm.controls.companyName.value,
+      // email: this.retailersForm.controls.emailAddress.value,
+      // phone: this.retailersForm.controls.phoneNumber.value,
+      // mobile: this.retailersForm.controls.altNumber.value,
+      // name: this.retailersForm.controls.ownerName.value,
+      // city: this.retailersForm.controls.city.value,
+      // address: this.retailersForm.controls.address.value,
+      // gst_no: this.retailersForm.controls.gstNo.value,
+      // country: this.retailersForm.controls.country.value,
+      // postal_code: this.retailersForm.controls.postalCode.value,
+
+    };
+    this.DashboardService.insertData(apiurl, data).subscribe({
+      error: (err: any) => { },
+      next: (data: any) => {
+        console.log(data.results)
+        // this.setTable(data.results)
+        // this.getAllTableData()
+        // this.isExpand = false;
+
+      },
+    });
+  }
+
+  getSalesTableData() {
+    this.DashboardService.getData("get_new_sale").subscribe({
+      error: (err: any) => { },
+      next: (data: any) => {
+        console.log(data)
+
+        // this.setTable(data)
+      },
+    });
+
   }
 
   calculateTotalAmount(element: any): number {
