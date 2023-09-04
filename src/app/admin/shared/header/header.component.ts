@@ -10,6 +10,11 @@ interface purchase {
   styleUrls: ['./header.component.scss']
 })
 export class AdminHeaderComponent implements OnInit {
+  currentDate:string = new Date().toLocaleDateString();
+  d:string = new Date().toLocaleTimeString();
+  timeId = setInterval(()=>{
+    this.d = new Date().toLocaleTimeString();
+  })
   @Input() title:string | any;
   headTitle: any;
   purchases: purchase[] = [

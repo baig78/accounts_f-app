@@ -1,8 +1,48 @@
-.example-toolbar {
+.header-mat-toolbar {
     background: #3c8dbc;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 45px
 }
 
 ::ng-deep .mat-expansion-panel-header-description,
 .mat-expansion-indicator::after {
     color: white !important;
+}
+
+.header-title {
+    margin-bottom: 0px;
+    border-right: 1px solid #63a9d1;
+    padding-right: 45px;
+    padding-left: 26px;
+}
+
+.date-time {
+    position: absolute;
+    right: 223px;
+    color: white;
+    font-size: 12px;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.date-time hr {
+    width: 100%;
+    margin-top: -6px;
+}
+
+.current-date {
+    margin-top: -13px;
+}
+
+.header-sub-menu {
+    visibility: hidden;
+    width: 0;
+    font-size: 15px;
+    margin-top: 32px;
+    position: absolute;
+    right: 70px;
 }

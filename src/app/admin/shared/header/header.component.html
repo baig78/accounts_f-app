@@ -1,16 +1,17 @@
-<mat-toolbar color="primary" class="example-toolbar" style="position: fixed; top: 0px; left: 0px; height: 45px">
+<mat-toolbar color="primary" class="header-mat-toolbar">
     <!-- <button mat-icon-button>
         <mat-icon>menu</mat-icon>
     </button> -->
     <!-- <img src="../assets/images/logo1.png" style="height:40px;" /> -->
-    <p style="    margin-bottom: 0px;
-    border-right: 1px solid #63a9d1;
-    padding-right: 45px;
-    padding-left: 26px;
-">Account Manager</p>
-    <h1 class="example-app-name" style="position: absolute; left: 22%">
+    <p class="header-title">Account Manager</p>
+    <!-- <h1 class="example-app-name" style="position: absolute; left: 22%">
         {{ headTitle }}
-    </h1>
+    </h1> -->
+    <div class="date-time">
+        <span>{{currentDate | date : 'dd/MM/yyyy'}}</span>
+        <hr>
+        <span class="current-date">{{d }}</span>
+    </div>
 
     <mat-icon style="position: absolute; right: 130px; color: white">notifications</mat-icon>
     <mat-icon style="position: absolute; right: 180px; color: white">sms</mat-icon>
@@ -33,14 +34,7 @@
 
     <!-- </button> -->
 
-    <mat-select style="
-      visibility: hidden;
-      width: 0;
-      font-size: 15px;
-      margin-top: 32px;
-      position: absolute;
-      right: 70px;
-    " #mySelect [formControl]="bordersControl">
+    <mat-select class="header-sub-menu" #mySelect [formControl]="bordersControl">
         <mat-option>
             <mat-icon>perm_identity</mat-icon>
             Profile
