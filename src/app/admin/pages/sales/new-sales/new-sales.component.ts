@@ -3,6 +3,8 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DialogService } from 'src/app/admin/shared/dialog.service';
+import { DashboardService } from '../../../services/dashboard.service';
+
 // import { MatDialog } from '@angular/material/dialog';
 
 
@@ -19,43 +21,39 @@ export class NewSalesComponent implements OnInit {
   selectedAmount: number = 0;
   selectedCharge: string = '';
   calculatedValue: number = 0;
-
-  selectedDiscountAmount: number = 0;
+    selectedDiscountAmount: number = 0;
   selectedDiscount: string = '';
   calculatedDiscountValue: number = 0;
-
-
-
-  
   billsForm: any = FormGroup;
+
   createBillForm() {
     this.billsForm = this.formBuilder.group({
       'invoiceNo': [null, Validators.required],
       'retailerId': [null, Validators.required],
       'customerName': [null, Validators.required],
       'date': [null, Validators.required],
-
-
     });
   }
-
 
   constructor(
     private formBuilder: FormBuilder,
     private _snackBar: MatSnackBar,
     // private dialog: MatDialog
-    private dialogService: DialogService
-
+    private dialogService: DialogService,
+    public DashboardService: DashboardService,
   ) {
     this.dataSource = new MatTableDataSource<Person>([
       // Initialize your data source here
     ]);
-   }
+  }
+
   openDialog(): void {
     this.dialogService.openDialog();
   }
 
+  ddlCompanies: any = []
   ngOnInit(): void {
+    this.getAllTableData();
     this.selectedCharge = '5%';
     this.selectedDiscount = '5%';
     this.createBillForm();
@@ -63,21 +61,32 @@ export class NewSalesComponent implements OnInit {
       this.discount = value;
     });
   }
+
+  getAllTableData() {
+    this.DashboardService.getData("rtr").subscribe({
+      error: (err: any) => { },
+      next: (data: any) => {
+        data.forEach((item: any) => {
+          this.ddlCompanies.push({ label: item?.company_name, value: item?.company_name })
+        });
+      },
+    });
+  }
+
   otherCharges: { label: string, value: string }[] = [
     { label: '5%', value: '5%' },
     { label: '10%', value: '10%' },
     { label: '15%', value: '15%' },
     { label: 'fixed', value: 'fixed' },
-
-    // Add more options as needed
   ];
+
   discountAll: { label: string, value: string }[] = [
     { label: '5%', value: '5%' },
     { label: '10%', value: '10%' },
     { label: '15%', value: '15%' },
     { label: 'fixed', value: 'fixed' },
-    // Add more options as needed
   ];
+
   myFilter(d: Date): boolean {
     const day = d.getDay();
     const month = d.getMonth();
@@ -95,21 +104,9 @@ export class NewSalesComponent implements OnInit {
     } else {
       return false;
     }
-
-
   }
 
-
-
-
-
-
-
-
-  dataSource = new MatTableDataSource<Person>([
-    // { name: 'John', age: 25 },
-    // { name: 'Jane', age: 30 }
-  ]);
+  dataSource = new MatTableDataSource<Person>([]);
 
   displayedColumns: string[] = ['description', 'quantity', 'unitPrice', 'discount', 'taxAmount', 'totalAmount', 'actions'];
 
@@ -138,7 +135,6 @@ export class NewSalesComponent implements OnInit {
     }
   }
 
-
   addRow() {
     if (this.validateInputFields()) {
       const newRow: Person = { description: '', quantity: 1, unitPrice: 0, discount: 0, taxAmount: 0, totalAmount: 0 };
@@ -150,7 +146,6 @@ export class NewSalesComponent implements OnInit {
     }
   }
 
-
   incrementQuantity(row: Person) {
     row.quantity += 1;
   }
@@ -160,10 +155,6 @@ export class NewSalesComponent implements OnInit {
       row.quantity -= 1;
     }
   }
-
-
-
-
 
   // onSubmit(formData:any) {
   //   if (!this.formData.tax || !this.formData.discount) {
@@ -178,10 +169,8 @@ export class NewSalesComponent implements OnInit {
   //   this.dialog.closeAll();
   // }
 
-  saveData(){
+  saveData() {
     const formValues = this.billsForm.value;
-
-    // Log the form values, calculations, and other data to the console
     console.log('Form Values:', formValues);
     console.log('Calculated Value:', this.calculatedValue);
     console.log('Calculated Discount Value:', this.calculatedDiscountValue);
@@ -190,88 +179,67 @@ export class NewSalesComponent implements OnInit {
     console.log('Selected Discount Amount:', this.selectedDiscountAmount);
     console.log('Selected Discount:', this.selectedDiscount);
     console.log('Calculated Grand Total:', this.calculateGrandTotal());
-
-
   }
 
-
-  
   calculateTotalAmount(element: any): number {
-     var a = ((element.quantity * element.unitPrice) - element.discount); 
-    var b =  parseInt(element.taxAmount);
-    return (a)+(b);
+    var a = ((element.quantity * element.unitPrice) - element.discount);
+    var b = parseInt(element.taxAmount);
+    return (a) + (b);
   }
 
   calculateTotalQuantity(): number {
     let totalQuantity = 0;
-
     for (const element of this.dataSource.data) {
-        const quantityAsString = String(element.quantity);
-        totalQuantity += parseInt(quantityAsString) || 0;
+      const quantityAsString = String(element.quantity);
+      totalQuantity += parseInt(quantityAsString) || 0;
     }
-
     return totalQuantity;
-}
+  }
 
 
-calculateSubTotal(): number {
-  let subTotal = 0;
-
-  for (const element of this.dataSource.data) {
+  calculateSubTotal(): number {
+    let subTotal = 0;
+    for (const element of this.dataSource.data) {
       // Calculate the total amount using the calculateTotalAmount function
       const totalAmount = this.calculateTotalAmount(element);
       subTotal += totalAmount;
+    }
+    return subTotal;
   }
 
-  return subTotal;
-}
-
-// calculate() {
-//   const amount = parseFloat(this.selectedAmount.toString()); // Convert to number
-//   const percentage = parseFloat(this.selectedCharge.toString()); // Already a number (percentage)
-
-//   // Perform the calculation: ((amount * percentage) / 100) + amount
-//   this.calculatedValue = ((amount * percentage) / 100) + amount;
-// }
-
-  
-calculateOtherCharges() {
-  const amount = parseFloat(this.selectedAmount.toString()); // Convert to number
-
-  if (this.selectedCharge === 'fixed') {
+  calculateOtherCharges() {
+    const amount = parseFloat(this.selectedAmount.toString()); // Convert to number
+    if (this.selectedCharge === 'fixed') {
       // Calculate only based on selectedAmount when the fixed charge is selected
       this.calculatedValue = amount;
-  } else {
+    } else {
       const percentage = parseFloat(this.selectedCharge.toString()); // Already a number (percentage)
-      
       // Perform the calculation: ((amount * percentage) / 100) + amount
       this.calculatedValue = ((amount * percentage) / 100) + amount;
+    }
   }
-}
 
-calculateDiscount(){
-  const amount = parseFloat(this.selectedDiscountAmount.toString()); // Convert to number
-
-  if (this.selectedDiscount === 'fixed') {
+  calculateDiscount() {
+    const amount = parseFloat(this.selectedDiscountAmount.toString()); // Convert to number
+    if (this.selectedDiscount === 'fixed') {
       // Calculate only based on selectedDiscountAmount when the fixed charge is selected
       this.calculatedDiscountValue = amount;
-  } else {
+    } else {
       const percentage = parseFloat(this.selectedDiscount.toString()); // Already a number (percentage)
-      
       // Perform the calculation: ((amount * percentage) / 100) + amount
       this.calculatedDiscountValue = ((amount * percentage) / 100) + amount;
+    }
   }
-}
-calculateGrandTotal(): number {
-  const subTotal = this.calculateSubTotal();
-  const grandTotal = subTotal + this.calculatedValue - this.calculatedDiscountValue;
-  return grandTotal;
-}
 
-cancel(){
-  
-}
-  
+  calculateGrandTotal(): number {
+    const subTotal = this.calculateSubTotal();
+    const grandTotal = subTotal + this.calculatedValue - this.calculatedDiscountValue;
+    return grandTotal;
+  }
+
+  cancel() {
+
+  }
 
 }
 export interface Person {

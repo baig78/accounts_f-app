@@ -9,8 +9,12 @@
         <div>
             <div>
                 <mat-form-field appearance="outline" class="mat-form-field-form">
-                    <mat-label>Customer Name</mat-label>
-                    <input matInput placeholder="Customer Name" formControlName="customerName">
+                    <mat-label>Customer / Customer Name </mat-label>
+                    <mat-select [(ngModel)]="selectedCharge" (ngModelChange)="calculateOtherCharges()">
+                        <mat-option *ngFor="let company of ddlCompanies" [value]="company.value">
+                            {{ company.label }}
+                        </mat-option>
+                    </mat-select>
                 </mat-form-field>
             </div>
 
