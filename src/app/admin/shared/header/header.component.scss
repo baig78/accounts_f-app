@@ -3,7 +3,8 @@
     position: fixed;
     top: 0px;
     left: 0px;
-    height: 45px
+    height: 45px;
+    z-index: 1;
 }
 
 ::ng-deep .mat-expansion-panel-header-description,

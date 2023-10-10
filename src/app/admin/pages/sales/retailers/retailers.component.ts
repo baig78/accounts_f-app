@@ -133,7 +133,7 @@ export class RetailersComponent implements OnInit {
     this.DashboardService.insertData(apiurl, data).subscribe({
       error: (err: any) => { },
       next: (data: any) => {
-        console.log(data.results)
+        console.log(data.results, 'rtr---------------')
         this.setTable(data.results)
         this.getAllTableData()
         this.isExpand = false;
